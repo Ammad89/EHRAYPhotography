@@ -31,18 +31,14 @@ export default function DashboardV2() {
           onChangeField={editor.updateBlockField}
         />
       }
-      preview={
-        <div className="p-8">
-          <h2 className="text-2xl font-bold mb-6">
-            Live Preview
-          </h2>
 
-          <pre className="text-xs overflow-auto bg-slate-100 p-4 rounded">
-            {JSON.stringify(
-              editor.selectedBlock,
-              null,
-              2,
-            )}
+
+     preview={
+        <PreviewRenderer
+          page={editor.selectedPage}
+          theme={editor.theme}
+        />
+       }
           </pre>
         </div>
       }
