@@ -1,10 +1,9 @@
-import petHeroImage from "../../imports/dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg";
-import petImg1 from "../../imports/happy-young-woman-spending-time-with-lovely-spotte-2026-01-05-04-49-04-utc.jpg";
-import petImg2 from "../../imports/a-soft-coated-wheaten-terrier-running-through-the-2026-03-13-01-52-31-utc.jpg";
-import petImg3 from "../../imports/happy-dog-standing-on-a-rock-in-nature-2026-03-24-11-37-42-utc.jpg";
-import petImg4 from "../../imports/cute-puppy-sitting-alert-in-green-grass-2026-03-19-08-12-02-utc.jpg";
-import { ArrowRight } from "lucide-react";
-import { Star } from "lucide-react";
+import petHeroImage from "../../imports/optimized/dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg";
+import petImg1 from "../../imports/optimized/happy-young-woman-spending-time-with-lovely-spotte-2026-01-05-04-49-04-utc.jpg";
+import petImg2 from "../../imports/optimized/a-soft-coated-wheaten-terrier-running-through-the-2026-03-13-01-52-31-utc.jpg";
+import petImg3 from "../../imports/optimized/happy-dog-standing-on-a-rock-in-nature-2026-03-24-11-37-42-utc.jpg";
+import petImg4 from "../../imports/optimized/cute-puppy-sitting-alert-in-green-grass-2026-03-19-08-12-02-utc.jpg";
+import { ArrowRight, Star } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
 import FAQAccordion from "../components/FAQAccordion";
 import SEO from "../components/SEO";
@@ -15,7 +14,7 @@ const pageSchema = {
   "name": "Pet Photographer Dubai",
   "serviceType": "Photography",
   "description": "Specialist pet photographer in Dubai. Authentic portraits capturing the bond between owners and their animals across the UAE.",
-  "provider": { "@type": "LocalBusiness", "name": "EHRoy Photography", "url": "https://www.ehrayphotography.com" },
+  "provider": { "@type": "LocalBusiness", "name": "EHRay Photography", "url": "https://www.ehrayphotography.com" },
   "areaServed": { "@type": "City", "name": "Dubai" },
   "url": "https://www.ehrayphotography.com/pet-photography",
 };
@@ -29,9 +28,9 @@ const faqs = [
 ];
 
 const testimonials = [
-  { name: "Mariam Al-Khatib", role: "Dubai", text: "I've tried photographing my whippet a dozen times. He never stays still. Emily had him in the most stunning shots within twenty minutes. I still don't know how she did it." },
-  { name: "David Pearce", role: "Abu Dhabi", text: "We lost our dog six months after the session. Those photographs are everything to us now. Emily gave us something irreplaceable." },
-  { name: "Sophie & Khalid Mansour", role: "Dubai", text: "Three cats. The chaos was real. The photos are extraordinary. Emily has a patience and gentleness that animals seem to respond to immediately." },
+  { name: "Sample pet client", role: "Draft testimonial - Dubai", text: "I've tried photographing my dog a dozen times. He never stays still. Emily had him in the most stunning shots within twenty minutes." },
+  { name: "Sample pet client", role: "Draft testimonial - Abu Dhabi", text: "Those photographs are everything to us now. Emily gave us something emotional, honest and irreplaceable." },
+  { name: "Sample pet client", role: "Draft testimonial - Dubai", text: "Three cats. The chaos was real. The photos are extraordinary. Emily has a patience and gentleness that animals respond to immediately." },
 ];
 
 const portfolioImages = [
@@ -45,14 +44,14 @@ const steps = [
   { number: "01", title: "Tell us about them", desc: "A short call before your session. Breed, temperament, what they love, what stresses them. The more we know, the better we can plan." },
   { number: "02", title: "Choose the right location", desc: "We'll suggest spots that suit your pet's personality. High-energy dogs love open space. Cats often do best at home. We adapt." },
   { number: "03", title: "Play-led session", desc: "No posing, no commands. We let your pet move freely and capture the moments as they happen. Sessions are unhurried." },
-  { number: "04", title: "Gallery in 10 days", desc: "A curated selection of your best images delivered to an online gallery within 10 days, ready to download and print." },
+  { number: "04", title: "Gallery in 10 days", desc: "Draft structure: a curated selection of your best images delivered to an online gallery within 10 days, ready to download and print." },
 ];
 
 export default function PetPhotography() {
   return (
     <>
       <SEO
-        title="Pet Photographer Dubai | Specialist Pet Photography UAE | EHRoy Photography"
+        title="Pet Photographer Dubai | Specialist Pet Photography UAE | EHRay Photography"
         description="Specialist pet photographer in Dubai. Authentic portraits capturing the bond between you and your animal. Dogs, cats and all pets. Serving the UAE."
         keywords="Pet Photographer Dubai, Pet Photography Dubai, Pet Photoshoot Dubai, Dog Photographer Dubai, Cat Photographer Dubai"
         canonical="https://www.ehrayphotography.com/pet-photography"
@@ -60,11 +59,11 @@ export default function PetPhotography() {
       />
       {/* Hero */}
       <section className="relative h-[85vh] min-h-[580px] overflow-hidden bg-muted pt-[72px]">
-        <img src={petHeroImage} alt="Dog in autumn foliage with red collar - EHRoy Pet Photography UAE" className="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
+        <img src={petHeroImage} alt="Dog in autumn foliage with red collar - EHRay Pet Photography UAE" className="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="relative z-10 h-full flex items-end pb-16 max-w-7xl mx-auto px-6 w-full">
           <div>
-            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRoy Photography &nbsp;·&nbsp; Pet Photography</p>
+            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRay Photography &nbsp;·&nbsp; Pet Photography</p>
             <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.08] max-w-2xl mb-6" style={{ fontFamily: "'Lora', Georgia, serif" }}>
               Your pet isn&apos;t a prop.<br />They&apos;re the point.
             </h1>
@@ -132,14 +131,15 @@ export default function PetPhotography() {
         </div>
       </section>
 
-      {/* Client Stories */}
+      {/* Testimonials */}
       <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Client Stories</p>
-          <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>In their owners&apos; words.</h2>
+          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Sample Client Stories</p>
+          <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>In their owners&apos; words.</h2>
+          <p className="text-muted-foreground text-sm mb-14 max-w-xl leading-relaxed">Draft testimonial examples for client review. Replace with verified pet-session quotes before launch.</p>
           <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map(t => (
-              <div key={t.name} className="bg-background rounded-3xl p-8 flex flex-col">
+            {testimonials.map((t, index) => (
+              <div key={`${t.role}-${index}`} className="bg-background rounded-3xl p-8 flex flex-col">
                 <div className="flex gap-0.5 mb-5">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={13} className="fill-foreground text-foreground" />)}</div>
                 <p className="italic text-foreground leading-relaxed mb-6 text-[17px] flex-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>&ldquo;{t.text}&rdquo;</p>
                 <div>

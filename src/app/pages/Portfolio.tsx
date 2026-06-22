@@ -5,32 +5,32 @@ import SEO from "../components/SEO";
 import BookingCTA from "../components/BookingCTA";
 
 // ── Families
-import fam0 from "../../imports/outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG";
-import fam1 from "../../imports/happy-family-laughing-while-lying-in-green-grass-2026-03-25-05-03-58-utc.jpg";
-import fam2 from "../../imports/young-happy-mixed-race-family-relaxing-and-sitting-2026-03-25-08-29-12-utc.jpg";
-import fam3 from "../../imports/loving-family-together-in-sunny-field-outdoors-2026-01-05-05-42-43-utc.jpg";
-import fam4 from "../../imports/happy-family-sitting-in-the-autumn-grass-2026-03-26-09-13-29-utc.jpg";
+import fam0 from "../../imports/optimized/outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG";
+import fam1 from "../../imports/optimized/happy-family-laughing-while-lying-in-green-grass-2026-03-25-05-03-58-utc.jpg";
+import fam2 from "../../imports/optimized/young-happy-mixed-race-family-relaxing-and-sitting-2026-03-25-08-29-12-utc.jpg";
+import fam3 from "../../imports/optimized/loving-family-together-in-sunny-field-outdoors-2026-01-05-05-42-43-utc.jpg";
+import fam4 from "../../imports/optimized/happy-family-sitting-in-the-autumn-grass-2026-03-26-09-13-29-utc.jpg";
 
 // ── Pets
-import pet0 from "../../imports/dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg";
-import pet1 from "../../imports/happy-young-woman-spending-time-with-lovely-spotte-2026-01-05-04-49-04-utc.jpg";
-import pet2 from "../../imports/a-soft-coated-wheaten-terrier-running-through-the-2026-03-13-01-52-31-utc.jpg";
-import pet3 from "../../imports/happy-dog-standing-on-a-rock-in-nature-2026-03-24-11-37-42-utc.jpg";
-import pet4 from "../../imports/cute-puppy-sitting-alert-in-green-grass-2026-03-19-08-12-02-utc.jpg";
+import pet0 from "../../imports/optimized/dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg";
+import pet1 from "../../imports/optimized/happy-young-woman-spending-time-with-lovely-spotte-2026-01-05-04-49-04-utc.jpg";
+import pet2 from "../../imports/optimized/a-soft-coated-wheaten-terrier-running-through-the-2026-03-13-01-52-31-utc.jpg";
+import pet3 from "../../imports/optimized/happy-dog-standing-on-a-rock-in-nature-2026-03-24-11-37-42-utc.jpg";
+import pet4 from "../../imports/optimized/cute-puppy-sitting-alert-in-green-grass-2026-03-19-08-12-02-utc.jpg";
 
 // ── Personal Branding
-import brand0 from "../../imports/japanese-woman-in-office-portrait-2026-03-09-05-22-48-utc.jpg";
-import brand1 from "../../imports/athletic-woman-crouches-on-bridge-in-activewear-2026-03-25-07-26-56-utc.jpg";
-import brand2 from "../../imports/jumping-hurdler-top-view-2026-01-05-05-51-32-utc.jpg";
-import brand3 from "../../imports/young-woman-doing-gymnastics-top-view-2026-03-09-06-04-47-utc.jpg";
-import brand4 from "../../imports/young-woman-in-a-lake-rubbing-her-eyes-2026-03-09-05-46-08-utc.jpg";
+import brand0 from "../../imports/optimized/japanese-woman-in-office-portrait-2026-03-09-05-22-48-utc.jpg";
+import brand1 from "../../imports/optimized/athletic-woman-crouches-on-bridge-in-activewear-2026-03-25-07-26-56-utc.jpg";
+import brand2 from "../../imports/optimized/jumping-hurdler-top-view-2026-01-05-05-51-32-utc.jpg";
+import brand3 from "../../imports/optimized/young-woman-doing-gymnastics-top-view-2026-03-09-06-04-47-utc.jpg";
+import brand4 from "../../imports/optimized/young-woman-in-a-lake-rubbing-her-eyes-2026-03-09-05-46-08-utc.jpg";
 
 // ── Events
-import evt0 from "../../imports/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
-import evt1 from "../../imports/smiling-people-celebrating-new-year-s-eve-with-spa-2026-03-24-09-00-03-utc.jpg";
-import evt2 from "../../imports/friends-celebrate-new-year-s-eve-with-sparklers-2026-03-24-07-23-58-utc.jpg";
-import evt3 from "../../imports/celebratory-evening-couple-cheers-with-champagne-2026-03-24-05-10-35-utc.jpg";
-import evt4 from "../../imports/friends-celebrating-with-champagne-on-yellow-backg-2026-03-17-08-58-10-utc.jpg";
+import evt0 from "../../imports/optimized/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
+import evt1 from "../../imports/optimized/smiling-people-celebrating-new-year-s-eve-with-spa-2026-03-24-09-00-03-utc.jpg";
+import evt2 from "../../imports/optimized/friends-celebrate-new-year-s-eve-with-sparklers-2026-03-24-07-23-58-utc.jpg";
+import evt3 from "../../imports/optimized/celebratory-evening-couple-cheers-with-champagne-2026-03-24-05-10-35-utc.jpg";
+import evt4 from "../../imports/optimized/friends-celebrating-with-champagne-on-yellow-backg-2026-03-17-08-58-10-utc.jpg";
 
 type Category = "All" | "Families" | "Pets" | "Personal Branding" | "Events";
 
@@ -80,9 +80,9 @@ const categoryMeta: Record<Exclude<Category, "All">, { path: string; label: stri
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "ImageGallery",
-  "name": "EHRoy Photography Portfolio",
+  "name": "EHRay Photography Portfolio",
   "description": "Portfolio of natural light photography across families, pets, personal branding and events in Dubai, UAE.",
-  "author": { "@type": "LocalBusiness", "name": "EHRoy Photography", "url": "https://www.ehrayphotography.com" },
+  "author": { "@type": "LocalBusiness", "name": "EHRay Photography", "url": "https://www.ehrayphotography.com" },
 };
 
 export default function Portfolio() {
@@ -93,8 +93,8 @@ export default function Portfolio() {
   return (
     <>
       <SEO
-        title="Portfolio | EHRoy Photography Dubai - Family, Pet & Event Photography"
-        description="Browse the full portfolio of EHRoy Photography. Natural light family, pet, personal branding and event photography across Dubai and the UAE."
+        title="Portfolio | EHRay Photography Dubai - Family, Pet & Event Photography"
+        description="Browse the full portfolio of EHRay Photography. Natural light family, pet, personal branding and event photography across Dubai and the UAE."
         keywords="Photography Portfolio Dubai, Family Photography Portfolio, Pet Photography Dubai, Event Photography UAE, Personal Branding Photography"
         canonical="https://www.ehrayphotography.com/portfolio"
         schema={pageSchema}
@@ -103,7 +103,7 @@ export default function Portfolio() {
       {/* ── Page header ── */}
       <section className="pt-[72px] bg-background">
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-14 text-center">
-          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">EHRoy Photography</p>
+          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">EHRay Photography</p>
           <h1
             className="text-4xl sm:text-5xl font-medium text-foreground mb-5"
             style={{ fontFamily: "'Lora', Georgia, serif" }}
@@ -201,7 +201,7 @@ export default function Portfolio() {
                   {cover && (
                     <img
                       src={cover.src}
-                      alt={`${cat} photography by EHRoy`}
+                      alt={`${cat} photography by EHRay`}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
                     />

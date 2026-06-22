@@ -18,10 +18,10 @@ export default function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <nav className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between gap-8">
 
-        <Link to="/" aria-label="EHRoy Photography - Home" className="flex-none">
+        <Link to="/" aria-label="EHRay Photography - Home" className="flex-none">
           <img
             src="https://static.wixstatic.com/media/7cfb53_8c7fcb8badd6496dbd89b9ca004f575d~mv2.png"
-            alt="EHRoy Photography logo"
+            alt="EHRay Photography logo"
             className="h-11 w-auto object-contain"
           />
         </Link>

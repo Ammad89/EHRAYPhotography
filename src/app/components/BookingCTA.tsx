@@ -19,6 +19,50 @@ const SESSION_OPTIONS = [
 ];
 
 const TIME_OPTIONS = ["Morning (8am - 12pm)", "Afternoon (12pm - 5pm)", "Evening (5pm - 8pm)"];
+const CONTACT_EMAIL = "ehrayphotography@gmail.com";
+
+const TAB_LABELS: Record<Tab, string> = {
+  enquiry: "Website Enquiry",
+  availability: "Availability Request",
+  consultation: "Discovery Call Request",
+};
+
+const FIELD_LABELS: Record<string, string> = {
+  fullName: "Full name",
+  phone: "Phone number",
+  email: "Email address",
+  sessionType: "Session type",
+  sessionInterest: "Session interest",
+  preferredDate: "Preferred date",
+  backupDate: "Backup date",
+  preferredCallDate: "Preferred call date",
+  preferredCallTime: "Preferred call time",
+  message: "Additional information",
+  discussion: "What they would like to discuss",
+};
+
+function createMailto(tab: Tab, form: HTMLFormElement) {
+  const data = new FormData(form);
+  const service = String(data.get("sessionType") || data.get("sessionInterest") || "General").trim();
+  const fullName = String(data.get("fullName") || "Website visitor").trim();
+  const subject = `${TAB_LABELS[tab]} - ${service}`;
+  const lines = [
+    `Enquiry type: ${TAB_LABELS[tab]}`,
+    `Submitted by: ${fullName}`,
+    "",
+    "Details:",
+  ];
+
+  data.forEach((value, key) => {
+    const cleanValue = String(value).trim();
+    if (!cleanValue) return;
+    lines.push(`${FIELD_LABELS[key] || key}: ${cleanValue}`);
+  });
+
+  lines.push("", "Source: EHRay Photography website");
+
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+}
 
 function SuccessMessage({ message }: { message: string }) {
   return (
@@ -29,7 +73,7 @@ function SuccessMessage({ message }: { message: string }) {
       <p className="text-white text-lg font-medium mb-2" style={{ fontFamily: "'Lora', Georgia, serif" }}>
         {message}
       </p>
-      <p className="text-white/50 text-sm">Usually within one business day.</p>
+      <p className="text-white/50 text-sm">Please send the email to complete your enquiry.</p>
     </div>
   );
 }
@@ -46,8 +90,9 @@ export default function BookingCTA({
   const [activeTab, setActiveTab] = useState<Tab>("enquiry");
   const [submitted, setSubmitted] = useState<Partial<Record<Tab, boolean>>>({});
 
-  const submit = (tab: Tab) => (e: React.FormEvent) => {
+  const submit = (tab: Tab) => (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    window.location.href = createMailto(tab, e.currentTarget);
     setSubmitted(prev => ({ ...prev, [tab]: true }));
   };
 
@@ -74,7 +119,7 @@ export default function BookingCTA({
         {/* Quick CTAs */}
         <div className="flex flex-wrap justify-center gap-4 mb-14">
           <a
-            href="mailto:hello@ehrayphotography.com"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 bg-white text-black text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:bg-white/90 transition-colors duration-500"
           >
             <span className="group-hover:[order:1]">Email Directly</span>
@@ -114,25 +159,26 @@ export default function BookingCTA({
           {/* ── Tab 1: Full Enquiry Form ── */}
           {activeTab === "enquiry" && (
             submitted.enquiry ? (
-              <SuccessMessage message="Thank you - we'll be in touch shortly." />
+              <SuccessMessage message="Your email app should open with your enquiry." />
             ) : (
               <form className="grid sm:grid-cols-2 gap-4" onSubmit={submit("enquiry")}>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Full Name *</label>
-                  <input required type="text" placeholder="Your full name" className={`${inputClass()} rounded-full`} />
+                  <input required name="fullName" type="text" placeholder="Your full name" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Phone Number *</label>
-                  <input required type="tel" placeholder="+971 56 935 8629" className={`${inputClass()} rounded-full`} />
+                  <input required name="phone" type="tel" placeholder="+971 56 935 8629" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Email Address *</label>
-                  <input required type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
+                  <input required name="email" type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Session Type *</label>
                   <select
                     required
+                    name="sessionType"
                     defaultValue={sessionType}
                     className={`${inputClass("text-white/70")} rounded-full`}
                   >
@@ -144,11 +190,12 @@ export default function BookingCTA({
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Preferred Date</label>
-                  <input type="date" className={`${inputClass("text-white/70")} rounded-full`} />
+                  <input name="preferredDate" type="date" className={`${inputClass("text-white/70")} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2 sm:col-span-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Additional Information</label>
                   <textarea
+                    name="message"
                     rows={3}
                     placeholder="Tell us about your session idea, location preferences, or anything else that would help us prepare..."
                     className={`${inputClass("resize-none")} rounded-2xl`}
@@ -170,7 +217,7 @@ export default function BookingCTA({
           {/* ── Tab 2: Availability Checker ── */}
           {activeTab === "availability" && (
             submitted.availability ? (
-              <SuccessMessage message="Availability request received - we'll confirm within 24 hours." />
+              <SuccessMessage message="Your email app should open with your availability request." />
             ) : (
               <form className="grid sm:grid-cols-2 gap-4" onSubmit={submit("availability")}>
                 <p className="sm:col-span-2 text-white/55 text-sm leading-relaxed -mt-2 mb-2">
@@ -178,24 +225,25 @@ export default function BookingCTA({
                 </p>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Your Name *</label>
-                  <input required type="text" placeholder="Your name" className={`${inputClass()} rounded-full`} />
+                  <input required name="fullName" type="text" placeholder="Your name" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Email Address *</label>
-                  <input required type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
+                  <input required name="email" type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Preferred Date *</label>
-                  <input required type="date" className={`${inputClass("text-white/70")} rounded-full`} />
+                  <input required name="preferredDate" type="date" className={`${inputClass("text-white/70")} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Backup Date (optional)</label>
-                  <input type="date" className={`${inputClass("text-white/70")} rounded-full`} />
+                  <input name="backupDate" type="date" className={`${inputClass("text-white/70")} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2 sm:col-span-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Session Type *</label>
                   <select
                     required
+                    name="sessionType"
                     defaultValue={sessionType}
                     className={`${inputClass("text-white/70")} rounded-full`}
                   >
@@ -221,7 +269,7 @@ export default function BookingCTA({
           {/* ── Tab 3: Discovery Call ── */}
           {activeTab === "consultation" && (
             submitted.consultation ? (
-              <SuccessMessage message="Discovery call request received - we'll confirm a time shortly." />
+              <SuccessMessage message="Your email app should open with your discovery call request." />
             ) : (
               <form className="grid sm:grid-cols-2 gap-4" onSubmit={submit("consultation")}>
                 <p className="sm:col-span-2 text-white/55 text-sm leading-relaxed -mt-2 mb-2">
@@ -229,19 +277,20 @@ export default function BookingCTA({
                 </p>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Full Name *</label>
-                  <input required type="text" placeholder="Your full name" className={`${inputClass()} rounded-full`} />
+                  <input required name="fullName" type="text" placeholder="Your full name" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Email Address *</label>
-                  <input required type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
+                  <input required name="email" type="email" placeholder="you@example.com" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Phone Number *</label>
-                  <input required type="tel" placeholder="+971 56 935 8629" className={`${inputClass()} rounded-full`} />
+                  <input required name="phone" type="tel" placeholder="+971 56 935 8629" className={`${inputClass()} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Session Interest</label>
                   <select
+                    name="sessionInterest"
                     defaultValue={sessionType}
                     className={`${inputClass("text-white/70")} rounded-full`}
                   >
@@ -253,11 +302,11 @@ export default function BookingCTA({
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Preferred Call Date *</label>
-                  <input required type="date" className={`${inputClass("text-white/70")} rounded-full`} />
+                  <input required name="preferredCallDate" type="date" className={`${inputClass("text-white/70")} rounded-full`} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">Preferred Call Time *</label>
-                  <select required defaultValue="" className={`${inputClass("text-white/70")} rounded-full`}>
+                  <select required name="preferredCallTime" defaultValue="" className={`${inputClass("text-white/70")} rounded-full`}>
                     <option value="" disabled>Select a time</option>
                     {TIME_OPTIONS.map(o => (
                       <option key={o} value={o} className="text-foreground bg-background">{o}</option>
@@ -267,6 +316,7 @@ export default function BookingCTA({
                 <div className="flex flex-col gap-2 sm:col-span-2">
                   <label className="text-white/50 text-[10px] tracking-[0.2em] uppercase">What would you like to discuss?</label>
                   <textarea
+                    name="discussion"
                     rows={3}
                     placeholder="Tell us a little about your project, goals or any specific questions you have..."
                     className={`${inputClass("resize-none")} rounded-2xl`}

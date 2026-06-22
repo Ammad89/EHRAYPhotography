@@ -1,8 +1,8 @@
-import eventHeroImage from "../../imports/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
-import eventImg1 from "../../imports/smiling-people-celebrating-new-year-s-eve-with-spa-2026-03-24-09-00-03-utc.jpg";
-import eventImg2 from "../../imports/friends-celebrate-new-year-s-eve-with-sparklers-2026-03-24-07-23-58-utc.jpg";
-import eventImg3 from "../../imports/celebratory-evening-couple-cheers-with-champagne-2026-03-24-05-10-35-utc.jpg";
-import eventImg4 from "../../imports/friends-celebrating-with-champagne-on-yellow-backg-2026-03-17-08-58-10-utc.jpg";
+import eventHeroImage from "../../imports/optimized/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
+import eventImg1 from "../../imports/optimized/smiling-people-celebrating-new-year-s-eve-with-spa-2026-03-24-09-00-03-utc.jpg";
+import eventImg2 from "../../imports/optimized/friends-celebrate-new-year-s-eve-with-sparklers-2026-03-24-07-23-58-utc.jpg";
+import eventImg3 from "../../imports/optimized/celebratory-evening-couple-cheers-with-champagne-2026-03-24-05-10-35-utc.jpg";
+import eventImg4 from "../../imports/optimized/friends-celebrating-with-champagne-on-yellow-backg-2026-03-17-08-58-10-utc.jpg";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
 import SEO from "../components/SEO";
@@ -13,7 +13,7 @@ const pageSchema = {
   "name": "Event Photographer Dubai",
   "serviceType": "Photography",
   "description": "Corporate, private and community event photographer in Dubai and across the UAE. Reliable, professional, 7-day delivery.",
-  "provider": { "@type": "LocalBusiness", "name": "EHRoy Photography", "url": "https://www.ehrayphotography.com" },
+  "provider": { "@type": "LocalBusiness", "name": "EHRay Photography", "url": "https://www.ehrayphotography.com" },
   "areaServed": { "@type": "City", "name": "Dubai" },
   "url": "https://www.ehrayphotography.com/event-photography",
 };
@@ -41,7 +41,7 @@ const process = [
   { number: "02", title: "Location visit", desc: "For larger events, we walk the venue in advance to understand light, layout and the best positions for key moments." },
   { number: "03", title: "Day coverage", desc: "We arrive early, work quietly and professionally throughout, and stay until the brief is complete." },
   { number: "04", title: "Editing", desc: "Every image is individually edited to a consistent, clean standard. No heavy filters. No artificial processing." },
-  { number: "05", title: "Delivery", desc: "Your gallery is delivered within 7 days. Corporate clients receive a commercial licence as standard." },
+  { number: "05", title: "Delivery", desc: "Draft structure: your gallery is delivered within 7 days. Corporate clients receive a commercial licence as standard." },
 ];
 
 const included = [
@@ -66,7 +66,7 @@ export default function EventPhotography() {
   return (
     <>
       <SEO
-        title="Event Photographer Dubai | Corporate Event Photography UAE | EHRoy Photography"
+        title="Event Photographer Dubai | Corporate Event Photography UAE | EHRay Photography"
         description="Event photographer in Dubai covering corporate, private and community events across the UAE. Reliable, professional, 7-day delivery. Enquire today."
         keywords="Event Photographer Dubai, Corporate Event Photographer Dubai, Event Photography UAE, Corporate Photographer Dubai"
         canonical="https://www.ehrayphotography.com/event-photography"
@@ -74,11 +74,11 @@ export default function EventPhotography() {
       />
       {/* Hero */}
       <section className="relative h-[85vh] min-h-[580px] overflow-hidden bg-muted pt-[72px]">
-        <img src={eventHeroImage} alt="Office celebration party - EHRoy Event Photography UAE" className="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
+        <img src={eventHeroImage} alt="Office celebration party - EHRay Event Photography UAE" className="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="relative z-10 h-full flex items-end pb-16 max-w-7xl mx-auto px-6 w-full">
           <div>
-            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRoy Photography &nbsp;·&nbsp; Event Photography</p>
+            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRay Photography &nbsp;·&nbsp; Event Photography</p>
             <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.08] max-w-2xl mb-6" style={{ fontFamily: "'Lora', Georgia, serif" }}>
               The moments that make<br />an event worth remembering.
             </h1>
@@ -145,8 +145,9 @@ export default function EventPhotography() {
       {/* What's Included */}
       <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Every Package Includes</p>
+          <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Sample Package Includes</p>
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>No surprises. No extras.</h2>
+          <p className="text-muted-foreground text-sm mb-8 max-w-xl leading-relaxed">Draft deliverables for client review. Final usage rights and turnaround should be confirmed before launch.</p>
           <div className="bg-background rounded-3xl p-10 max-w-2xl">
             <div className="grid sm:grid-cols-2 gap-4">
               {included.map(item => (

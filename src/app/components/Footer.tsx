@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="md:col-span-1">
           <img
             src="https://static.wixstatic.com/media/7cfb53_8c7fcb8badd6496dbd89b9ca004f575d~mv2.png"
-            alt="EHRoy Photography logo"
+            alt="EHRay Photography logo"
             className="h-14 w-auto object-contain mb-4"
             style={{ filter: "brightness(0) invert(1)" }}
           />
@@ -56,6 +56,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href="mailto:ehrayphotography@gmail.com" className="text-background/55 hover:text-background transition-colors duration-500">
+                ehrayphotography@gmail.com
+              </a>
+            </li>
+            <li>
               <a href="https://wa.me/971569358629" target="_blank" rel="noopener noreferrer" className="text-background/55 hover:text-background transition-colors duration-500">
                 WhatsApp Enquiries
               </a>
@@ -65,7 +70,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-background/10 flex flex-col sm:flex-row justify-between gap-3">
-        <p className="text-background/25 text-xs">© 2026 EHRoy Photography. Website Design by Eight Nine Global.</p>
+        <p className="text-background/25 text-xs">© 2026 EHRay Photography. Website Design by Eight Nine Global.</p>
         <p className="text-background/20 text-xs">
           Family Photographer Dubai &nbsp;·&nbsp; Pet Photographer UAE &nbsp;·&nbsp; Personal Branding Dubai
         </p>

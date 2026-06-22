@@ -57,11 +57,11 @@ View Portfolio
 
 Positioning Section
 
-Immediately below the hero section, visitors should encounter a concise explanation of what makes EHRAY Photography different.
+Immediately below the hero section, visitors should encounter a concise explanation of what makes EHRay Photography different.
 
 Most photographers compete through editing styles.
 
-EHRAY Photography should compete through authenticity.
+EHRay Photography should compete through authenticity.
 
 This section should communicate Emily's philosophy around natural light, genuine moments and timeless imagery.
 
@@ -201,7 +201,7 @@ Booking CTA
 
 Pet Photography Page
 
-This page should position EHRAY Photography as a specialist pet photographer rather than a general photographer who also photographs pets.
+This page should position EHRay Photography as a specialist pet photographer rather than a general photographer who also photographs pets.
 
 The emotional connection between owners and pets should be central to the messaging.
 
@@ -351,7 +351,7 @@ Image compression, lazy loading, modern code structure and performance optimizat
 
 Expected Outcomes
 
-Upon completion of Phase 2, EHRAY Photography will possess a modern, conversion-focused website that functions as a business development asset rather than a portfolio archive.
+Upon completion of Phase 2, EHRay Photography will possess a modern, conversion-focused website that functions as a business development asset rather than a portfolio archive.
 
 Visitors will clearly understand the brand's positioning, trust the photographer more quickly and encounter multiple opportunities to enquire.
 
@@ -359,4 +359,4 @@ The website will provide the digital foundation required for future social media
 
 The objective is not to create a more attractive website.
 
-The objective is to create a website that consistently generates enquiries, builds trust and supports the long-term growth of EHRAY Photography.
+The objective is to create a website that consistently generates enquiries, builds trust and supports the long-term growth of EHRay Photography.
