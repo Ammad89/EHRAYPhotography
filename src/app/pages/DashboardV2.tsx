@@ -1,4 +1,4 @@
-import CmsShell from "../../cms-core/dashboard/CmsShell";
+/>import CmsShell from "../../cms-core/dashboard/CmsShell";
 import PagesPanel from "../../cms-core/dashboard/PagesPanel";
 import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
 import FieldsPanel from "../../cms-core/dashboard/FieldsPanel";
@@ -15,12 +15,13 @@ export default function DashboardV2() {
             selectedSlug={editor.selectedPageSlug}
             onSelect={editor.selectPage}
           />
-
           <BlocksPanel
-            blocks={editor.selectedPage?.blocks || []}
+	    blocks={editor.selectedPage?.blocks || []}
+	    allowedBlocks={editor.allowedBlocks}
             selectedBlockId={editor.selectedBlock?.id}
             onSelect={editor.selectBlock}
             onDelete={editor.removeBlock}
+            onAddBlock={editor.addBlock}
           />
         </div>
       }
