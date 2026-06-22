@@ -9,6 +9,7 @@ import WeddingPhotography from "./pages/WeddingPhotography";
 import Portfolio from "./pages/Portfolio";
 import Dashboard from "./pages/Dashboard";
 import DraftPagePreview from "./pages/DraftPagePreview";
+import DashboardV2 from "./pages/DashboardV2";
 import { CmsDynamicPage, CmsPublicPage } from "./components/CmsPublicPage";
 
 function HomeRoute() {
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
       { path: "event-photography", Component: EventPhotographyRoute },
       { path: "wedding-photography", Component: WeddingPhotographyRoute },
       { path: "dashboard", Component: Dashboard },
+      { path: "dashboard-v2", Component: DashboardV2 },   
       { path: "draft/:slug", Component: DraftPagePreview },
       { path: ":slug", Component: CmsDynamicPage },
     ],
