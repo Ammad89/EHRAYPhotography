@@ -2,6 +2,7 @@ import CmsShell from "../../cms-core/dashboard/CmsShell";
 import PagesPanel from "../../cms-core/dashboard/PagesPanel";
 import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
 import FieldsPanel from "../../cms-core/dashboard/FieldsPanel";
+import ThemePanel from "../../cms-core/dashboard/ThemePanel";
 import PreviewRenderer from "../../cms-core/dashboard/PreviewRenderer";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
@@ -27,12 +28,22 @@ export default function DashboardV2() {
           />
         </div>
       }
-      editor={
-        <FieldsPanel
-          block={editor.selectedBlock}
-          onChangeField={editor.updateBlockField}
-        />
-      }
+
+        editor={
+           <div>
+            <FieldsPanel
+                 block={editor.selectedBlock}
+                 onChangeField={editor.updateBlockField}
+            />
+
+              <div className="border-t border-border mt-6">
+              <ThemePanel
+                    theme={editor.theme}
+                    onChange={editor.setTheme}
+            />
+            </div>
+           </div>
+             }
       preview={
         <PreviewRenderer
           page={editor.selectedPage}
