@@ -4,11 +4,12 @@ import PagesPanel from "../../cms-core/dashboard/PagesPanel";
 import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
 import FieldsPanel from "../../cms-core/dashboard/FieldsPanel";
 import PreviewRenderer from "../../cms-core/dashboard/PreviewRenderer";
+import MediaLibrary from "../../cms-core/dashboard/MediaLibrary";
 import ThemePanel from "../../cms-core/dashboard/ThemePanel";
 import SiteSettingsPanel from "../../cms-core/dashboard/SiteSettingsPanel";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
-type EditorTab = "content" | "theme" | "settings";
+type EditorTab = "content" | "theme" | "settings" | "media";
 
 export default function DashboardV2() {
   const editor = useCmsEditor();
@@ -36,7 +37,7 @@ export default function DashboardV2() {
       editor={
         <div>
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
-            {(["content", "theme", "settings"] as EditorTab[]).map((tab) => (
+            {(["content", "theme", "settings", "media"] as EditorTab[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -71,6 +72,10 @@ export default function DashboardV2() {
               settings={editor.siteSettings}
               onChange={editor.setSiteSettings}
             />
+          )}
+           
+          {activeTab === "media" && (
+             <MediaLibrary /> 
           )}
         </div>
       }
