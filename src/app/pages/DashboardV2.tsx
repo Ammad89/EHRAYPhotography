@@ -73,10 +73,22 @@ export default function DashboardV2() {
               onChange={editor.setSiteSettings}
             />
           )}
-           
           {activeTab === "media" && (
-             <MediaLibrary /> 
-          )}
+            <MediaLibrary
+               onSelect={(url) => {
+               if (!editor.selectedBlock) return;
+
+               const imageField = Object.keys(editor.selectedBlock.fields).find((key) =>
+               key.toLowerCase().includes("image")
+           );
+
+               if (!imageField) return;
+
+                editor.updateBlockField(imageField, url);
+                setActiveTab("content");
+           }}
+             />
+           )}           
         </div>
       }
       preview={
