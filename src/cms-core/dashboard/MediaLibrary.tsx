@@ -1,12 +1,33 @@
+import { ChangeEvent } from "react";
+import { useMediaLibrary } from "../media/useMediaLibrary";
+
 interface MediaLibraryProps {
-  assets?: string[];
   onSelect?: (url: string) => void;
 }
 
 export default function MediaLibrary({
-  assets = [],
   onSelect,
 }: MediaLibraryProps) {
+  const {
+    assets,
+    loading,
+    uploading,
+    error,
+    refresh,
+    upload,
+    remove,
+  } = useMediaLibrary();
+
+  async function handleUpload(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    await upload(file);
+
+    event.target.value = "";
+  }
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -19,7 +40,7 @@ export default function MediaLibrary({
         </h2>
 
         <p className="text-sm opacity-70 mt-2">
-          Upload, browse and reuse images across the website.
+          Upload, browse, reuse and delete images across the website.
         </p>
       </div>
 
@@ -30,16 +51,43 @@ export default function MediaLibrary({
           </span>
 
           <span className="block text-sm opacity-70 mb-4">
-            Supabase upload will be connected in the next step.
+            Images are uploaded to the connected Supabase Storage bucket.
           </span>
 
           <input
             type="file"
             accept="image/*"
-            disabled
+            disabled={uploading}
+            onChange={handleUpload}
             className="block w-full text-sm"
           />
         </label>
+
+        {uploading && (
+          <p className="text-sm mt-3 opacity-70">
+            Uploading image...
+          </p>
+        )}
+      </div>
+
+      {error && (
+        <div className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      <div className="flex items-center justify-between">
+        <h3 className="font-semibold">
+          Uploaded assets
+        </h3>
+
+        <button
+          type="button"
+          onClick={() => void refresh()}
+          className="rounded-lg border border-border px-3 py-2 text-sm"
+        >
+          {loading ? "Refreshing..." : "Refresh"}
+        </button>
       </div>
 
       {assets.length === 0 ? (
@@ -48,23 +96,45 @@ export default function MediaLibrary({
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-4">
-          {assets.map((url) => (
-            <button
-              key={url}
-              type="button"
-              onClick={() => onSelect?.(url)}
-              className="overflow-hidden rounded-xl border border-border text-left"
+          {assets.map((asset) => (
+            <div
+              key={asset.path}
+              className="overflow-hidden rounded-xl border border-border"
             >
-              <img
-                src={url}
-                alt=""
-                className="h-36 w-full object-cover"
-              />
+              <button
+                type="button"
+                onClick={() => onSelect?.(asset.publicUrl)}
+                className="block w-full text-left"
+              >
+                <img
+                  src={asset.publicUrl}
+                  alt=""
+                  className="h-36 w-full object-cover"
+                />
 
-              <div className="p-3 text-xs opacity-70 truncate">
-                {url}
+                <div className="p-3 text-xs opacity-70 truncate">
+                  {asset.name}
+                </div>
+              </button>
+
+              <div className="flex gap-2 border-t border-border p-3">
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(asset.publicUrl)}
+                  className="rounded border border-border px-2 py-1 text-xs"
+                >
+                  Copy URL
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => void remove(asset.path)}
+                  className="rounded border border-red-300 px-2 py-1 text-xs text-red-600"
+                >
+                  Delete
+                </button>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       )}
