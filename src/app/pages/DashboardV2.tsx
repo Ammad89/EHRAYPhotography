@@ -5,16 +5,28 @@ import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
 import FieldsPanel from "../../cms-core/dashboard/FieldsPanel";
 import PreviewRenderer from "../../cms-core/dashboard/PreviewRenderer";
 import MediaLibrary from "../../cms-core/dashboard/MediaLibrary";
+import VersionHistoryPanel from "../../cms-core/dashboard/VersionHistoryPanel";
+import {
+  loadLocalVersions,
+  saveLocalVersion,
+} from "../../cms-core/versioning/version-storage";
 import ThemePanel from "../../cms-core/dashboard/ThemePanel";
 import SiteSettingsPanel from "../../cms-core/dashboard/SiteSettingsPanel";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
-type EditorTab = "content" | "theme" | "settings" | "media";
+type EditorTab =
+  | "content"
+  | "theme"
+  | "settings"
+  | "media"
+  | "versions";
 
 export default function DashboardV2() {
   const editor = useCmsEditor();
   const [activeTab, setActiveTab] = useState<EditorTab>("content");
-
+const [versions, setVersions] = useState(() =>
+  loadLocalVersions(),
+);
   return (
     <CmsShell
       sidebar={
@@ -37,7 +49,7 @@ export default function DashboardV2() {
       editor={
         <div>
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
-            {(["content", "theme", "settings", "media"] as EditorTab[]).map((tab) => (
+            {(["content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -51,6 +63,27 @@ export default function DashboardV2() {
                 {tab}
               </button>
             ))}
+<div className="p-4 border-b border-border">
+  <button
+    type="button"
+    onClick={() => {
+      saveLocalVersion(
+        {
+          pages: editor.pages,
+          theme: editor.theme,
+          siteSettings: editor.siteSettings,
+        },
+        `Manual Save ${new Date().toLocaleTimeString()}`
+      );
+
+      setVersions(loadLocalVersions());
+    }}
+    className="rounded-lg bg-foreground text-background px-4 py-2 text-sm"
+  >
+    Save Version
+  </button>
+</div>
+
           </div>
 
           {activeTab === "content" && (
@@ -87,6 +120,15 @@ export default function DashboardV2() {
                 editor.updateBlockField(imageField, url);
                 setActiveTab("content");
            }}
+
+{activeTab === "versions" && (
+  <VersionHistoryPanel
+    versions={versions}
+    onRestore={(version) => {
+      console.log("restore", version);
+    }}
+  />
+)}
              />
            )}           
         </div>
