@@ -142,6 +142,7 @@ export default function DashboardV2() {
         <PreviewRenderer
           page={editor.selectedPage}
           theme={editor.theme}
+          siteSettings={editor.siteSettings}
         />
       }
     />
