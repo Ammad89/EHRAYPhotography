@@ -160,6 +160,15 @@ function restoreSnapshot(snapshot: {
   theme: CmsTheme;
   siteSettings: CmsSiteSettings;
 }) {
+  localStorage.setItem(
+    CMS_EDITOR_STATE_KEY,
+    JSON.stringify({
+      pages: snapshot.pages,
+      theme: snapshot.theme,
+      siteSettings: snapshot.siteSettings,
+    })
+  );
+
   setPages(snapshot.pages);
   setTheme(snapshot.theme);
   setSiteSettings(snapshot.siteSettings);
@@ -168,6 +177,7 @@ function restoreSnapshot(snapshot: {
   setSelectedPageSlug(firstPage?.slug || "home");
   setSelectedBlockId(firstPage?.blocks[0]?.id || null);
 }
+
   return {
     pages,
     theme,
