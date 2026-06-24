@@ -12,6 +12,10 @@ import {
   loadLocalVersions,
   saveLocalVersion,
 } from "../../cms-core/versioning/version-storage";
+import {
+  loadPublishedSnapshot,
+  publishSnapshot,
+} from "../../cms-core/versioning/publish-storage";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
 type EditorTab =
@@ -25,6 +29,7 @@ export default function DashboardV2() {
   const editor = useCmsEditor();
   const [activeTab, setActiveTab] = useState<EditorTab>("content");
   const [versions, setVersions] = useState(() => loadLocalVersions());
+  const [published, setPublished] = useState(() => loadPublishedSnapshot());
 
   return (
     <CmsShell
@@ -47,8 +52,15 @@ export default function DashboardV2() {
       }
       editor={
         <div>
-          <div className="border-b border-border p-4">
-            <button
+          <div className="flex items-center justify-between gap-3 border-b border-border p-4">
+            <div className="text-xs opacity-70">
+              {published
+                ? `Published ${new Date(published.publishedAt).toLocaleString()}`
+                : "Not published yet"}
+            </div>
+
+            <div className="flex gap-2">
+              <button
               type="button"
               onClick={() => {
                 saveLocalVersion(
@@ -66,7 +78,25 @@ export default function DashboardV2() {
               className="rounded-lg bg-foreground px-4 py-2 text-sm text-background"
             >
               Save Version
-            </button>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const nextPublished = publishSnapshot({
+                    pages: editor.pages,
+                    theme: editor.theme,
+                    siteSettings: editor.siteSettings,
+                  });
+
+                  setPublished(nextPublished);
+                  alert("Published current CMS state");
+                }}
+                className="rounded-lg border border-border px-4 py-2 text-sm"
+              >
+                Publish
+              </button>
+            </div>
           </div>
 
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
