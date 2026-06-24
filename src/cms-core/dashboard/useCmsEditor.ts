@@ -125,6 +125,19 @@ export function useCmsEditor() {
     setSelectedBlockId(null);
   }
 
+function restoreSnapshot(snapshot: {
+  pages: CmsPage[];
+  theme: CmsTheme;
+  siteSettings: CmsSiteSettings;
+}) {
+  setPages(snapshot.pages);
+  setTheme(snapshot.theme);
+  setSiteSettings(snapshot.siteSettings);
+
+  const firstPage = snapshot.pages[0];
+  setSelectedPageSlug(firstPage?.slug || "home");
+  setSelectedBlockId(firstPage?.blocks[0]?.id || null);
+}
   return {
     pages,
     theme,
@@ -141,5 +154,6 @@ export function useCmsEditor() {
     addBlock,
     updateBlockField,
     removeBlock,
+    restoreSnapshot,
   };
 }
