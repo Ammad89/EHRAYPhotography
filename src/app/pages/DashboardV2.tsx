@@ -128,7 +128,11 @@ export default function DashboardV2() {
             <VersionHistoryPanel
               versions={versions}
               onRestore={(version) => {
-                console.log("restore", version);
+                editor.restoreSnapshot(version.snapshot);
+
+                alert(
+                   `Restored ${version.label}`
+               );
               }}
             />
           )}
