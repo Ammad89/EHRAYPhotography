@@ -64,7 +64,7 @@ export default function Home() {
       {/* ── Sticky backdrop: Hero + Philosophy + Stats ── */}
       <div className="relative">
         <div className="sticky top-0 h-screen overflow-hidden bg-muted" style={{ marginBottom: "-100vh", zIndex: 0 }}>
-          <img src={heroImage} alt="A woman and her dog on a sandy beach - EHRay Photography, UAE" className="w-full h-full object-cover object-center" />
+          <img src={heroImage} alt="A woman and her dog on a sandy beach - EHRay Photography, UAE" className="w-full h-full object-cover object-[72%_center] md:object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
         </div>
 
@@ -83,7 +83,7 @@ export default function Home() {
                 <span className="group-hover:[order:1]">Book a Consultation</span>
                 <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
               </a>
-              <a href="#portfolio" className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 border border-white/50 text-white text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:border-white/90 transition-colors duration-500">
+              <a href="/portfolio" className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 border border-white/50 text-white text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:border-white/90 transition-colors duration-500">
                 <span className="group-hover:[order:1]">View Portfolio</span>
                 <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
               </a>
