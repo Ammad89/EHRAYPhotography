@@ -1,9 +1,10 @@
-import type { CmsBlock, CmsPage, CmsTheme } from "../types";
-import { defaultTheme } from "../../site-config/theme";
+import type { CmsBlock, CmsPage, CmsSiteSettings, CmsTheme } from "../types";
+import { defaultSiteSettings, defaultTheme } from "../../site-config/theme";
 
 interface PreviewRendererProps {
   page?: CmsPage;
   theme?: CmsTheme;
+  siteSettings?: CmsSiteSettings;
 }
 
 function text(value: unknown, fallback = "") {
@@ -27,10 +28,7 @@ function HeroBlock({ block }: { block: CmsBlock }) {
         />
       )}
 
-      <div
-        className="absolute inset-0 bg-black"
-        style={{ opacity: overlayOpacity }}
-      />
+      <div className="absolute inset-0 bg-black" style={{ opacity: overlayOpacity }} />
 
       <div className="relative z-10 flex min-h-[420px] items-end p-10">
         <div className="max-w-2xl">
@@ -68,9 +66,7 @@ function TextBlock({ block }: { block: CmsBlock }) {
   return (
     <section
       className="rounded-2xl p-10"
-      style={{
-        backgroundColor: text(block.fields.backgroundColor, "transparent"),
-      }}
+      style={{ backgroundColor: text(block.fields.backgroundColor, "transparent") }}
     >
       {text(block.fields.eyebrow) && (
         <p className="mb-3 text-xs uppercase tracking-[0.24em] opacity-60">
@@ -164,17 +160,9 @@ function PlaceholderBlock({ block }: { block: CmsBlock }) {
 function renderBlock(block: CmsBlock) {
   if (!block.isVisible) return null;
 
-  if (block.type === "hero") {
-    return <HeroBlock key={block.id} block={block} />;
-  }
-
-  if (block.type === "text") {
-    return <TextBlock key={block.id} block={block} />;
-  }
-
-  if (block.type === "imageText") {
-    return <ImageTextBlock key={block.id} block={block} />;
-  }
+  if (block.type === "hero") return <HeroBlock key={block.id} block={block} />;
+  if (block.type === "text") return <TextBlock key={block.id} block={block} />;
+  if (block.type === "imageText") return <ImageTextBlock key={block.id} block={block} />;
 
   return <PlaceholderBlock key={block.id} block={block} />;
 }
@@ -182,6 +170,7 @@ function renderBlock(block: CmsBlock) {
 export default function PreviewRenderer({
   page,
   theme = defaultTheme,
+  siteSettings = defaultSiteSettings,
 }: PreviewRendererProps) {
   if (!page) {
     return (
@@ -193,30 +182,69 @@ export default function PreviewRenderer({
 
   return (
     <div
-      className="min-h-full p-6"
+      className="min-h-full"
       style={{
         backgroundColor: theme.colors.background,
         color: theme.colors.foreground,
         fontFamily: theme.typography.bodyFont,
       }}
     >
-      <div className="mb-6 rounded-xl border border-slate-200 bg-white p-4 text-slate-900">
-        <p className="text-xs uppercase tracking-[0.2em] opacity-60">
-          Preview
-        </p>
+      <header className="border-b border-slate-200 bg-white px-6 py-4 text-slate-900">
+        <div className="flex items-center justify-between gap-6">
+          <div className="font-semibold">
+            {siteSettings.logoUrl ? (
+              <img
+                src={siteSettings.logoUrl}
+                alt={siteSettings.logoAlt || "Site logo"}
+                className="h-10 w-auto"
+              />
+            ) : (
+              siteSettings.logoAlt || "Site Logo"
+            )}
+          </div>
 
-        <h1 className="mt-1 text-xl font-semibold">
-          {page.title}
-        </h1>
+          <nav className="flex flex-wrap gap-4 text-sm">
+            {siteSettings.navigation
+              .filter((item) => item.isVisible)
+              .sort((a, b) => a.sortOrder - b.sortOrder)
+              .map((item) => (
+                <a key={item.id} href={item.href}>
+                  {item.label}
+                </a>
+              ))}
+          </nav>
+        </div>
+      </header>
 
-        <p className="text-sm opacity-60">
-          /{page.slug}
-        </p>
+      <div className="p-6">
+        <div className="mb-6 rounded-xl border border-slate-200 bg-white p-4 text-slate-900">
+          <p className="text-xs uppercase tracking-[0.2em] opacity-60">
+            Preview
+          </p>
+
+          <h1 className="mt-1 text-xl font-semibold">
+            {page.title}
+          </h1>
+
+          <p className="text-sm opacity-60">
+            /{page.slug}
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {page.blocks.map(renderBlock)}
+        </div>
       </div>
 
-      <div className="space-y-6">
-        {page.blocks.map(renderBlock)}
-      </div>
+      <footer className="mt-8 border-t border-slate-200 bg-white px-6 py-6 text-slate-900">
+        <p className="text-sm opacity-70">
+          {siteSettings.footer.text}
+        </p>
+
+        <p className="mt-4 text-xs opacity-50">
+          {siteSettings.footer.copyrightText}
+        </p>
+      </footer>
     </div>
   );
 }
