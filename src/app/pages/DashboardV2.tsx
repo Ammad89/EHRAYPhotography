@@ -16,6 +16,7 @@ import {
   loadPublishedSnapshot,
   publishSnapshot,
 } from "../../cms-core/versioning/publish-storage";
+import { saveRemoteSnapshot } from "../../cms-core/versioning/remote-publish-storage";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
 type EditorTab =
@@ -82,15 +83,25 @@ export default function DashboardV2() {
 
               <button
                 type="button"
-                onClick={() => {
-                  const nextPublished = publishSnapshot({
+                onClick={async () => {
+                  const snapshot = {
                     pages: editor.pages,
                     theme: editor.theme,
                     siteSettings: editor.siteSettings,
-                  });
+                  };
 
+                  const nextPublished = publishSnapshot(snapshot);
                   setPublished(nextPublished);
-                  alert("Published current CMS state");
+
+                  try {
+                    await saveRemoteSnapshot("published", snapshot);
+                    alert("Published current CMS state to Supabase");
+                  } catch (error) {
+                    console.error(error);
+                    alert(
+                      "Saved locally, but Supabase publish failed. Check the CMS v2 schema and admin permissions."
+                    );
+                  }
                 }}
                 className="rounded-lg border border-border px-4 py-2 text-sm"
               >
