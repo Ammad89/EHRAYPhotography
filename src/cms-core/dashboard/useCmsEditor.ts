@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CmsBlock, CmsBlockType, CmsPage, CmsSiteSettings, CmsTheme } from "../types";
 import { cmsBlockLibrary } from "../block-library";
 import { siteDefinition } from "../../site-config/site-definition";
 import { defaultSiteSettings, defaultTheme } from "../../site-config/theme";
 
+const CMS_EDITOR_STATE_KEY = "cms-v2-editor-state";
 function createBlock(type: CmsBlockType): CmsBlock {
   const definition = cmsBlockLibrary.find((block) => block.type === type);
 
@@ -34,12 +35,41 @@ function createInitialPages(): CmsPage[] {
 }
 
 export function useCmsEditor() {
-  const [pages, setPages] = useState<CmsPage[]>(() => createInitialPages());
-  const [theme, setTheme] = useState<CmsTheme>(() => defaultTheme);
-  const [siteSettings, setSiteSettings] = useState<CmsSiteSettings>(() => defaultSiteSettings);
+  function loadSavedEditorState() {
+  try {
+    const stored = localStorage.getItem(CMS_EDITOR_STATE_KEY);
+    if (!stored) return null;
+    return JSON.parse(stored);
+  } catch {
+    return null;
+  }
+}
+
+const savedEditorState = loadSavedEditorState();
+
+const [pages, setPages] = useState<CmsPage[]>(() =>
+  savedEditorState?.pages || createInitialPages()
+);
+
+const [theme, setTheme] = useState<CmsTheme>(() =>
+  savedEditorState?.theme || defaultTheme
+);
+
+const [siteSettings, setSiteSettings] = useState<CmsSiteSettings>(() =>
+  savedEditorState?.siteSettings || defaultSiteSettings
+);
   const [selectedPageSlug, setSelectedPageSlug] = useState(() => siteDefinition.pages[0]?.slug || "home");
   const [selectedBlockId, setSelectedBlockId] = useState<string | null>(null);
-
+useEffect(() => {
+  localStorage.setItem(
+    CMS_EDITOR_STATE_KEY,
+    JSON.stringify({
+      pages,
+      theme,
+      siteSettings,
+    })
+  );
+}, [pages, theme, siteSettings]);
   const selectedPage = useMemo(
     () => pages.find((page) => page.slug === selectedPageSlug) || pages[0],
     [pages, selectedPageSlug],
