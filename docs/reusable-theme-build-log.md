@@ -599,3 +599,51 @@ Application pages should not know which specific theme package they are renderin
 
 Safety:
 The active theme still resolves to Eight Nine Luxury, so visual output should remain unchanged.
+
+
+---
+
+## Build 20: Site Configuration Engine
+
+Purpose
+
+Introduces the Site Configuration layer for the Eight Nine Web Studio Theme platform.
+
+This separates the reusable theme from the identity of a specific website.
+
+Files Created
+
+### src/sites/eight-nine-photography/site.ts
+
+Purpose:
+Defines the first site implementation using the reusable platform.
+
+This file stores brand identity, owner name, domain settings, contact details, social links and business metadata for Eight Nine Photography.
+
+Editing Notes:
+For a future client website, create a new folder under src/sites and duplicate this structure with that client's brand, domain, contact and business details.
+
+### src/sites/eight-nine-photography/index.ts
+
+Purpose:
+Provides a clean export entry point for the Eight Nine Photography site configuration.
+
+### src/theme-engine/active-site.ts
+
+Purpose:
+Defines which site configuration is currently active.
+
+Currently returns Eight Nine Photography directly. Later this can become domain-based, environment-based or CMS-driven.
+
+Files Modified
+
+### src/theme-engine/index.ts
+
+Purpose:
+Exports getActiveSite and ActiveSite from the Theme Engine public API.
+
+Architectural Decision:
+Theme answers how the website looks. Site configuration answers whose website it is.
+
+Safety:
+No existing page has been changed to consume site config yet, so visual output remains unchanged.
