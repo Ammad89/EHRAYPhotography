@@ -826,3 +826,33 @@ Fields now sourced from site config:
 
 Safety:
 The family page visual layout, classes, spacing and CTA behavior remain unchanged.
+
+---
+
+## Build 26: Family Service Page Content Migration
+
+Purpose
+
+Moves the remaining Family Photography page content into the reusable familyServicePage model.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/family.ts
+
+Purpose:
+Stores family page stages, packages, FAQs and testimonials as reusable theme data.
+
+### src/app/pages/FamilyPhotography.tsx
+
+Purpose:
+Removes local hardcoded FAQs, packages and testimonials. The page now reads those collections from familyServicePage.
+
+Fields now sourced from service page model:
+- introduction.paragraphs
+- stages
+- packages
+- faqs
+- testimonials
+
+Safety:
+The page layout, styling, section order and component behavior remain unchanged.

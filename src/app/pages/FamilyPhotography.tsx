@@ -27,27 +27,6 @@ const pageSchema = {
   "url": `${site.domain.siteUrl}${page.seo.slug}`,
 };
 
-const faqs = [
-  { q: "What should we wear?", a: "Choose outfits that feel like you - comfortable, coordinated but not matching. Earthy tones and soft colours photograph beautifully. Avoid large logos or very busy patterns. Emily can advise further on your pre-session call." },
-  { q: "How do we keep kids calm and cooperative?", a: "You don't need to. Emily works with children's natural energy, not against it. Running, hiding, ignoring the camera - it all makes for better photographs than a forced smile ever could." },
-  { q: "Where do sessions take place?", a: "Anywhere that feels meaningful to your family - a favourite park, your neighbourhood, the beach, or your own home. Emily will suggest locations based on the time of day and what you're hoping to capture." },
-  { q: "When do we receive our photographs?", a: "Draft package structure: online galleries are typically positioned around a 14-day delivery promise, with rush options confirmed before booking." },
-  { q: "Do you travel outside Dubai?", a: "Yes. Emily covers the whole UAE and is available for travel internationally. Travel costs are discussed at enquiry stage." },
-  { q: "What if the weather is bad on the day?", a: "We'll reschedule at no cost. Overcast days can actually produce the most beautiful, even light - so don't always assume that clouds are a problem." },
-];
-
-const packages = [
-  { name: "Essentials", price: "Indicative AED 1,200", duration: "1 hour", images: "30+ edited images", locations: "1 location", features: ["Full print release", "Online gallery", "Standard turnaround (14 days)"], note: "Best for: Small families, intimate sessions", featured: false },
-  { name: "Classic", price: "Indicative AED 1,800", duration: "2 hours", images: "60+ edited images", locations: "1 location", features: ["Full print release", "Online gallery", "Priority booking", "Standard turnaround (14 days)"], note: "Best for: Families with young children", featured: true },
-  { name: "Premium", price: "Indicative AED 2,800", duration: "3 hours", images: "100+ edited images", locations: "2 locations", features: ["Full print release", "Online gallery", "Priority booking", "Same-week turnaround available"], note: "Best for: Extended families, special occasions", featured: false },
-];
-
-const testimonials = [
-  { name: "Sample family client", role: "Draft testimonial - Dubai", text: "I cried when I saw the photos. Not because they were 'nice' - because they were exactly us. Emily captured something I'd never seen in a photograph before." },
-  { name: "Sample family client", role: "Draft testimonial - Abu Dhabi", text: "Three kids under six. We thought it would be chaos. It was - and the photos are all the better for it. Emily works like a ghost. You forget she's there." },
-  { name: "Sample family client", role: "Draft testimonial - Sharjah", text: "Our session was the most relaxed hour we've had as a family in months. The photographs feel like a love letter to the four of us." },
-];
-
 const portfolioImages = [
   { src: familyImg1, alt: "Family laughing together lying in the grass" },
   { src: familyImg2, alt: "Mixed-race family sitting on the grass with two children" },
@@ -97,9 +76,9 @@ export default function FamilyPhotography() {
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-8 leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>
               Because the messy moments<br />are the meaningful ones.
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-5 text-[15px]">Families are chaotic, loving, funny and complicated. The best photographs of your family don&apos;t pretend otherwise.</p>
-            <p className="text-muted-foreground leading-relaxed mb-5 text-[15px]">Emily works without a shot list. She arrives, she watches, she waits - and the real moments emerge on their own. Kids being kids. Parents being present. The in-between bits that define a family.</p>
-            <p className="text-muted-foreground leading-relaxed mb-0 text-[15px]">Sessions take place outdoors, in natural light, at a location that feels like yours. There is no studio backdrop. There is no forced smile count.</p>
+            {page.introduction.paragraphs.map((paragraph, index) => (
+              <p key={paragraph} className={`text-muted-foreground leading-relaxed text-[15px] ${index === page.introduction.paragraphs.length - 1 ? "mb-0" : "mb-5"}`}>{paragraph}</p>
+            ))}
           </div>
           <div className="pl-0 md:pl-6">
             <div className="border-l-[3px] border-foreground pl-8 py-4">
@@ -117,11 +96,7 @@ export default function FamilyPhotography() {
           <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">What to Expect</p>
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>Three stages. Zero stress.</h2>
           <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { title: "Before", body: "A short consultation call to understand your family, your children's personalities, and what you'd love to capture. We agree on location, timing and a rough plan." },
-              { title: "During", body: "One to two hours in a location that feels natural to you. Emily works quietly, never directing, always watching. Kids are encouraged to play, not pose." },
-              { title: "After", body: "Draft structure: a curated online gallery delivered within 14 days. High-resolution downloads, print release included. No upsell, no extra fees." },
-            ].map(stage => (
+            {page.stages.map(stage => (
               <div key={stage.title} className="bg-background rounded-3xl p-8">
                 <p className="text-muted-foreground text-[10px] tracking-[0.25em] uppercase mb-4 font-medium">{stage.title}</p>
                 <p className="text-foreground text-[15px] leading-relaxed">{stage.body}</p>
@@ -151,9 +126,9 @@ export default function FamilyPhotography() {
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Packages</p>
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>Choose what&apos;s right for your family.</h2>
-          <p className="text-muted-foreground text-[15px] mb-14 max-w-xl">Indicative package structure for client review. Final pricing, deliverables and turnaround should be confirmed by EHRay before launch.</p>
+          <p className="text-muted-foreground text-[15px] mb-14 max-w-xl">Indicative package structure for client review. Final pricing, deliverables and turnaround should be confirmed by {site.brand.name} before launch.</p>
           <div className="grid md:grid-cols-3 gap-5">
-            {packages.map(pkg => (
+            {page.packages.map(pkg => (
               <div key={pkg.name} className={`bg-background rounded-3xl p-8 flex flex-col ${pkg.featured ? "ring-2 ring-foreground" : ""}`}>
                 {pkg.featured && <span className="inline-block mb-4 px-3 py-0.5 bg-foreground text-background text-[10px] tracking-[0.15em] uppercase rounded-full self-start">Most popular</span>}
                 <h3 className="text-2xl font-medium text-foreground mb-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>{pkg.name}</h3>
@@ -186,7 +161,7 @@ export default function FamilyPhotography() {
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>What families could say.</h2>
           <p className="text-muted-foreground text-sm mb-14 max-w-xl leading-relaxed">Draft testimonial examples for client review. Replace with verified client quotes before launch.</p>
           <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map((t, index) => (
+            {page.testimonials.map((t, index) => (
               <div key={`${t.role}-${index}`} className="bg-card rounded-3xl p-8 flex flex-col">
                 <div className="flex gap-0.5 mb-5">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={13} className="fill-foreground text-foreground" />)}</div>
                 <p className="italic text-foreground leading-relaxed mb-6 text-[17px] flex-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>&ldquo;{t.text}&rdquo;</p>
@@ -205,7 +180,7 @@ export default function FamilyPhotography() {
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">Frequently Asked</p>
           <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>Your questions, answered.</h2>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion faqs={page.faqs} />
         </div>
       </section>
 
