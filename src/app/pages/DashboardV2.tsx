@@ -21,6 +21,7 @@ import {
   getBackendSetupMessage,
   getDashboardUser,
   getSupabaseClient,
+  isDashboardAdmin,
   isSupabaseConfigured,
   signInDashboard,
   signOutDashboard,
@@ -47,6 +48,8 @@ export default function DashboardV2() {
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
   const [authBusy, setAuthBusy] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [adminChecked, setAdminChecked] = useState(false);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
@@ -62,14 +65,32 @@ export default function DashboardV2() {
         if (!active) return;
         setUser(currentUser);
         setAuthChecked(true);
+
+        if (currentUser) {
+          const adminResult = await isDashboardAdmin();
+          if (!active) return;
+          setIsAdmin(adminResult);
+        }
+
+        setAdminChecked(true);
       })
       .catch(() => {
         if (!active) return;
         setAuthChecked(true);
       });
 
-    const subscription = supabase?.auth.onAuthStateChange((_event, session) => {
+    const subscription = supabase?.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user || null);
+      setAdminChecked(false);
+
+      if (session?.user) {
+        const adminResult = await isDashboardAdmin();
+        setIsAdmin(adminResult);
+      } else {
+        setIsAdmin(false);
+      }
+
+      setAdminChecked(true);
     }).data.subscription;
 
     return () => {
@@ -86,6 +107,11 @@ export default function DashboardV2() {
     try {
       const signedInUser = await signInDashboard(email, password);
       setUser(signedInUser);
+
+      const adminResult = await isDashboardAdmin();
+      setIsAdmin(adminResult);
+      setAdminChecked(true);
+
       setPassword("");
     } catch (error) {
       setAuthError(error instanceof Error ? error.message : "Unable to sign in.");
@@ -100,6 +126,8 @@ export default function DashboardV2() {
     try {
       await signOutDashboard();
       setUser(null);
+      setIsAdmin(false);
+      setAdminChecked(true);
       setPassword("");
     } catch (error) {
       setAuthError(error instanceof Error ? error.message : "Unable to sign out.");
@@ -131,6 +159,53 @@ export default function DashboardV2() {
           </p>
         </div>
       </div>
+    );
+  }
+
+  if (user && !adminChecked) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-8 text-foreground">
+        Checking permissions...
+      </div>
+    );
+  }
+
+  if (user && !isAdmin) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-background px-5 text-foreground">
+        <div className="w-full max-w-md rounded-2xl border border-border p-6 shadow-sm">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] opacity-60">
+            Access denied
+          </p>
+
+          <h1 className="mb-3 text-2xl font-semibold">
+            You are signed in but not authorized
+          </h1>
+
+          <p className="mb-6 text-sm opacity-70">
+            Your account is authenticated, but it is not listed as an approved CMS admin for this website.
+          </p>
+
+          <p className="mb-6 text-xs opacity-60">
+            Signed in as {user.email}
+          </p>
+
+          {authError && (
+            <div className="mb-4 rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-700">
+              {authError}
+            </div>
+          )}
+
+          <button
+            type="button"
+            onClick={() => void handleLogout()}
+            disabled={authBusy}
+            className="w-full rounded-lg border border-border px-4 py-3 text-sm disabled:opacity-50"
+          >
+            Logout
+          </button>
+        </div>
+      </main>
     );
   }
 
