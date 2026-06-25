@@ -891,3 +891,26 @@ Service page React components should become thin wrappers around data. This redu
 
 Safety:
 No existing public route imports this renderer yet, so this build does not alter visible website output.
+
+---
+
+## Build 28: Family Page Renderer Switch
+
+Purpose
+
+Switches FamilyPhotography.tsx from a full custom page component to a thin wrapper around the generic ServicePageRenderer.
+
+Files Modified
+
+### src/app/pages/FamilyPhotography.tsx
+
+Purpose:
+Now imports familyServicePage and passes it into ServicePageRenderer.
+
+The page keeps its family-specific portfolio images and section labels as wrapper props.
+
+Architectural Decision:
+Service pages should be data-driven and share one renderer wherever possible. This reduces duplicate JSX and makes future service pages faster to create.
+
+Safety:
+The visual page structure should remain equivalent because ServicePageRenderer was modeled from the original FamilyPhotography.tsx layout.
