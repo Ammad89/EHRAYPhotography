@@ -43,6 +43,20 @@ export const eightNineLuxuryTheme: ThemeContent = {
     quoteAuthor: "Ammad Shafique, Founder of Eight Nine Photography",
   },
 
+  about: {
+    eyebrow: "About Ammad",
+    heading: "Trained to wait\nfor the real moment.",
+    paragraphs: [
+      "Ammad built his creative eye through years of brand, lifestyle and editorial-style visual work. That background gave him something most photographers never develop - the patience to wait, and the instinct to know when.",
+      "He doesn't over-direct. He observes. The laugh nobody asked for. The glance between two people. The light that lasts ten seconds. Those are the shots he's after.",
+      "You're trusting someone with moments you can't repeat. Ammad takes that seriously.",
+    ],
+    buttonText: "Work with Ammad",
+    buttonLink: "#contact",
+    image: "Gemini_Generated_Image_lfgepqlfgepqlfge.jpg",
+    imageAlt: "Ammad Shafique, owner and lead photographer at Eight Nine Photography",
+  },
+
   stats: [
     { value: "8+", label: "Years of Experience" },
     { value: "1,400+", label: "Sessions Completed" },

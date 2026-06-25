@@ -408,3 +408,40 @@ Fields now sourced from theme:
 
 Safety:
 The section layout, dark overlay, typography, quote styling and spacing remain unchanged.
+
+---
+
+## Build 14: Home About Theme Data Migration
+
+Purpose
+
+Migrates the Home page About section from hardcoded Ammad or legacy Emily content into the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds ThemeAbout for the reusable theme biography/about section.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds theme.about with Eight Nine Photography and Ammad Shafique content.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Replaces hardcoded About copy, CTA and image metadata with theme.about values.
+
+Fields now sourced from theme:
+- about.eyebrow
+- about.heading
+- about.paragraphs
+- about.buttonText
+- about.buttonLink
+- about.image
+- about.imageAlt
+
+Safety:
+The About section layout, responsive order, image ratio, typography and CTA styling remain unchanged.

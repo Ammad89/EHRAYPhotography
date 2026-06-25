@@ -209,17 +209,24 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 lg:gap-24 items-center">
           <div className="relative order-2 md:order-1">
             <div className="aspect-[3/4] bg-muted overflow-hidden rounded-3xl max-w-md">
-              <img src={emilyImage} alt="Emily Ray, founder of EHRay Photography, with cameras in a mountain landscape at golden hour" className="w-full h-full object-cover object-[center_20%]" />
+              <img src={resolveEightNineLuxuryAsset(theme.about.image)} alt={theme.about.imageAlt} className="w-full h-full object-cover object-[center_20%]" />
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">About Emily</p>
-            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-7 leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>Trained to wait<br />for the real moment.</h2>
-            <p className="text-muted-foreground leading-relaxed mb-5 text-[15px]">Emily spent years photographing wildlife before turning her lens on families and brands. That background gave her something most photographers never develop - the patience to wait, and the instinct to know when.</p>
-            <p className="text-muted-foreground leading-relaxed mb-5 text-[15px]">She doesn&apos;t direct. She observes. The laugh nobody asked for. The glance between two people. The light that lasts ten seconds. Those are the shots she&apos;s after.</p>
-            <p className="text-muted-foreground leading-relaxed mb-9 text-[15px]">You&apos;re trusting someone with moments you can&apos;t repeat. Emily takes that seriously.</p>
-            <a href="#contact" className="group inline-flex items-center gap-2.5 text-foreground text-xs tracking-[0.12em] uppercase font-medium">
-              <span className="group-hover:[order:1]">Work with Emily</span>
+            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">{theme.about.eyebrow}</p>
+            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-7 leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+              {theme.about.heading.split("\n").map((line, index) => (
+                <span key={line}>
+                  {line}
+                  {index < theme.about.heading.split("\n").length - 1 && <br />}
+                </span>
+              ))}
+            </h2>
+            {theme.about.paragraphs.map((paragraph, index) => (
+              <p key={paragraph} className={`text-muted-foreground leading-relaxed text-[15px] ${index === theme.about.paragraphs.length - 1 ? "mb-9" : "mb-5"}`}>{paragraph}</p>
+            ))}
+            <a href={theme.about.buttonLink} className="group inline-flex items-center gap-2.5 text-foreground text-xs tracking-[0.12em] uppercase font-medium">
+              <span className="group-hover:[order:1]">{theme.about.buttonText}</span>
               <span className="group-hover:[order:0] flex items-center"><ArrowRight size={13} /></span>
             </a>
           </div>
