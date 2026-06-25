@@ -783,3 +783,46 @@ Exports the service page models for use throughout the application.
 Safety
 
 No existing page has been modified yet. This build only introduces the reusable content model and has no impact on the live UI.
+
+---
+
+## Build 25: Family Service Page SEO and Hero Migration
+
+Purpose
+
+Begins migrating FamilyPhotography.tsx from hardcoded client-specific content into the reusable service page model.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Adds the family-hero asset key so service pages can reference hero imagery through the theme asset resolver.
+
+### src/app/pages/FamilyPhotography.tsx
+
+Purpose:
+Reads SEO, schema provider data and hero content from:
+- getActiveSite()
+- familyServicePage
+- resolveThemeAsset()
+
+Fields now sourced from service page model:
+- page.seo.title
+- page.seo.description
+- page.seo.keywords
+- page.seo.slug
+- page.hero.eyebrow
+- page.hero.title
+- page.hero.subtitle
+- page.hero.cta
+- page.hero.backgroundImage
+
+Fields now sourced from site config:
+- site.brand.name
+- site.business.name
+- site.domain.siteUrl
+- site.domain.canonicalUrl
+
+Safety:
+The family page visual layout, classes, spacing and CTA behavior remain unchanged.

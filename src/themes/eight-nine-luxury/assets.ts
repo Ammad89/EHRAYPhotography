@@ -6,6 +6,7 @@ import portfolioEvents from "../../imports/optimized/celebrating-together-at-an-
 import aboutPortrait from "../../imports/optimized/Gemini_Generated_Image_lfgepqlfgepqlfge.jpg";
 
 export const eightNineLuxuryAssets: Record<string, string> = {
+  "family-hero": portfolioFamilies,
   "woman-playing-with-dog-on-sandy-beach-2026-01-08-06-39-41-utc.JPG": heroBeachDog,
   "outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG": portfolioFamilies,
   "dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg": portfolioPets,

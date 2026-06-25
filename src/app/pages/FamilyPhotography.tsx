@@ -1,4 +1,3 @@
-import familyHeroImage from "../../imports/optimized/outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG";
 import familyImg1 from "../../imports/optimized/happy-family-laughing-while-lying-in-green-grass-2026-03-25-05-03-58-utc.jpg";
 import familyImg2 from "../../imports/optimized/young-happy-mixed-race-family-relaxing-and-sitting-2026-03-25-08-29-12-utc.jpg";
 import familyImg3 from "../../imports/optimized/loving-family-together-in-sunny-field-outdoors-2026-01-05-05-42-43-utc.jpg";
@@ -7,16 +6,25 @@ import { ArrowRight, Check, Star } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
 import FAQAccordion from "../components/FAQAccordion";
 import SEO from "../components/SEO";
+import {
+  getActiveSite,
+  resolveThemeAsset,
+} from "../../theme-engine";
+import { familyServicePage } from "../../themes/eight-nine-luxury/pages";
+
+const site = getActiveSite();
+const page = familyServicePage;
+const familyHeroImage = resolveThemeAsset(page.hero.backgroundImage);
 
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Family Photography Dubai",
+  "name": page.seo.title,
   "serviceType": "Photography",
-  "description": "Natural light, unposed family photography sessions in Dubai and across the UAE. Indicative packages from AED 1,200.",
-  "provider": { "@type": "LocalBusiness", "name": "EHRay Photography", "url": "https://www.ehrayphotography.com" },
+  "description": page.seo.description,
+  "provider": { "@type": "LocalBusiness", "name": site.business.name, "url": site.domain.siteUrl },
   "areaServed": { "@type": "City", "name": "Dubai" },
-  "url": "https://www.ehrayphotography.com/family-photography",
+  "url": `${site.domain.siteUrl}${page.seo.slug}`,
 };
 
 const faqs = [
@@ -51,25 +59,30 @@ export default function FamilyPhotography() {
   return (
     <>
       <SEO
-        title="Family Photographer Dubai | Natural Light Family Photography UAE | EHRay"
-        description="Family photographer in Dubai. Unposed, natural light family sessions across the UAE. Authentic moments, timeless photographs. Indicative packages from AED 1,200."
-        keywords="Family Photographer Dubai, Family Photography Dubai, Family Photoshoot Dubai, Natural Light Family Photography UAE"
-        canonical="https://www.ehrayphotography.com/family-photography"
+        title={page.seo.title}
+        description={page.seo.description}
+        keywords={page.seo.keywords}
+        canonical={`${site.domain.canonicalUrl}${page.seo.slug}`}
         schema={pageSchema}
       />
       {/* Hero */}
       <section className="relative h-[85vh] min-h-[580px] overflow-hidden bg-muted pt-[72px]">
-        <img src={familyHeroImage} alt="A couple with their dog on the beach - EHRay Family Photography UAE" className="absolute inset-0 w-full h-full object-cover object-[center_55%]" />
+        <img src={familyHeroImage} alt={`${site.brand.name} family photography hero`} className="absolute inset-0 w-full h-full object-cover object-[center_55%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="relative z-10 h-full flex items-end pb-16 max-w-7xl mx-auto px-6 w-full">
           <div>
-            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRay Photography &nbsp;·&nbsp; Family Photography</p>
+            <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">{page.hero.eyebrow}</p>
             <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.08] max-w-2xl mb-6" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-              Photographs of your family<br />as they actually are.
+              {page.hero.title.split("\n").map((line, index) => (
+                <span key={line}>
+                  {line}
+                  {index < page.hero.title.split("\n").length - 1 && <br />}
+                </span>
+              ))}
             </h1>
-            <p className="text-white/65 text-lg max-w-md mb-10 leading-relaxed">Not the version where everyone&apos;s looking at the camera. The real one.</p>
+            <p className="text-white/65 text-lg max-w-md mb-10 leading-relaxed">{page.hero.subtitle}</p>
             <a href="#contact" className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 bg-white text-black text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:bg-white/90 transition-colors duration-500">
-              <span className="group-hover:[order:1]">Book a Family Session</span>
+              <span className="group-hover:[order:1]">{page.hero.cta}</span>
               <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
             </a>
           </div>
