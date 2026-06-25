@@ -80,23 +80,34 @@ export default function Home() {
         <section className="relative py-28" style={{ zIndex: 1, background: "rgba(0,0,0,0.82)" }}>
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
-              <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">Philosophy</p>
+              <p className="text-white/50 text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">{theme.philosophy.eyebrow}</p>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-tight mb-8 text-white" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                Real moments.<br />Not perfect ones.
+                {theme.philosophy.heading.split("\n").map((line, index) => (
+                  <span key={line}>
+                    {line}
+                    {index < theme.philosophy.heading.split("\n").length - 1 && <br />}
+                  </span>
+                ))}
               </h2>
-              <p className="text-white/65 leading-relaxed mb-5 text-[15px]">Most photographers compete on editing. EHRay Photography competes on something harder to fake - authenticity. The most powerful images aren't constructed. They're caught.</p>
-              <p className="text-white/65 leading-relaxed mb-8 text-[15px]">Emily works exclusively in natural light. No studio setups, no forced expressions. She creates the space for you to relax and connect - then quietly captures what happens next.</p>
-              <a href="#about" className="group inline-flex items-center gap-2.5 text-white text-xs tracking-[0.12em] uppercase font-medium">
-                <span className="group-hover:[order:1]">Meet Emily</span>
+              {theme.philosophy.paragraphs.map((paragraph, index) => (
+                <p key={paragraph} className={`text-white/65 leading-relaxed text-[15px] ${index === theme.philosophy.paragraphs.length - 1 ? "mb-8" : "mb-5"}`}>{paragraph}</p>
+              ))}
+              <a href={theme.philosophy.buttonLink} className="group inline-flex items-center gap-2.5 text-white text-xs tracking-[0.12em] uppercase font-medium">
+                <span className="group-hover:[order:1]">{theme.philosophy.buttonText}</span>
                 <span className="group-hover:[order:0] flex items-center"><ArrowRight size={13} /></span>
               </a>
             </div>
             <div className="pl-0 md:pl-6">
               <div className="border-l-[3px] border-white/30 pl-8 py-2">
                 <blockquote className="italic text-2xl sm:text-3xl text-white leading-[1.4]" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                  "I don&apos;t chase the perfect shot.<br />I wait for the real one."
+                  {theme.philosophy.quote.split("\n").map((line, index) => (
+                    <span key={line}>
+                      {line}
+                      {index < theme.philosophy.quote.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
                 </blockquote>
-                <p className="mt-6 text-white/40 text-xs tracking-wider uppercase">- Emily Ray, Founder of EHRay Photography</p>
+                <p className="mt-6 text-white/40 text-xs tracking-wider uppercase">- {theme.philosophy.quoteAuthor}</p>
               </div>
             </div>
           </div>

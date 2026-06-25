@@ -30,6 +30,19 @@ export const eightNineLuxuryTheme: ThemeContent = {
     backgroundImage: "woman-playing-with-dog-on-sandy-beach-2026-01-08-06-39-41-utc.JPG",
   },
 
+  philosophy: {
+    eyebrow: "Philosophy",
+    heading: "Real moments.\nNot perfect ones.",
+    paragraphs: [
+      "Most photographers compete on editing. Eight Nine Photography competes on something harder to fake - authenticity. The most powerful images aren't constructed. They're caught.",
+      "Ammad works exclusively in natural light. No studio setups, no forced expressions. He creates the space for you to relax and connect - then quietly captures what happens next.",
+    ],
+    buttonText: "Meet Ammad",
+    buttonLink: "#about",
+    quote: "I don't chase the perfect shot.\nI wait for the real one.",
+    quoteAuthor: "Ammad Shafique, Founder of Eight Nine Photography",
+  },
+
   stats: [
     { value: "8+", label: "Years of Experience" },
     { value: "1,400+", label: "Sessions Completed" },

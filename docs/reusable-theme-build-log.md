@@ -371,3 +371,40 @@ Fields now sourced from theme:
 
 Safety:
 The process section layout, step connector line, typography and spacing remain unchanged.
+
+---
+
+## Build 13: Home Philosophy Theme Data Migration
+
+Purpose
+
+Migrates the Home page Philosophy section from hardcoded text into the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds ThemePhilosophy for homepage philosophy copy, CTA and quote content.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds theme.philosophy with Eight Nine Photography and Ammad Shafique content.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Replaces hardcoded Philosophy text, CTA and quote with theme.philosophy values.
+
+Fields now sourced from theme:
+- philosophy.eyebrow
+- philosophy.heading
+- philosophy.paragraphs
+- philosophy.buttonText
+- philosophy.buttonLink
+- philosophy.quote
+- philosophy.quoteAuthor
+
+Safety:
+The section layout, dark overlay, typography, quote styling and spacing remain unchanged.

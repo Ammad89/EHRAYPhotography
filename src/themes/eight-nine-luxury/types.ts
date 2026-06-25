@@ -21,6 +21,16 @@ export interface ThemeHero {
   backgroundImage: string;
 }
 
+export interface ThemePhilosophy {
+  eyebrow: string;
+  heading: string;
+  paragraphs: string[];
+  buttonText: string;
+  buttonLink: string;
+  quote: string;
+  quoteAuthor: string;
+}
+
 export interface ThemeStat {
   value: string;
   label: string;
@@ -68,6 +78,8 @@ export interface ThemeContent {
   navigation: ThemeNavigationItem[];
 
   hero: ThemeHero;
+
+  philosophy: ThemePhilosophy;
 
   stats: ThemeStat[];
 
