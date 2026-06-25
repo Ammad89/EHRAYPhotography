@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CmsShell from "../../cms-core/dashboard/CmsShell";
 import PagesPanel from "../../cms-core/dashboard/PagesPanel";
 import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
@@ -17,6 +17,12 @@ import {
   publishSnapshot,
 } from "../../cms-core/versioning/publish-storage";
 import { saveRemoteSnapshot } from "../../cms-core/versioning/remote-publish-storage";
+import {
+  getDashboardUser,
+  getSupabaseClient,
+  isSupabaseConfigured,
+} from "../../app/cms/remoteStorage";
+import type { User } from "@supabase/supabase-js";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
 type EditorTab =
@@ -31,6 +37,51 @@ export default function DashboardV2() {
   const [activeTab, setActiveTab] = useState<EditorTab>("content");
   const [versions, setVersions] = useState(() => loadLocalVersions());
   const [published, setPublished] = useState(() => loadPublishedSnapshot());
+
+  const [user, setUser] = useState<User | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      setAuthChecked(true);
+      return;
+    }
+
+    const supabase = getSupabaseClient();
+    let active = true;
+
+    getDashboardUser()
+      .then(currentUser => {
+        if (!active) return;
+        setUser(currentUser);
+        setAuthChecked(true);
+      })
+      .catch(() => {
+        if (!active) return;
+        setAuthChecked(true);
+      });
+
+    const subscription = supabase?.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    }).data.subscription;
+
+    return () => {
+      active = false;
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  if (!authChecked) {
+    return <div className="p-8">Checking authentication...</div>;
+  }
+
+  if (!user) {
+    return (
+      <div className="flex min-h-screen items-center justify-center text-lg">
+        Please sign in through the CMS dashboard first.
+      </div>
+    );
+  }
 
   return (
     <CmsShell
