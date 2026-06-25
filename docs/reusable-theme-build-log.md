@@ -750,3 +750,36 @@ Shared components should not contain client-specific brand names, contact emails
 
 Safety:
 CTA layout, form behavior and visual styling remain unchanged.
+
+---
+
+## Build 24: Service Page Theme Model
+
+Purpose
+
+Introduces a reusable data model for service pages. Instead of embedding all content directly in React components, service pages can now read structured content from theme files.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/types.ts
+
+Defines reusable interfaces for:
+- SEO
+- Hero
+- Introduction
+- Stages
+- Packages
+- FAQs
+- Testimonials
+
+### src/themes/eight-nine-luxury/pages/family.ts
+
+Creates the first structured service page model for Family Photography.
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Exports the service page models for use throughout the application.
+
+Safety
+
+No existing page has been modified yet. This build only introduces the reusable content model and has no impact on the live UI.
