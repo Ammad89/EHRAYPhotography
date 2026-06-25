@@ -5,6 +5,7 @@ import { loadPublishedCmsContent, isSupabaseConfigured } from "../cms/remoteStor
 import type { CmsPage } from "../cms/types";
 import CmsPageRenderer from "./CmsPageRenderer";
 import SEO from "./SEO";
+import { getActiveSite } from "../../theme-engine";
 
 function NotFoundPage() {
   return (

@@ -720,3 +720,33 @@ Shared layout components should consume site configuration rather than hardcoded
 
 Safety:
 The Nav and Footer visual layout, animation behavior, responsive menu structure and styling remain unchanged.
+
+---
+
+## Build 23: Shared Component Brand Cleanup
+
+Purpose
+
+Removes remaining legacy EHRay brand and contact references from shared components.
+
+Files Modified
+
+### src/app/components/BookingCTA.tsx
+
+Purpose:
+BookingCTA now reads the contact email and source label from getActiveSite() instead of hardcoded EHRay values.
+
+Fields now sourced from site configuration:
+- site.contact.email
+- site.brand.name
+
+### src/app/components/CmsPublicPage.tsx
+
+Purpose:
+The not-found SEO title now reads from site.brand.name instead of EHRay Photography.
+
+Architectural Decision:
+Shared components should not contain client-specific brand names, contact emails or source labels.
+
+Safety:
+CTA layout, form behavior and visual styling remain unchanged.

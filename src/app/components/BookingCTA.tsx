@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, MessageCircle, Calendar, Phone } from "lucide-react";
+import { getActiveSite } from "../../theme-engine";
 
 type Tab = "enquiry" | "availability" | "consultation";
 
@@ -19,7 +20,6 @@ const SESSION_OPTIONS = [
 ];
 
 const TIME_OPTIONS = ["Morning (8am - 12pm)", "Afternoon (12pm - 5pm)", "Evening (5pm - 8pm)"];
-const CONTACT_EMAIL = "ehrayphotography@gmail.com";
 
 const TAB_LABELS: Record<Tab, string> = {
   enquiry: "Website Enquiry",
@@ -41,7 +41,7 @@ const FIELD_LABELS: Record<string, string> = {
   discussion: "What they would like to discuss",
 };
 
-function createMailto(tab: Tab, form: HTMLFormElement) {
+function createMailto(tab: Tab, form: HTMLFormElement, contactEmail: string, sourceLabel: string) {
   const data = new FormData(form);
   const service = String(data.get("sessionType") || data.get("sessionInterest") || "General").trim();
   const fullName = String(data.get("fullName") || "Website visitor").trim();
@@ -59,9 +59,9 @@ function createMailto(tab: Tab, form: HTMLFormElement) {
     lines.push(`${FIELD_LABELS[key] || key}: ${cleanValue}`);
   });
 
-  lines.push("", "Source: EHRay Photography website");
+  lines.push("", `Source: ${sourceLabel} website`);
 
-  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 }
 
 function SuccessMessage({ message }: { message: string }) {
@@ -87,12 +87,13 @@ export default function BookingCTA({
   subtext = "Family session, brand shoot or special event - get in touch and we'll find a time that works. No obligation. Just a conversation.",
   sessionType = "",
 }: Props) {
+  const site = getActiveSite();
   const [activeTab, setActiveTab] = useState<Tab>("enquiry");
   const [submitted, setSubmitted] = useState<Partial<Record<Tab, boolean>>>({});
 
   const submit = (tab: Tab) => (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.location.href = createMailto(tab, e.currentTarget);
+    window.location.href = createMailto(tab, e.currentTarget, site.contact.email, site.brand.name);
     setSubmitted(prev => ({ ...prev, [tab]: true }));
   };
 
