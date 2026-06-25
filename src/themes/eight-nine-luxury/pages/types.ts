@@ -27,6 +27,16 @@ export interface ServiceIndustry {
   label: string;
 }
 
+export interface ServiceCategory {
+  title: string;
+  examples?: string;
+  body: string;
+}
+
+export interface ServiceIncludedItem {
+  label: string;
+}
+
 export interface ServicePackage {
   name: string;
   price: string;
@@ -62,9 +72,13 @@ export interface ServicePage {
 
   stats?: ServiceStat[];
 
+  categories?: ServiceCategory[];
+
   stages: ServiceStage[];
 
   industries?: ServiceIndustry[];
+
+  included?: ServiceIncludedItem[];
 
   packages: ServicePackage[];
 

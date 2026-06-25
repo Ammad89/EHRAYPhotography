@@ -21,10 +21,15 @@ interface ServicePageRendererProps {
   portfolioHeading?: string;
   statsLabel?: string;
   statsHeading?: string;
+  categoriesLabel?: string;
+  categoriesHeading?: string;
   processLabel?: string;
   processHeading?: string;
   industriesLabel?: string;
   industriesHeading?: string;
+  includedLabel?: string;
+  includedHeading?: string;
+  includedSubtext?: string;
   testimonialsLabel?: string;
   testimonialsHeading?: string;
   testimonialsSubtext?: string;
@@ -54,10 +59,15 @@ export default function ServicePageRenderer({
   portfolioHeading = "Selected sessions.",
   statsLabel = "Why It Matters",
   statsHeading = "What makes this valuable.",
+  categoriesLabel = "What We Cover",
+  categoriesHeading = "Every kind of brief. The same standard of care.",
   processLabel = "What to Expect",
   processHeading = "A simple, relaxed process.",
   industriesLabel = "Industries Served",
   industriesHeading = "We work across sectors.",
+  includedLabel = "Sample Package Includes",
+  includedHeading = "No surprises. No extras.",
+  includedSubtext = "Draft deliverables for client review. Final usage rights and turnaround should be confirmed before launch.",
   testimonialsLabel = "Sample Kind Words",
   testimonialsHeading = "What clients could say.",
   testimonialsSubtext = "Draft testimonial examples for client review. Replace with verified client quotes before launch.",
@@ -140,6 +150,26 @@ export default function ServicePageRenderer({
         </div>
       </section>
 
+      {page.categories && page.categories.length > 0 && (
+        <section className="py-24 bg-background">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">{categoriesLabel}</p>
+            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14 max-w-2xl leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+              {renderLines(categoriesHeading)}
+            </h2>
+            <div className="grid md:grid-cols-3 gap-5">
+              {page.categories.map(category => (
+                <div key={category.title} className="bg-card rounded-3xl p-8">
+                  <h3 className="text-xl font-medium text-foreground mb-3" style={{ fontFamily: "'Lora', Georgia, serif" }}>{category.title}</h3>
+                  {category.examples && <p className="text-muted-foreground text-xs tracking-wide mb-4 leading-relaxed">{category.examples}</p>}
+                  <p className="text-muted-foreground text-[14px] leading-relaxed">{category.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {page.stages.length > 0 && (
         <section className="py-24 bg-secondary">
           <div className="max-w-7xl mx-auto px-6">
@@ -187,6 +217,26 @@ export default function ServicePageRenderer({
                   <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-1000" />
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {page.included && page.included.length > 0 && (
+        <section className="py-24 bg-secondary">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">{includedLabel}</p>
+            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>{includedHeading}</h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl leading-relaxed">{includedSubtext}</p>
+            <div className="bg-background rounded-3xl p-10 max-w-2xl">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {page.included.map(item => (
+                  <div key={item.label} className="flex items-center gap-3">
+                    <Check size={16} className="text-foreground flex-none" />
+                    <span className="text-foreground text-[14px]">{item.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

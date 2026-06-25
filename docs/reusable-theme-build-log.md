@@ -1052,3 +1052,35 @@ Personal Branding now follows the same reusable service renderer pattern as Fami
 
 Safety:
 The exact package card layout is now standardized through ServicePageRenderer, but page structure and content remain reusable and theme-driven.
+
+---
+
+## Build 34: Service Renderer Event Sections
+
+Purpose
+
+Extends the reusable service page model and renderer to support Event-style pages.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/types.ts
+
+Purpose:
+Adds optional category cards and included checklist support to ServicePage.
+
+New optional fields:
+- categories
+- included
+
+### src/theme-engine/renderers/ServicePageRenderer.tsx
+
+Purpose:
+Adds optional rendering support for:
+- Category cards
+- Included checklist
+
+Architectural Decision:
+Event-style content should reuse the generic service renderer instead of requiring a bespoke Event page component.
+
+Safety:
+Existing Family, Pet and Personal Branding pages should continue rendering because the new sections are optional.
