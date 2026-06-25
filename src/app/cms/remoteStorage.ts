@@ -55,6 +55,25 @@ export async function signOutDashboard() {
   await supabase.auth.signOut();
 }
 
+
+export async function isDashboardAdmin() {
+  const supabase = getSupabaseClient();
+  if (!supabase) return false;
+
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData.user?.email) return false;
+
+  const { data, error } = await supabase
+    .from("admin_users")
+    .select("email")
+    .eq("email", userData.user.email)
+    .maybeSingle();
+
+  if (error) return false;
+
+  return Boolean(data);
+}
+
 export async function getDashboardUser() {
   const supabase = getSupabaseClient();
   if (!supabase) return null;
