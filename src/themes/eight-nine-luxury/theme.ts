@@ -187,7 +187,7 @@ export const eightNineLuxuryTheme: ThemeContent = {
   seo: {
     title: "Eight Nine Photography Dubai | Natural Light Lifestyle Photography UAE",
     description:
-      "Natural light lifestyle photographer in Dubai, UAE. Authentic family, pet, personal branding and event photography.",
+      "Natural light lifestyle photographer in Dubai, UAE. Authentic family, pet, personal branding and event photography. Book a session today.",
     keywords: [
       "Photographer Dubai",
       "Family Photographer Dubai",

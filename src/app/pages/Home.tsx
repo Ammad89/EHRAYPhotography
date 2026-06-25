@@ -20,8 +20,8 @@ const homeSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://www.ehrayphotography.com",
-  "name": "EHRay Photography",
-  "description": "Natural light lifestyle photographer in Dubai, UAE. Family, pet, personal branding and event photography.",
+  "name": theme.brand.name,
+  "description": theme.seo.description,
   "url": "https://www.ehrayphotography.com",
   "telephone": "+971569358629",
   "image": "https://static.wixstatic.com/media/7cfb53_8c7fcb8badd6496dbd89b9ca004f575d~mv2.png",
@@ -35,9 +35,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="EHRay Photography Dubai | Natural Light Lifestyle Photography UAE"
-        description="Natural light lifestyle photographer in Dubai, UAE. Authentic family, pet, personal branding and event photography. Book a session today."
-        keywords="Photographer Dubai, Family Photographer Dubai, Pet Photographer Dubai, Lifestyle Photographer UAE, Natural Light Photographer Dubai"
+        title={theme.seo.title}
+        description={theme.seo.description}
+        keywords={theme.seo.keywords.join(", ")}
         canonical="https://www.ehrayphotography.com"
         schema={homeSchema}
       />

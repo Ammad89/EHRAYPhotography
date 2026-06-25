@@ -477,3 +477,32 @@ Fields now sourced from theme:
 
 Safety:
 The BookingCTA component, form behavior, layout, styling and contact section anchor remain unchanged.
+
+---
+
+## Build 16: Home SEO Theme Data Migration
+
+Purpose
+
+Migrates Home page SEO title, description and keywords into the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Updates theme.seo to hold the reusable homepage SEO values.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+SEO component now reads title, description and keywords from theme.seo. LocalBusiness schema now reads brand name and description from theme data.
+
+Fields now sourced from theme:
+- seo.title
+- seo.description
+- seo.keywords
+- brand.name
+
+Safety:
+This does not change layout or visible page design.
