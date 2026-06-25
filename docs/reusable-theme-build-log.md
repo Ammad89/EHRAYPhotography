@@ -967,3 +967,35 @@ The Pet service page now follows the same renderer pattern as Family Photography
 
 Safety:
 The visual page structure should remain equivalent because ServicePageRenderer was designed to support the original service page layout.
+
+---
+
+## Build 31: Service Renderer Optional Sections
+
+Purpose
+
+Extends the reusable service page model and renderer to support optional Branding-style sections.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/types.ts
+
+Purpose:
+Adds optional ServiceStat and ServiceIndustry support to ServicePage.
+
+New optional fields:
+- stats
+- industries
+
+### src/theme-engine/renderers/ServicePageRenderer.tsx
+
+Purpose:
+Adds optional rendering support for:
+- Stats/proof cards
+- Industry chips
+
+Architectural Decision:
+The generic ServicePageRenderer should support reusable optional content sections instead of forcing each service page into a separate bespoke renderer.
+
+Safety:
+Existing Family and Pet pages should continue rendering because the new sections are optional.

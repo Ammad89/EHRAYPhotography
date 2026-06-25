@@ -18,6 +18,15 @@ export interface ServiceStage {
   body: string;
 }
 
+export interface ServiceStat {
+  value: string;
+  body: string;
+}
+
+export interface ServiceIndustry {
+  label: string;
+}
+
 export interface ServicePackage {
   name: string;
   price: string;
@@ -51,7 +60,11 @@ export interface ServicePage {
     quote: string;
   };
 
+  stats?: ServiceStat[];
+
   stages: ServiceStage[];
+
+  industries?: ServiceIndustry[];
 
   packages: ServicePackage[];
 

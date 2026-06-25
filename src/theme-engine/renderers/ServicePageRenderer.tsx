@@ -19,8 +19,12 @@ interface ServicePageRendererProps {
   introLabel?: string;
   portfolioLabel?: string;
   portfolioHeading?: string;
+  statsLabel?: string;
+  statsHeading?: string;
   processLabel?: string;
   processHeading?: string;
+  industriesLabel?: string;
+  industriesHeading?: string;
   testimonialsLabel?: string;
   testimonialsHeading?: string;
   testimonialsSubtext?: string;
@@ -48,8 +52,12 @@ export default function ServicePageRenderer({
   heroObjectPosition = "object-[center_55%]",
   portfolioLabel = "Portfolio",
   portfolioHeading = "Selected sessions.",
+  statsLabel = "Why It Matters",
+  statsHeading = "What makes this valuable.",
   processLabel = "What to Expect",
   processHeading = "A simple, relaxed process.",
+  industriesLabel = "Industries Served",
+  industriesHeading = "We work across sectors.",
   testimonialsLabel = "Sample Kind Words",
   testimonialsHeading = "What clients could say.",
   testimonialsSubtext = "Draft testimonial examples for client review. Replace with verified client quotes before launch.",
@@ -149,6 +157,25 @@ export default function ServicePageRenderer({
         </section>
       )}
 
+      {page.stats && page.stats.length > 0 && (
+        <section className="py-24 bg-background">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-6 font-medium">{statsLabel}</p>
+            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-6 max-w-2xl leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+              {statsHeading}
+            </h2>
+            <div className="grid md:grid-cols-3 gap-5">
+              {page.stats.map(stat => (
+                <div key={stat.value} className="bg-card rounded-3xl p-8 text-center">
+                  <p className="text-3xl font-medium text-foreground mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>{stat.value}</p>
+                  <p className="text-muted-foreground text-[14px] leading-relaxed">{stat.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {portfolioImages.length > 0 && (
         <section className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6">
@@ -192,6 +219,22 @@ export default function ServicePageRenderer({
                     <span className="group-hover:[order:1]">Book This Package</span>
                     <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={13} /></span>
                   </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {page.industries && page.industries.length > 0 && (
+        <section className="py-24 bg-secondary">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-4 font-medium">{industriesLabel}</p>
+            <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-14" style={{ fontFamily: "'Lora', Georgia, serif" }}>{industriesHeading}</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {page.industries.map(industry => (
+                <div key={industry.label} className="bg-background rounded-full px-5 py-3 text-sm font-medium text-foreground text-center border border-border hover:bg-muted transition-colors duration-500">
+                  {industry.label}
                 </div>
               ))}
             </div>
