@@ -304,3 +304,37 @@ The rating remains fixed at 5 stars in the renderer because ThemeTestimonial doe
 
 Safety:
 The testimonial card layout, styling, star display and grid remain unchanged.
+
+---
+
+## Build 11: Home Services Theme Data Migration
+
+Purpose
+
+Migrates the Home page services section from hardcoded local data to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds href and optional tag to ThemeService so the service cards can preserve their existing live behavior and badge support.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds service links and the Most popular tag to theme.services.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Removes the local services array and reads service cards from theme.services.
+
+Fields now sourced from theme:
+- services[].title
+- services[].description
+- services[].href
+- services[].tag
+
+Safety:
+The services grid, card design, badge design, CTA link styling and hover behavior remain unchanged.

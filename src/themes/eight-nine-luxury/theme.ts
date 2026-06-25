@@ -73,24 +73,29 @@ export const eightNineLuxuryTheme: ThemeContent = {
       title: "Family Photography",
       description:
         "Your location. Natural light. No posing. Just the real moments that make your family yours.",
+      href: "/family-photography",
+      tag: "Most popular",
       image: "",
     },
     {
       title: "Pet Photography",
       description:
         "Dogs, cats and everything in between. Portraits built around the bond - not the breed.",
+      href: "/pet-photography",
       image: "",
     },
     {
       title: "Personal Branding",
       description:
         "For entrepreneurs, coaches and founders who need imagery that does the talking for them.",
+      href: "/personal-branding",
       image: "",
     },
     {
       title: "Event Photography",
       description:
         "Corporate and private events covered with precision - and an eye for the moments that matter.",
+      href: "/event-photography",
       image: "",
     },
   ],

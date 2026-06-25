@@ -31,13 +31,6 @@ const homeSchema = {
   "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "Country", "name": "United Arab Emirates" }],
 };
 
-const services = [
-  { title: "Family Photography", path: "/family-photography", desc: "Your location. Natural light. No posing. Just the real moments that make your family yours.", tag: "Most popular" },
-  { title: "Pet Photography", path: "/pet-photography", desc: "Dogs, cats and everything in between. Portraits built around the bond - not the breed.", tag: "" },
-  { title: "Personal Branding", path: "/personal-branding", desc: "For entrepreneurs, coaches and founders who need imagery that does the talking for them.", tag: "" },
-  { title: "Event Photography", path: "/event-photography", desc: "Corporate and private events covered with precision - and an eye for the moments that matter.", tag: "" },
-];
-
 const steps = [
   { number: "01", title: "Consultation", desc: "A quick, relaxed call to understand what you need and what matters most." },
   { number: "02", title: "Session Planning", desc: "We agree on location, timing and wardrobe. You bring nothing but yourselves." },
@@ -190,14 +183,14 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground" style={{ fontFamily: "'Lora', Georgia, serif" }}>Choose your session</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map(service => (
+            {theme.services.map(service => (
               <div key={service.title} className="bg-card rounded-3xl p-8 flex flex-col hover:bg-muted transition-colors duration-500">
                 <div className="mb-5 h-5 flex items-center">
                   {service.tag && <span className="inline-block px-3 py-0.5 bg-foreground text-background text-[10px] tracking-[0.15em] uppercase rounded-full">{service.tag}</span>}
                 </div>
                 <h3 className="text-xl font-medium text-foreground mb-3" style={{ fontFamily: "'Lora', Georgia, serif" }}>{service.title}</h3>
-                <p className="text-muted-foreground text-[13px] leading-relaxed mb-7 flex-1">{service.desc}</p>
-                <Link to={service.path} className="group inline-flex items-center gap-2.5 text-foreground text-[11px] tracking-[0.12em] uppercase font-medium">
+                <p className="text-muted-foreground text-[13px] leading-relaxed mb-7 flex-1">{service.description}</p>
+                <Link to={service.href} className="group inline-flex items-center gap-2.5 text-foreground text-[11px] tracking-[0.12em] uppercase font-medium">
                   <span className="group-hover:[order:1]">Learn more</span>
                   <span className="group-hover:[order:0] flex items-center"><ArrowRight size={11} /></span>
                 </Link>

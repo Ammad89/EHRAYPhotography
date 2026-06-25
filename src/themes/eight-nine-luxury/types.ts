@@ -44,6 +44,8 @@ export interface ThemeTestimonial {
 export interface ThemeService {
   title: string;
   description: string;
+  href: string;
+  tag?: string;
   image: string;
 }
 
