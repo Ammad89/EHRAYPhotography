@@ -506,3 +506,24 @@ Fields now sourced from theme:
 
 Safety:
 This does not change layout or visible page design.
+
+---
+
+## Build 17: Home Legacy Brand Cleanup
+
+Purpose
+
+Removes remaining visible EHRay wording from the migrated Home page content.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Updates the testimonial helper copy from EHRay-specific wording to Eight Nine Photography wording.
+
+Remaining Notes:
+The old ehrayphotography.com canonical and schema URL references remain temporarily. These will later move into the theme SEO/domain settings layer.
+
+Safety:
+No layout, styling or behavior changed.

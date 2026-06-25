@@ -162,7 +162,7 @@ export default function Home() {
           <div className="mb-14">
             <p className="text-muted-foreground text-[10px] tracking-[0.35em] uppercase mb-3 font-medium">Sample Client Proof</p>
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground max-w-xl leading-tight" style={{ fontFamily: "'Lora', Georgia, serif" }}>What clients could say</h2>
-            <p className="text-muted-foreground text-sm mt-4 max-w-xl leading-relaxed">Draft examples for client review. Final testimonials and figures should be replaced with verified EHRay client proof before launch.</p>
+            <p className="text-muted-foreground text-sm mt-4 max-w-xl leading-relaxed">Draft examples for client review. Final testimonials and figures should be replaced with verified Eight Nine Photography client proof before launch.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {theme.testimonials.map(t => (
