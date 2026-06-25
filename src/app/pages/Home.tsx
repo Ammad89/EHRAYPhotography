@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, Star } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
 import {
+  getActiveSite,
   getActiveTheme,
   resolveThemeAsset,
 } from "../../theme-engine";
@@ -13,21 +14,22 @@ import portfolioBranding from "../../imports/optimized/japanese-woman-in-office-
 import portfolioEvents from "../../imports/optimized/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
 
 const theme = getActiveTheme();
+const site = getActiveSite();
 const hero = theme.hero;
 const heroImage = resolveThemeAsset(hero.backgroundImage);
 
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": theme.seo.schemaId,
-  "name": theme.brand.name,
+  "@id": site.domain.schemaId,
+  "name": site.brand.name,
   "description": theme.seo.description,
-  "url": theme.seo.siteUrl,
-  "telephone": "+971569358629",
+  "url": site.domain.siteUrl,
+  "telephone": site.contact.phone,
   "image": "https://static.wixstatic.com/media/7cfb53_8c7fcb8badd6496dbd89b9ca004f575d~mv2.png",
-  "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+  "address": { "@type": "PostalAddress", "addressLocality": site.contact.address, "addressCountry": "AE" },
   "geo": { "@type": "GeoCoordinates", "latitude": 25.2048, "longitude": 55.2708 },
-  "priceRange": "Indicative AED 1,200+",
+  "priceRange": site.business.priceRange,
   "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "Country", "name": "United Arab Emirates" }],
 };
 
@@ -38,13 +40,13 @@ export default function Home() {
         title={theme.seo.title}
         description={theme.seo.description}
         keywords={theme.seo.keywords.join(", ")}
-        canonical={theme.seo.canonicalUrl}
+        canonical={site.domain.canonicalUrl}
         schema={homeSchema}
       />
       {/* ── Sticky backdrop: Hero + Philosophy + Stats ── */}
       <div className="relative">
         <div className="sticky top-0 h-screen overflow-hidden bg-muted" style={{ marginBottom: "-100vh", zIndex: 0 }}>
-          <img src={heroImage} alt={`${theme.brand.name} hero image`} className="w-full h-full object-cover object-[72%_center] md:object-center" />
+          <img src={heroImage} alt={`${site.brand.name} hero image`} className="w-full h-full object-cover object-[72%_center] md:object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
         </div>
 
@@ -139,7 +141,7 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {theme.portfolio.map(item => (
               <Link key={item.title} to={item.href} className="group relative overflow-hidden bg-muted rounded-3xl block" style={{ aspectRatio: "3/4" }}>
-                <img src={resolveThemeAsset(item.image)} alt={`${item.title} photography by ${theme.brand.name}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
+                <img src={resolveThemeAsset(item.image)} alt={`${item.title} photography by ${site.brand.name}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-700 group-hover:translate-y-1 group-hover:opacity-0">
                   <p className="text-white text-base font-medium drop-shadow" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.title}</p>

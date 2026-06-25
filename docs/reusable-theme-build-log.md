@@ -647,3 +647,33 @@ Theme answers how the website looks. Site configuration answers whose website it
 
 Safety:
 No existing page has been changed to consume site config yet, so visual output remains unchanged.
+
+---
+
+## Build 21: Home Site Configuration Migration
+
+Purpose
+
+Updates the Home page to consume active site configuration for brand identity, domain values and business schema metadata.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Home now reads site identity and domain values from getActiveSite() instead of theme content.
+
+Fields now sourced from site configuration:
+- site.brand.name
+- site.domain.siteUrl
+- site.domain.canonicalUrl
+- site.domain.schemaId
+- site.contact.phone
+- site.contact.address
+- site.business.priceRange
+
+Architectural Decision:
+Theme content controls what the page says. Site configuration controls whose website it is.
+
+Safety:
+No visual layout, styling or component behavior changed.
