@@ -84,6 +84,9 @@ export interface ThemeSeo {
   title: string;
   description: string;
   keywords: string[];
+  siteUrl: string;
+  canonicalUrl: string;
+  schemaId: string;
   ogImage: string;
 }
 

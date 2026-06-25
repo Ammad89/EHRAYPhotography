@@ -195,6 +195,9 @@ export const eightNineLuxuryTheme: ThemeContent = {
       "Lifestyle Photographer UAE",
       "Natural Light Photographer Dubai",
     ],
+    siteUrl: "https://www.eightninephotography.com",
+    canonicalUrl: "https://www.eightninephotography.com",
+    schemaId: "https://www.eightninephotography.com",
     ogImage: "",
   },
 };

@@ -19,10 +19,10 @@ const heroImage = resolveEightNineLuxuryAsset(hero.backgroundImage);
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.ehrayphotography.com",
+  "@id": theme.seo.schemaId,
   "name": theme.brand.name,
   "description": theme.seo.description,
-  "url": "https://www.ehrayphotography.com",
+  "url": theme.seo.siteUrl,
   "telephone": "+971569358629",
   "image": "https://static.wixstatic.com/media/7cfb53_8c7fcb8badd6496dbd89b9ca004f575d~mv2.png",
   "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
@@ -38,7 +38,7 @@ export default function Home() {
         title={theme.seo.title}
         description={theme.seo.description}
         keywords={theme.seo.keywords.join(", ")}
-        canonical="https://www.ehrayphotography.com"
+        canonical={theme.seo.canonicalUrl}
         schema={homeSchema}
       />
       {/* ── Sticky backdrop: Hero + Philosophy + Stats ── */}

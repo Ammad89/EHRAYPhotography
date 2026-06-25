@@ -527,3 +527,36 @@ The old ehrayphotography.com canonical and schema URL references remain temporar
 
 Safety:
 No layout, styling or behavior changed.
+
+---
+
+## Build 18: Home Domain SEO Theme Migration
+
+Purpose
+
+Moves the remaining Home page domain, canonical and schema URL references into the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds siteUrl, canonicalUrl and schemaId to ThemeSeo.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds default Eight Nine Photography domain values to theme.seo.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Removes hardcoded ehrayphotography.com references from Home schema and SEO canonical props.
+
+Fields now sourced from theme:
+- seo.siteUrl
+- seo.canonicalUrl
+- seo.schemaId
+
+Safety:
+No visible layout, styling or behavior changed.
