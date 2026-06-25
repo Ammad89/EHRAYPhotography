@@ -445,3 +445,35 @@ Fields now sourced from theme:
 
 Safety:
 The About section layout, responsive order, image ratio, typography and CTA styling remain unchanged.
+
+---
+
+## Build 15: Home Booking CTA Theme Data Migration
+
+Purpose
+
+Migrates the Home page Booking CTA content into the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds ThemeBookingCta for the reusable theme contact CTA section.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds theme.bookingCta with default Eight Nine Photography CTA content.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Replaces hardcoded BookingCTA headline and subtext with theme.bookingCta values.
+
+Fields now sourced from theme:
+- bookingCta.headline
+- bookingCta.subtext
+
+Safety:
+The BookingCTA component, form behavior, layout, styling and contact section anchor remain unchanged.

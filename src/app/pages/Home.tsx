@@ -254,7 +254,7 @@ export default function Home() {
       </section>
 
       <div id="contact">
-        <BookingCTA headline="Ready when you are." subtext="Family session, brand shoot or special event - get in touch and we'll find a time that works. No obligation. Just a conversation." />
+        <BookingCTA headline={theme.bookingCta.headline} subtext={theme.bookingCta.subtext} />
       </div>
     </>
   );

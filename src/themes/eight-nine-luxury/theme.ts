@@ -178,6 +178,12 @@ export const eightNineLuxuryTheme: ThemeContent = {
     },
   ],
 
+  bookingCta: {
+    headline: "Ready when you are.",
+    subtext:
+      "Family session, brand shoot or special event - get in touch and we'll find a time that works. No obligation. Just a conversation.",
+  },
+
   seo: {
     title: "Eight Nine Photography Dubai | Natural Light Lifestyle Photography UAE",
     description:

@@ -75,6 +75,11 @@ export interface ThemeProcessStep {
   description: string;
 }
 
+export interface ThemeBookingCta {
+  headline: string;
+  subtext: string;
+}
+
 export interface ThemeSeo {
   title: string;
   description: string;
@@ -102,6 +107,8 @@ export interface ThemeContent {
   testimonials: ThemeTestimonial[];
 
   process: ThemeProcessStep[];
+
+  bookingCta: ThemeBookingCta;
 
   seo: ThemeSeo;
 }
