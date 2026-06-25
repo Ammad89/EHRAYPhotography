@@ -155,3 +155,27 @@ Theme content should not import images directly. Content stores image identifier
 
 Safety:
 This file is not yet consumed by the public homepage, so it does not alter the current website view.
+
+---
+
+## Build 6: Eight Nine Luxury Theme Public API
+
+Purpose
+
+Adds a single public entry point for the Eight Nine Luxury theme package.
+
+Files
+
+### src/themes/eight-nine-luxury/index.ts
+
+Purpose:
+Exports the theme definition, asset resolver and theme content types from one location.
+
+Editing Notes:
+When adding new theme helpers, export them here so consuming pages do not need to know the internal file structure of the theme package.
+
+Architectural Decision:
+Pages and CMS tools should import from the theme package index instead of importing directly from theme.ts, assets.ts or types.ts. This makes future refactors safer.
+
+Safety:
+This file does not alter current rendering. It only creates a cleaner import path for future builds.
