@@ -944,3 +944,26 @@ Adds the pet-hero asset key.
 
 Safety:
 No visible page uses petServicePage yet, so this build does not alter the public UI.
+
+---
+
+## Build 30: Pet Page Renderer Switch
+
+Purpose
+
+Switches PetPhotography.tsx from a full custom page component to a thin wrapper around the generic ServicePageRenderer.
+
+Files Modified
+
+### src/app/pages/PetPhotography.tsx
+
+Purpose:
+Now imports petServicePage and passes it into ServicePageRenderer.
+
+The page keeps its pet-specific portfolio images and section labels as wrapper props.
+
+Architectural Decision:
+The Pet service page now follows the same renderer pattern as Family Photography.
+
+Safety:
+The visual page structure should remain equivalent because ServicePageRenderer was designed to support the original service page layout.
