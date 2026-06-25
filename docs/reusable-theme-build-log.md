@@ -1084,3 +1084,33 @@ Event-style content should reuse the generic service renderer instead of requiri
 
 Safety:
 Existing Family, Pet and Personal Branding pages should continue rendering because the new sections are optional.
+
+---
+
+## Build 35: Event Service Page Theme Data
+
+Purpose
+
+Adds reusable theme data for the Event Photography service page.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/event.ts
+
+Purpose:
+Stores Event Photography SEO, hero, introduction, event categories, process stages and included checklist as reusable theme data.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Purpose:
+Exports eventServicePage.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Adds the event-hero asset key.
+
+Safety:
+No visible page uses eventServicePage yet, so this build does not alter the public UI.

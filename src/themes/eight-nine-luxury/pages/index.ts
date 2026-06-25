@@ -2,3 +2,4 @@ export * from "./types";
 export * from "./family";
 export * from "./pet";
 export * from "./personal-branding";
+export * from "./event";
