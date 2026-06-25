@@ -244,3 +244,37 @@ Acts as the source of truth for homepage statistics.
 
 Safety:
 The visual layout, styling, grid behavior and animation behavior remain unchanged.
+
+---
+
+## Build 9: Home Portfolio Theme Data Migration
+
+Purpose
+
+Migrates the Home page portfolio cards from hardcoded local data to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds description to ThemePortfolioItem because the live portfolio card design includes hover description text.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds portfolio descriptions to the reusable theme data.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Removes the local portfolio array and reads portfolio items from theme.portfolio.
+
+Fields now sourced from theme:
+- portfolio[].title
+- portfolio[].href
+- portfolio[].image
+- portfolio[].description
+
+Safety:
+The portfolio card layout, hover animation, grid, styling and aspect ratio remain unchanged.

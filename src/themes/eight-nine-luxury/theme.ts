@@ -41,24 +41,28 @@ export const eightNineLuxuryTheme: ThemeContent = {
     {
       title: "Families",
       category: "Family Photography",
+      description: "Real moments. Natural light. No posing.",
       image: "outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG",
       href: "/family-photography",
     },
     {
       title: "Pets",
       category: "Pet Photography",
+      description: "The bond between you and your animal, captured honestly.",
       image: "dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg",
       href: "/pet-photography",
     },
     {
       title: "Personal Branding",
       category: "Brand Photography",
+      description: "Images that build trust before you say a word.",
       image: "japanese-woman-in-office-portrait-2026-03-09-05-22-48-utc.jpg",
       href: "/personal-branding",
     },
     {
       title: "Events",
       category: "Event Photography",
+      description: "Every detail, every moment - documented.",
       image: "celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg",
       href: "/event-photography",
     },

@@ -29,6 +29,7 @@ export interface ThemeStat {
 export interface ThemePortfolioItem {
   title: string;
   category: string;
+  description: string;
   image: string;
   href: string;
 }

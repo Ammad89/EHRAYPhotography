@@ -37,13 +37,6 @@ const testimonials = [
   { name: "Sample brand client", role: "Draft testimonial - Dubai", text: "The new photographs made my brand feel more credible immediately. Clients understood the tone of my work before we even spoke.", rating: 5 },
 ];
 
-const portfolio = [
-  { label: "Families", path: "/family-photography", image: portfolioFamilies, desc: "Real moments. Natural light. No posing." },
-  { label: "Pets", path: "/pet-photography", image: portfolioPets, desc: "The bond between you and your animal, captured honestly." },
-  { label: "Personal Branding", path: "/personal-branding", image: portfolioBranding, desc: "Images that build trust before you say a word." },
-  { label: "Events", path: "/event-photography", image: portfolioEvents, desc: "Every detail, every moment - documented." },
-];
-
 const services = [
   { title: "Family Photography", path: "/family-photography", desc: "Your location. Natural light. No posing. Just the real moments that make your family yours.", tag: "Most popular" },
   { title: "Pet Photography", path: "/pet-photography", desc: "Dogs, cats and everything in between. Portraits built around the bond - not the breed.", tag: "" },
@@ -153,17 +146,17 @@ export default function Home() {
             <p className="text-muted-foreground max-w-xs text-sm leading-relaxed">A small selection. Every image chosen deliberately.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {portfolio.map(item => (
-              <Link key={item.label} to={item.path} className="group relative overflow-hidden bg-muted rounded-3xl block" style={{ aspectRatio: "3/4" }}>
-                <img src={item.image} alt={`${item.label} photography by EHRay - UAE`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
+            {theme.portfolio.map(item => (
+              <Link key={item.title} to={item.href} className="group relative overflow-hidden bg-muted rounded-3xl block" style={{ aspectRatio: "3/4" }}>
+                <img src={resolveEightNineLuxuryAsset(item.image)} alt={`${item.title} photography by ${theme.brand.name}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-700 group-hover:translate-y-1 group-hover:opacity-0">
-                  <p className="text-white text-base font-medium drop-shadow" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.label}</p>
+                  <p className="text-white text-base font-medium drop-shadow" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.title}</p>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <p className="text-white text-base font-medium mb-1.5" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.label}</p>
-                  <p className="text-white/70 text-xs leading-relaxed">{item.desc}</p>
+                  <p className="text-white text-base font-medium mb-1.5" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.title}</p>
+                  <p className="text-white/70 text-xs leading-relaxed">{item.description}</p>
                   <span className="inline-flex items-center gap-1.5 mt-3 text-white/80 text-xs tracking-wider uppercase font-medium">View work <ArrowRight size={12} /></span>
                 </div>
               </Link>
