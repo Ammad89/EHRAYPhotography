@@ -999,3 +999,33 @@ The generic ServicePageRenderer should support reusable optional content section
 
 Safety:
 Existing Family and Pet pages should continue rendering because the new sections are optional.
+
+---
+
+## Build 32: Personal Branding Service Page Theme Data
+
+Purpose
+
+Adds reusable theme data for the Personal Branding service page.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/personal-branding.ts
+
+Purpose:
+Stores Personal Branding SEO, hero, introduction, stats, industries, packages, FAQs and testimonials as reusable theme data.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Purpose:
+Exports personalBrandingServicePage.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Adds the branding-hero asset key.
+
+Safety:
+No visible page uses personalBrandingServicePage yet, so this build does not alter the public UI.
