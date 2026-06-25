@@ -1029,3 +1029,26 @@ Adds the branding-hero asset key.
 
 Safety:
 No visible page uses personalBrandingServicePage yet, so this build does not alter the public UI.
+
+---
+
+## Build 33: Personal Branding Page Renderer Switch
+
+Purpose
+
+Switches PersonalBranding.tsx from a full custom page component to a thin wrapper around the generic ServicePageRenderer.
+
+Files Modified
+
+### src/app/pages/PersonalBranding.tsx
+
+Purpose:
+Now imports personalBrandingServicePage and passes it into ServicePageRenderer.
+
+The page keeps its branding-specific portfolio images and section labels as wrapper props.
+
+Architectural Decision:
+Personal Branding now follows the same reusable service renderer pattern as Family and Pet pages.
+
+Safety:
+The exact package card layout is now standardized through ServicePageRenderer, but page structure and content remain reusable and theme-driven.
