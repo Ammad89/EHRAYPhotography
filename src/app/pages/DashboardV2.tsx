@@ -61,7 +61,7 @@ export default function DashboardV2() {
     let active = true;
 
     getDashboardUser()
-      .then(currentUser => {
+      .then(async currentUser => {
         if (!active) return;
         setUser(currentUser);
         setAuthChecked(true);
