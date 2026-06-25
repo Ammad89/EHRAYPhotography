@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import CmsShell from "../../cms-core/dashboard/CmsShell";
 import PagesPanel from "../../cms-core/dashboard/PagesPanel";
 import BlocksPanel from "../../cms-core/dashboard/BlocksPanel";
@@ -18,9 +18,12 @@ import {
 } from "../../cms-core/versioning/publish-storage";
 import { saveRemoteSnapshot } from "../../cms-core/versioning/remote-publish-storage";
 import {
+  getBackendSetupMessage,
   getDashboardUser,
   getSupabaseClient,
   isSupabaseConfigured,
+  signInDashboard,
+  signOutDashboard,
 } from "../../app/cms/remoteStorage";
 import type { User } from "@supabase/supabase-js";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
@@ -40,6 +43,10 @@ export default function DashboardV2() {
 
   const [user, setUser] = useState<User | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [authBusy, setAuthBusy] = useState(false);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
@@ -71,15 +78,122 @@ export default function DashboardV2() {
     };
   }, []);
 
+  async function handleLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setAuthBusy(true);
+    setAuthError("");
+
+    try {
+      const signedInUser = await signInDashboard(email, password);
+      setUser(signedInUser);
+      setPassword("");
+    } catch (error) {
+      setAuthError(error instanceof Error ? error.message : "Unable to sign in.");
+    } finally {
+      setAuthBusy(false);
+    }
+  }
+
+  async function handleLogout() {
+    setAuthBusy(true);
+
+    try {
+      await signOutDashboard();
+      setUser(null);
+      setPassword("");
+    } catch (error) {
+      setAuthError(error instanceof Error ? error.message : "Unable to sign out.");
+    } finally {
+      setAuthBusy(false);
+    }
+  }
+
   if (!authChecked) {
-    return <div className="p-8">Checking authentication...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-8 text-foreground">
+        Checking authentication...
+      </div>
+    );
+  }
+
+  if (!isSupabaseConfigured()) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-8 text-foreground">
+        <div className="w-full max-w-xl rounded-2xl border border-border p-6">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] opacity-60">
+            Backend setup required
+          </p>
+          <h1 className="mb-3 text-2xl font-semibold">
+            Connect Supabase before using Dashboard V2
+          </h1>
+          <p className="text-sm opacity-70">
+            {getBackendSetupMessage()}
+          </p>
+        </div>
+      </div>
+    );
   }
 
   if (!user) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-lg">
-        Please sign in through the CMS dashboard first.
-      </div>
+      <main className="flex min-h-screen items-center justify-center bg-background px-5 text-foreground">
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-md rounded-2xl border border-border p-6 shadow-sm"
+        >
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] opacity-60">
+            Secure CMS
+          </p>
+
+          <h1 className="mb-3 text-2xl font-semibold">
+            Sign in to Dashboard V2
+          </h1>
+
+          <p className="mb-6 text-sm opacity-70">
+            Use your approved EHRAY CMS login.
+          </p>
+
+          {authError && (
+            <div className="mb-4 rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-700">
+              {authError}
+            </div>
+          )}
+
+          <div className="space-y-4">
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium">Email</span>
+              <input
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+              />
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium">Password</span>
+              <input
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={authBusy}
+              className="w-full rounded-lg bg-foreground px-4 py-3 text-sm text-background disabled:opacity-50"
+            >
+              {authBusy ? "Signing in..." : "Sign in"}
+            </button>
+          </div>
+        </form>
+      </main>
     );
   }
 
@@ -106,9 +220,14 @@ export default function DashboardV2() {
         <div>
           <div className="flex items-center justify-between gap-3 border-b border-border p-4">
             <div className="text-xs opacity-70">
-              {published
-                ? `Published ${new Date(published.publishedAt).toLocaleString()}`
-                : "Not published yet"}
+              <div>
+                {published
+                  ? `Published ${new Date(published.publishedAt).toLocaleString()}`
+                  : "Not published yet"}
+              </div>
+              <div className="mt-1">
+                Signed in as {user.email}
+              </div>
             </div>
 
             <div className="flex gap-2">
@@ -130,6 +249,15 @@ export default function DashboardV2() {
               className="rounded-lg bg-foreground px-4 py-2 text-sm text-background"
             >
               Save Version
+              </button>
+
+              <button
+                type="button"
+                onClick={() => void handleLogout()}
+                disabled={authBusy}
+                className="rounded-lg border border-border px-4 py-2 text-sm"
+              >
+                Logout
               </button>
 
               <button
