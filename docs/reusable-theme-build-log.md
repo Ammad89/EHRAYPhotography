@@ -856,3 +856,38 @@ Fields now sourced from service page model:
 
 Safety:
 The page layout, styling, section order and component behavior remain unchanged.
+
+---
+
+## Build 27: Generic Service Page Renderer
+
+Purpose
+
+Creates a reusable renderer for service pages.
+
+This renderer allows pages such as Family Photography, Pet Photography, Event Photography, Wedding Photography and Personal Branding to share one visual structure while loading different content from theme data.
+
+Files Created
+
+### src/theme-engine/renderers/ServicePageRenderer.tsx
+
+Purpose:
+Renders reusable service page content from a ServicePage data object.
+
+Supported sections:
+- SEO
+- Service schema
+- Hero
+- Introduction
+- Stages
+- Portfolio
+- Packages
+- Testimonials
+- FAQs
+- Booking CTA
+
+Architectural Decision:
+Service page React components should become thin wrappers around data. This reduces duplicate JSX and makes new service pages faster to create.
+
+Safety:
+No existing public route imports this renderer yet, so this build does not alter visible website output.
