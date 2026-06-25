@@ -72,3 +72,32 @@ This phase will gradually replace client-specific naming, displayed content, SEO
 
 Server paths such as /var/www/EHRAYPhotography will not be renamed yet to avoid deployment disruption.
 
+
+---
+
+## Build 3: Theme Package Architecture
+
+Purpose
+
+Creates the first reusable theme package:
+
+Eight Nine Luxury
+
+This theme will hold the reusable data schema, default content, settings and rendering logic for the Eight Nine Web Studio Theme platform.
+
+Files
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Defines the editable content structure for the Eight Nine Luxury theme.
+
+This file describes what content a client website can customize without changing the design code.
+
+Editing Notes:
+Add new interfaces here only when the theme needs new editable content fields.
+
+Do not place React components or styling logic in this file.
+
+Architectural Decision:
+Theme-specific content types live inside the theme package instead of a global theme-content folder. This allows future themes to have their own schema while sharing the same platform.
