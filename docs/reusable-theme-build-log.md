@@ -914,3 +914,33 @@ Service pages should be data-driven and share one renderer wherever possible. Th
 
 Safety:
 The visual page structure should remain equivalent because ServicePageRenderer was modeled from the original FamilyPhotography.tsx layout.
+
+---
+
+## Build 29: Pet Service Page Theme Data
+
+Purpose
+
+Adds the reusable theme data model for the Pet Photography service page.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/pet.ts
+
+Purpose:
+Stores Pet Photography SEO, hero, introduction, stages, FAQs and testimonials as reusable theme data.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Purpose:
+Exports petServicePage.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Adds the pet-hero asset key.
+
+Safety:
+No visible page uses petServicePage yet, so this build does not alter the public UI.
