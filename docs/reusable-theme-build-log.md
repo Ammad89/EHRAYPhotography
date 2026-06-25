@@ -127,3 +127,31 @@ Image values are currently stored as filenames or empty strings. They will later
 
 Safety:
 This file is not yet consumed by the live homepage, so it does not alter the public website view.
+
+---
+
+## Build 5: Eight Nine Luxury Asset Resolver
+
+Purpose
+
+Adds an asset resolver for the Eight Nine Luxury theme.
+
+Files
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Maps stable theme asset keys to imported optimized image files.
+
+This allows theme content to reference images by key or filename while the rendering components receive real image URLs.
+
+Editing Notes:
+Add new local theme images to eightNineLuxuryAssets.
+
+If a value is already a full URL, the resolver returns it as-is when no local asset match exists.
+
+Architectural Decision:
+Theme content should not import images directly. Content stores image identifiers. The asset resolver converts those identifiers into usable image URLs.
+
+Safety:
+This file is not yet consumed by the public homepage, so it does not alter the current website view.
