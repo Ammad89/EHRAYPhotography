@@ -217,3 +217,30 @@ Resolves the hero background image key into the optimized imported image asset.
 
 Safety:
 The visual layout, classes, spacing, animation behavior and section structure remain unchanged.
+
+---
+
+## Build 8: Home Stats Theme Data Migration
+
+Purpose
+
+Migrates the Home page stats section from hardcoded inline values to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+The stats section now reads from theme.stats.
+
+Fields now sourced from theme:
+- stats[].value
+- stats[].label
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Acts as the source of truth for homepage statistics.
+
+Safety:
+The visual layout, styling, grid behavior and animation behavior remain unchanged.

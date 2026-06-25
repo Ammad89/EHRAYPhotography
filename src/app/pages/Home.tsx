@@ -132,7 +132,7 @@ export default function Home() {
         {/* Stats */}
         <section className="relative py-14" style={{ zIndex: 1, background: "rgba(0,0,0,0.68)", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {[{ value: "8+", label: "Years of Experience (draft)" }, { value: "1,400+", label: "Sessions Completed (draft)" }, { value: "4.9 ★", label: "Google Rating (draft)" }, { value: "UAE", label: "Based - Global Availability" }].map(stat => (
+            {theme.stats.map(stat => (
               <div key={stat.label} className="text-center">
                 <p className="text-4xl font-medium text-white mb-2" style={{ fontFamily: "'Lora', Georgia, serif" }}>{stat.value}</p>
                 <p className="text-white/50 text-xs tracking-wide">{stat.label}</p>
