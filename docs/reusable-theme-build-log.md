@@ -677,3 +677,46 @@ Theme content controls what the page says. Site configuration controls whose web
 
 Safety:
 No visual layout, styling or component behavior changed.
+
+---
+
+## Build 22: Shared Site Navigation and Footer Migration
+
+Purpose
+
+Moves shared navigation, service navigation, footer text and contact details into the active site configuration layer.
+
+Files Created
+
+### src/sites/eight-nine-photography/navigation.ts
+
+Purpose:
+Stores primary navigation, services dropdown links and header CTA for the Eight Nine Photography site.
+
+### src/sites/eight-nine-photography/footer.ts
+
+Purpose:
+Stores footer description, copyright and SEO service line.
+
+Files Modified
+
+### src/sites/eight-nine-photography/site.ts
+
+Purpose:
+Imports navigation and footer config into the active site object. Adds logo, contact email, phone display and WhatsApp values.
+
+### src/app/components/Nav.tsx
+
+Purpose:
+Reads logo, primary links, service links and CTA values from getActiveSite().
+
+### src/app/components/Footer.tsx
+
+Purpose:
+Reads logo, footer description, navigation links, services, contact details, WhatsApp link, copyright and SEO line from getActiveSite().
+
+Architectural Decision:
+Shared layout components should consume site configuration rather than hardcoded site-specific values. This keeps the theme reusable for future client sites.
+
+Safety:
+The Nav and Footer visual layout, animation behavior, responsive menu structure and styling remain unchanged.
