@@ -10,7 +10,7 @@ import { getActiveSite } from "../../theme-engine";
 function NotFoundPage() {
   return (
     <main className="min-h-screen pt-[72px] bg-background">
-      <SEO title="Page not found | EHRay Photography" description="This page is not available." />
+      <SEO title={`Page not found | ${site.brand.name}`} description="This page is not available." />
       <div className="max-w-3xl mx-auto px-6 py-24">
         <h1 className="text-4xl font-medium text-foreground mb-4" style={{ fontFamily: "'Lora', Georgia, serif" }}>
           Page not found
