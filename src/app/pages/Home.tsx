@@ -2,9 +2,9 @@ import { Link } from "react-router";
 import { ArrowRight, Star } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
 import {
-  eightNineLuxuryTheme,
-  resolveEightNineLuxuryAsset,
-} from "../../themes/eight-nine-luxury";
+  getActiveTheme,
+  resolveThemeAsset,
+} from "../../theme-engine";
 import SEO from "../components/SEO";
 import emilyImage from "../../imports/optimized/Gemini_Generated_Image_lfgepqlfgepqlfge.jpg";
 import portfolioFamilies from "../../imports/optimized/outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG";
@@ -12,9 +12,9 @@ import portfolioPets from "../../imports/optimized/dog-in-autumn-foliage-wearing
 import portfolioBranding from "../../imports/optimized/japanese-woman-in-office-portrait-2026-03-09-05-22-48-utc.jpg";
 import portfolioEvents from "../../imports/optimized/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
 
-const theme = eightNineLuxuryTheme;
+const theme = getActiveTheme();
 const hero = theme.hero;
-const heroImage = resolveEightNineLuxuryAsset(hero.backgroundImage);
+const heroImage = resolveThemeAsset(hero.backgroundImage);
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -139,7 +139,7 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {theme.portfolio.map(item => (
               <Link key={item.title} to={item.href} className="group relative overflow-hidden bg-muted rounded-3xl block" style={{ aspectRatio: "3/4" }}>
-                <img src={resolveEightNineLuxuryAsset(item.image)} alt={`${item.title} photography by ${theme.brand.name}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
+                <img src={resolveThemeAsset(item.image)} alt={`${item.title} photography by ${theme.brand.name}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.06]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-700 group-hover:translate-y-1 group-hover:opacity-0">
                   <p className="text-white text-base font-medium drop-shadow" style={{ fontFamily: "'Lora', Georgia, serif" }}>{item.title}</p>
@@ -209,7 +209,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 lg:gap-24 items-center">
           <div className="relative order-2 md:order-1">
             <div className="aspect-[3/4] bg-muted overflow-hidden rounded-3xl max-w-md">
-              <img src={resolveEightNineLuxuryAsset(theme.about.image)} alt={theme.about.imageAlt} className="w-full h-full object-cover object-[center_20%]" />
+              <img src={resolveThemeAsset(theme.about.image)} alt={theme.about.imageAlt} className="w-full h-full object-cover object-[center_20%]" />
             </div>
           </div>
           <div className="order-1 md:order-2">

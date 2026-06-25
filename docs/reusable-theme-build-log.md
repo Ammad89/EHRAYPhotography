@@ -560,3 +560,42 @@ Fields now sourced from theme:
 
 Safety:
 No visible layout, styling or behavior changed.
+
+---
+
+## Build 19: Theme Engine Foundation
+
+Purpose
+
+Introduces the first Theme Engine layer for the Eight Nine Web Studio Theme platform.
+
+Files Created
+
+### src/theme-engine/active-theme.ts
+
+Purpose:
+Defines the active theme used by the application.
+
+Currently returns the Eight Nine Luxury theme directly, but this layer will later support per-site theme selection, domain-based theme loading and CMS-published theme overrides.
+
+Exports:
+- getActiveTheme()
+- resolveThemeAsset()
+
+### src/theme-engine/index.ts
+
+Purpose:
+Provides a clean public API for the theme engine.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Updates Home to read the active theme through the theme engine instead of importing the Eight Nine Luxury theme package directly.
+
+Architectural Decision:
+Application pages should not know which specific theme package they are rendering. They should ask the Theme Engine for the active theme. This makes the platform reusable across future sites and theme variants.
+
+Safety:
+The active theme still resolves to Eight Nine Luxury, so visual output should remain unchanged.
