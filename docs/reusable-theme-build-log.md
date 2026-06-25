@@ -39,3 +39,36 @@ Foundation complete.
 
 No existing pages have been migrated to use these types yet.
 
+
+---
+
+## Build 2: Theme Product Rebrand
+
+Purpose
+
+This build begins the rebrand from the original client-specific EHRAY Photography codebase into the reusable Eight Nine Web Studio theme platform.
+
+New product name:
+
+Eight Nine Web Studio Theme
+
+Brand used for the first reusable theme implementation:
+
+Eight Nine Photography
+
+Owner and lead photographer:
+
+Ammad Shafique
+
+Safety Rule
+
+This work is happening only on the reusable-theme-v1 branch.
+
+The current client-facing EHRAY live website must remain untouched.
+
+Scope
+
+This phase will gradually replace client-specific naming, displayed content, SEO text, schema text and default CMS content.
+
+Server paths such as /var/www/EHRAYPhotography will not be renamed yet to avoid deployment disruption.
+
