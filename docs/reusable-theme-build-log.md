@@ -179,3 +179,41 @@ Pages and CMS tools should import from the theme package index instead of import
 
 Safety:
 This file does not alter current rendering. It only creates a cleaner import path for future builds.
+
+---
+
+## Build 7: Home Hero Theme Data Migration
+
+Purpose
+
+Migrates the Home page hero content source from hardcoded values to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+The visual homepage remains the same, but the hero section now reads its editable content from eightNineLuxuryTheme.
+
+Fields now sourced from theme:
+- hero.eyebrow
+- hero.heading
+- hero.description
+- hero.primaryButtonText
+- hero.primaryButtonLink
+- hero.secondaryButtonText
+- hero.secondaryButtonLink
+- hero.backgroundImage
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Acts as the source of truth for the hero content.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Resolves the hero background image key into the optimized imported image asset.
+
+Safety:
+The visual layout, classes, spacing, animation behavior and section structure remain unchanged.

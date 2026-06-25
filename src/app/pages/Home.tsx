@@ -1,13 +1,20 @@
-import heroImage from "../../imports/optimized/woman-playing-with-dog-on-sandy-beach-2026-01-08-06-39-41-utc.JPG";
 import { Link } from "react-router";
 import { ArrowRight, Star } from "lucide-react";
 import BookingCTA from "../components/BookingCTA";
+import {
+  eightNineLuxuryTheme,
+  resolveEightNineLuxuryAsset,
+} from "../../themes/eight-nine-luxury";
 import SEO from "../components/SEO";
 import emilyImage from "../../imports/optimized/Gemini_Generated_Image_lfgepqlfgepqlfge.jpg";
 import portfolioFamilies from "../../imports/optimized/outdoor-shot-of-pleased-man-and-woman-stand-closel-2026-05-28-23-39-35-utc.JPG";
 import portfolioPets from "../../imports/optimized/dog-in-autumn-foliage-wearing-a-red-collar-2026-03-25-00-44-16-utc.jpg";
 import portfolioBranding from "../../imports/optimized/japanese-woman-in-office-portrait-2026-03-09-05-22-48-utc.jpg";
 import portfolioEvents from "../../imports/optimized/celebrating-together-at-an-office-new-year-s-party-2026-01-09-09-10-33-utc.jpg";
+
+const theme = eightNineLuxuryTheme;
+const hero = theme.hero;
+const heroImage = resolveEightNineLuxuryAsset(hero.backgroundImage);
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -64,27 +71,32 @@ export default function Home() {
       {/* ── Sticky backdrop: Hero + Philosophy + Stats ── */}
       <div className="relative">
         <div className="sticky top-0 h-screen overflow-hidden bg-muted" style={{ marginBottom: "-100vh", zIndex: 0 }}>
-          <img src={heroImage} alt="A woman and her dog on a sandy beach - EHRay Photography, UAE" className="w-full h-full object-cover object-[72%_center] md:object-center" />
+          <img src={heroImage} alt={`${theme.brand.name} hero image`} className="w-full h-full object-cover object-[72%_center] md:object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
         </div>
 
         {/* Hero */}
         <section className="relative h-screen min-h-[640px] flex items-end pb-20" style={{ zIndex: 1 }}>
           <div className="max-w-7xl mx-auto px-6 w-full">
-            <p className="text-white/60 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">EHRay Photography &nbsp;·&nbsp; United Arab Emirates</p>
+            <p className="text-white/60 text-[10px] tracking-[0.35em] uppercase mb-5 font-medium">{hero.eyebrow}</p>
             <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] font-medium leading-[1.08] max-w-3xl mb-7" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-              Natural Light &amp; Authentic<br />Lifestyle Photography<br />Across the UAE
+              {hero.heading.split("\n").map((line, index) => (
+                <span key={line}>
+                  {line}
+                  {index < hero.heading.split("\n").length - 1 && <br />}
+                </span>
+              ))}
             </h1>
             <p className="text-white/65 text-base sm:text-lg max-w-lg mb-10 leading-relaxed">
-              Families. Pets. Personal brands. Photographed in natural light, across the UAE - without staging, without posing, without compromise.
+              {hero.description}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="/#contact" className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 bg-white text-black text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:bg-white/90 transition-colors duration-500">
-                <span className="group-hover:[order:1]">Book a Consultation</span>
+              <a href={hero.primaryButtonLink} className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 bg-white text-black text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:bg-white/90 transition-colors duration-500">
+                <span className="group-hover:[order:1]">{hero.primaryButtonText}</span>
                 <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
               </a>
-              <a href="/portfolio" className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 border border-white/50 text-white text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:border-white/90 transition-colors duration-500">
-                <span className="group-hover:[order:1]">View Portfolio</span>
+              <a href={hero.secondaryButtonLink} className="group inline-flex items-center gap-[18px] pl-8 pr-3.5 py-3.5 border border-white/50 text-white text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:border-white/90 transition-colors duration-500">
+                <span className="group-hover:[order:1]">{hero.secondaryButtonText}</span>
                 <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
               </a>
             </div>
