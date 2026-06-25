@@ -101,3 +101,29 @@ Do not place React components or styling logic in this file.
 
 Architectural Decision:
 Theme-specific content types live inside the theme package instead of a global theme-content folder. This allows future themes to have their own schema while sharing the same platform.
+
+---
+
+## Build 4: Eight Nine Luxury Theme Definition
+
+Purpose
+
+Creates the first complete theme definition for the Eight Nine Web Studio Theme platform.
+
+Files
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Exports the first default content object for the reusable Eight Nine Luxury theme.
+
+This file is the starting point for converting hardcoded page content into reusable theme data.
+
+Editing Notes:
+Change client-specific copy, navigation labels, service titles, testimonials, SEO values and default content here.
+
+Current Limitations:
+Image values are currently stored as filenames or empty strings. They will later be connected to the asset resolver or CMS media library.
+
+Safety:
+This file is not yet consumed by the live homepage, so it does not alter the public website view.
