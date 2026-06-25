@@ -338,3 +338,36 @@ Fields now sourced from theme:
 
 Safety:
 The services grid, card design, badge design, CTA link styling and hover behavior remain unchanged.
+
+---
+
+## Build 12: Home Process Theme Data Migration
+
+Purpose
+
+Migrates the Home page How It Works section from hardcoded local data to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/types.ts
+
+Purpose:
+Adds number to ThemeProcessStep so the process section can preserve its current visual numbering.
+
+### src/themes/eight-nine-luxury/theme.ts
+
+Purpose:
+Adds process step numbers to theme.process.
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Removes the local steps array and reads process steps from theme.process.
+
+Fields now sourced from theme:
+- process[].number
+- process[].title
+- process[].description
+
+Safety:
+The process section layout, step connector line, typography and spacing remain unchanged.

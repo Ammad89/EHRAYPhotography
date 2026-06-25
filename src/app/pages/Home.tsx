@@ -31,13 +31,6 @@ const homeSchema = {
   "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "Country", "name": "United Arab Emirates" }],
 };
 
-const steps = [
-  { number: "01", title: "Consultation", desc: "A quick, relaxed call to understand what you need and what matters most." },
-  { number: "02", title: "Session Planning", desc: "We agree on location, timing and wardrobe. You bring nothing but yourselves." },
-  { number: "03", title: "The Session", desc: "No directing. No posing. Just you, being you - while Emily works." },
-  { number: "04", title: "Your Gallery", desc: "A curated online gallery delivered within two weeks, ready to download and print." },
-];
-
 export default function Home() {
   return (
     <>
@@ -230,12 +223,12 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground" style={{ fontFamily: "'Lora', Georgia, serif" }}>Four steps.<br />Zero stress.</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
-            {steps.map((step, i) => (
+            {theme.process.map((step, i) => (
               <div key={step.number} className="relative">
                 {i < steps.length - 1 && <div className="hidden lg:block absolute top-9 left-full w-full h-px bg-border -translate-x-3 z-0 pointer-events-none" />}
                 <p className="text-[3.5rem] font-medium text-muted/80 mb-4 leading-none" style={{ fontFamily: "'Lora', Georgia, serif" }}>{step.number}</p>
                 <h3 className="text-base font-medium text-foreground mb-3" style={{ fontFamily: "'Lora', Georgia, serif" }}>{step.title}</h3>
-                <p className="text-muted-foreground text-[13px] leading-relaxed">{step.desc}</p>
+                <p className="text-muted-foreground text-[13px] leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>

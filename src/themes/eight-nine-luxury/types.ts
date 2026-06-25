@@ -50,6 +50,7 @@ export interface ThemeService {
 }
 
 export interface ThemeProcessStep {
+  number: string;
   title: string;
   description: string;
 }

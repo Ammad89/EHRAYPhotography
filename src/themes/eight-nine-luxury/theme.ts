@@ -126,21 +126,25 @@ export const eightNineLuxuryTheme: ThemeContent = {
 
   process: [
     {
+      number: "01",
       title: "Consultation",
       description:
         "A quick, relaxed call to understand what you need and what matters most.",
     },
     {
+      number: "02",
       title: "Session Planning",
       description:
         "We agree on location, timing and wardrobe. You bring nothing but yourselves.",
     },
     {
+      number: "03",
       title: "The Session",
       description:
         "No directing. No posing. Just you, being you - while Ammad works.",
     },
     {
+      number: "04",
       title: "Your Gallery",
       description:
         "A curated online gallery delivered within two weeks, ready to download and print.",
