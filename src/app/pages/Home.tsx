@@ -31,12 +31,6 @@ const homeSchema = {
   "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "Country", "name": "United Arab Emirates" }],
 };
 
-const testimonials = [
-  { name: "Sample family client", role: "Draft testimonial - Dubai", text: "Emily sees the moments you miss when you're living them. Our photographs don't look like a session - they look like our life.", rating: 5 },
-  { name: "Sample pet client", role: "Draft testimonial - UAE", text: "The session felt relaxed from the first few minutes. Nothing was forced, and the final images captured the bond we wanted to remember.", rating: 5 },
-  { name: "Sample brand client", role: "Draft testimonial - Dubai", text: "The new photographs made my brand feel more credible immediately. Clients understood the tone of my work before we even spoke.", rating: 5 },
-];
-
 const services = [
   { title: "Family Photography", path: "/family-photography", desc: "Your location. Natural light. No posing. Just the real moments that make your family yours.", tag: "Most popular" },
   { title: "Pet Photography", path: "/pet-photography", desc: "Dogs, cats and everything in between. Portraits built around the bond - not the breed.", tag: "" },
@@ -174,12 +168,12 @@ export default function Home() {
             <p className="text-muted-foreground text-sm mt-4 max-w-xl leading-relaxed">Draft examples for client review. Final testimonials and figures should be replaced with verified EHRay client proof before launch.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map(t => (
-              <div key={t.name} className="bg-background p-8 rounded-3xl flex flex-col">
-                <div className="flex gap-0.5 mb-5">{Array.from({ length: t.rating }).map((_, i) => <Star key={i} size={13} className="fill-foreground text-foreground" />)}</div>
-                <p className="italic text-foreground leading-relaxed mb-6 text-[17px] flex-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>&ldquo;{t.text}&rdquo;</p>
+            {theme.testimonials.map(t => (
+              <div key={t.author} className="bg-background p-8 rounded-3xl flex flex-col">
+                <div className="flex gap-0.5 mb-5">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={13} className="fill-foreground text-foreground" />)}</div>
+                <p className="italic text-foreground leading-relaxed mb-6 text-[17px] flex-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>&ldquo;{t.quote}&rdquo;</p>
                 <div>
-                  <p className="text-foreground font-medium text-sm">{t.name}</p>
+                  <p className="text-foreground font-medium text-sm">{t.author}</p>
                   <p className="text-muted-foreground text-xs mt-0.5 tracking-wide">{t.role}</p>
                 </div>
               </div>

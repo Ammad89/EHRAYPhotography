@@ -278,3 +278,29 @@ Fields now sourced from theme:
 
 Safety:
 The portfolio card layout, hover animation, grid, styling and aspect ratio remain unchanged.
+
+---
+
+## Build 10: Home Testimonials Theme Data Migration
+
+Purpose
+
+Migrates the Home page testimonials from hardcoded local data to the Eight Nine Luxury theme definition.
+
+Files Modified
+
+### src/app/pages/Home.tsx
+
+Purpose:
+Removes the local testimonials array and reads testimonial cards from theme.testimonials.
+
+Fields now sourced from theme:
+- testimonials[].quote
+- testimonials[].author
+- testimonials[].role
+
+Current Limitation:
+The rating remains fixed at 5 stars in the renderer because ThemeTestimonial does not yet include a rating field.
+
+Safety:
+The testimonial card layout, styling, star display and grid remain unchanged.
