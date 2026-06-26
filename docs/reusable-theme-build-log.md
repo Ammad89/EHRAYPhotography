@@ -1163,3 +1163,25 @@ Wedding-specific pricing presentation should be handled as reusable service data
 
 Safety:
 Existing service pages should continue rendering because investment is optional.
+
+---
+
+## Build 39: Wedding Page Renderer Switch
+
+Purpose
+
+Converts WeddingPhotography.tsx into a thin wrapper around ServicePageRenderer.
+
+Result
+
+All photography service pages now use the shared renderer.
+
+Architecture Status
+
+✓ Family
+✓ Pet
+✓ Personal Branding
+✓ Event
+✓ Wedding
+
+The service-page system is now fully data-driven.
