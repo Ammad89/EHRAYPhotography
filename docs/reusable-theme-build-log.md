@@ -1114,3 +1114,26 @@ Adds the event-hero asset key.
 
 Safety:
 No visible page uses eventServicePage yet, so this build does not alter the public UI.
+
+---
+
+## Build 36: Event Page Renderer Switch
+
+Purpose
+
+Switches EventPhotography.tsx from a full custom page component to a thin wrapper around the generic ServicePageRenderer.
+
+Files Modified
+
+### src/app/pages/EventPhotography.tsx
+
+Purpose:
+Now imports eventServicePage and passes it into ServicePageRenderer.
+
+The page keeps its event-specific portfolio images and section labels as wrapper props.
+
+Architectural Decision:
+Event Photography now follows the same reusable service renderer pattern as Family, Pet and Personal Branding.
+
+Safety:
+The page is now renderer-driven. Visual structure remains close to the original, with standardized reusable sections.
