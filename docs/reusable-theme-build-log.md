@@ -1235,3 +1235,24 @@ Adds portfolio asset keys for all gallery images.
 
 Safety:
 Portfolio.tsx has not been switched yet, so this build should not alter the public portfolio route.
+
+---
+
+## Build 42: Portfolio Page Renderer Switch
+
+Purpose
+
+Switches Portfolio.tsx from a hardcoded public page to the reusable PortfolioRenderer.
+
+Files Modified
+
+### src/app/pages/Portfolio.tsx
+
+Purpose:
+Now imports portfolioPage theme data and passes it into PortfolioRenderer.
+
+Result:
+Portfolio content, SEO, schema, categories, gallery data and booking CTA copy now come from theme/site data.
+
+Safety:
+The visual structure remains based on the original Portfolio.tsx layout.
