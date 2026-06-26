@@ -1137,3 +1137,29 @@ Event Photography now follows the same reusable service renderer pattern as Fami
 
 Safety:
 The page is now renderer-driven. Visual structure remains close to the original, with standardized reusable sections.
+
+---
+
+## Build 37: Service Renderer Investment Block
+
+Purpose
+
+Adds optional investment block support to the reusable ServicePage model and renderer.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/types.ts
+
+Purpose:
+Adds ServiceInvestment and optional investment support to ServicePage.
+
+### src/theme-engine/renderers/ServicePageRenderer.tsx
+
+Purpose:
+Renders an optional investment block beneath the included checklist when page.investment exists.
+
+Architectural Decision:
+Wedding-specific pricing presentation should be handled as reusable service data rather than requiring a bespoke Wedding page component.
+
+Safety:
+Existing service pages should continue rendering because investment is optional.

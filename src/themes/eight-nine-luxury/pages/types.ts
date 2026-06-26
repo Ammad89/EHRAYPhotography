@@ -37,6 +37,12 @@ export interface ServiceIncludedItem {
   label: string;
 }
 
+export interface ServiceInvestment {
+  label: string;
+  price: string;
+  note: string;
+}
+
 export interface ServicePackage {
   name: string;
   price: string;
@@ -79,6 +85,8 @@ export interface ServicePage {
   industries?: ServiceIndustry[];
 
   included?: ServiceIncludedItem[];
+
+  investment?: ServiceInvestment;
 
   packages: ServicePackage[];
 

@@ -237,6 +237,14 @@ export default function ServicePageRenderer({
                   </div>
                 ))}
               </div>
+
+              {page.investment && (
+                <div className="border-t border-border pt-8 mt-10">
+                  <p className="text-muted-foreground text-[10px] tracking-[0.25em] uppercase mb-2 font-medium">{page.investment.label}</p>
+                  <p className="text-4xl font-medium text-foreground" style={{ fontFamily: "'Lora', Georgia, serif" }}>{page.investment.price}</p>
+                  <p className="text-muted-foreground text-sm mt-3 italic">{page.investment.note}</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
