@@ -1200,3 +1200,38 @@ Files Modified
 
 Safety:
 No dashboard behavior, authentication logic or permissions were changed.
+
+---
+
+## Build 41: Portfolio Renderer Foundation
+
+Purpose
+
+Introduces reusable theme data and a renderer for the Portfolio page.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/portfolio.ts
+
+Purpose:
+Stores Portfolio SEO, header, filters, gallery items, service category cards and booking CTA copy as theme data.
+
+### src/theme-engine/renderers/PortfolioRenderer.tsx
+
+Purpose:
+Renders the portfolio page from theme data and active site configuration.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Purpose:
+Exports portfolioPage.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Purpose:
+Adds portfolio asset keys for all gallery images.
+
+Safety:
+Portfolio.tsx has not been switched yet, so this build should not alter the public portfolio route.

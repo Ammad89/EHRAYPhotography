@@ -4,3 +4,4 @@ export * from "./pet";
 export * from "./personal-branding";
 export * from "./event";
 export * from "./wedding";
+export * from "./portfolio";
