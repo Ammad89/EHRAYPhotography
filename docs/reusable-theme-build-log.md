@@ -1185,3 +1185,18 @@ Architecture Status
 ✓ Wedding
 
 The service-page system is now fully data-driven.
+
+---
+
+## Build 40: CMS V2 Login Brand Cleanup
+
+Purpose
+
+Updates the Dashboard V2 login helper text from legacy EHRAY wording to Eight Nine Web Studio wording.
+
+Files Modified
+
+### src/app/pages/DashboardV2.tsx
+
+Safety:
+No dashboard behavior, authentication logic or permissions were changed.

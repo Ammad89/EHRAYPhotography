@@ -225,7 +225,7 @@ export default function DashboardV2() {
           </h1>
 
           <p className="mb-6 text-sm opacity-70">
-            Use your approved EHRAY CMS login.
+            Use your approved Eight Nine Web Studio CMS login.
           </p>
 
           {authError && (
