@@ -1256,3 +1256,42 @@ Portfolio content, SEO, schema, categories, gallery data and booking CTA copy no
 
 Safety:
 The visual structure remains based on the original Portfolio.tsx layout.
+
+---
+
+## Build 43: About and Contact Renderer Foundations
+
+Purpose
+
+Adds dedicated About and Contact page data models plus reusable renderers.
+
+Files Created
+
+### src/themes/eight-nine-luxury/pages/about.ts
+
+Stores About page SEO, hero, story, photographer profile, values, process and booking CTA copy.
+
+### src/themes/eight-nine-luxury/pages/contact.ts
+
+Stores Contact page SEO, hero, contact options, coverage areas, FAQs and booking CTA copy.
+
+### src/theme-engine/renderers/AboutRenderer.tsx
+
+Renders the dedicated About page from theme and site data.
+
+### src/theme-engine/renderers/ContactRenderer.tsx
+
+Renders the dedicated Contact page from theme and site data.
+
+Files Modified
+
+### src/themes/eight-nine-luxury/pages/index.ts
+
+Exports aboutPage and contactPage.
+
+### src/themes/eight-nine-luxury/assets.ts
+
+Adds the about-portrait asset key.
+
+Safety:
+No routes have been added yet, so this build does not change public navigation.

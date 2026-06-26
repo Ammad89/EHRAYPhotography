@@ -5,3 +5,5 @@ export * from "./personal-branding";
 export * from "./event";
 export * from "./wedding";
 export * from "./portfolio";
+export * from "./about";
+export * from "./contact";

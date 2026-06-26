@@ -6,6 +6,7 @@ import portfolioEvents from "../../imports/optimized/celebrating-together-at-an-
 import aboutPortrait from "../../imports/optimized/Gemini_Generated_Image_lfgepqlfgepqlfge.jpg";
 
 export const eightNineLuxuryAssets: Record<string, string> = {
+  "about-portrait": portfolioBranding,
   "portfolio-family-0": portfolioFamilies,
   "portfolio-family-1": portfolioFamily1,
   "portfolio-family-2": portfolioFamily2,
