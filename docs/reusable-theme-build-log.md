@@ -1295,3 +1295,31 @@ Adds the about-portrait asset key.
 
 Safety:
 No routes have been added yet, so this build does not change public navigation.
+
+---
+
+## Build 44: About and Contact Routes
+
+Purpose
+
+Adds dedicated About and Contact public pages.
+
+Files Created
+
+### src/app/pages/About.tsx
+
+Thin wrapper around AboutRenderer using aboutPage theme data.
+
+### src/app/pages/Contact.tsx
+
+Thin wrapper around ContactRenderer using contactPage theme data.
+
+Files Modified
+
+### src/app/routes.tsx
+
+Adds routes:
+- /about
+- /contact
+
+Both routes use CmsPublicPage fallback behavior, matching the existing public page pattern.

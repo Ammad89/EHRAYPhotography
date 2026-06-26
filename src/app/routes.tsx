@@ -7,6 +7,8 @@ import PersonalBranding from "./pages/PersonalBranding";
 import EventPhotography from "./pages/EventPhotography";
 import WeddingPhotography from "./pages/WeddingPhotography";
 import Portfolio from "./pages/Portfolio";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import DraftPagePreview from "./pages/DraftPagePreview";
 import DashboardV2 from "./pages/DashboardV2";
@@ -18,6 +20,14 @@ function HomeRoute() {
 
 function PortfolioRoute() {
   return <CmsPublicPage slug="portfolio" fallback={<Portfolio />} />;
+}
+
+function AboutRoute() {
+  return <CmsPublicPage slug="about" fallback={<About />} />;
+}
+
+function ContactRoute() {
+  return <CmsPublicPage slug="contact" fallback={<Contact />} />;
 }
 
 function FamilyPhotographyRoute() {
@@ -47,6 +57,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomeRoute },
       { path: "portfolio", Component: PortfolioRoute },
+      { path: "about", Component: AboutRoute },
+      { path: "contact", Component: ContactRoute },
       { path: "family-photography", Component: FamilyPhotographyRoute },
       { path: "pet-photography", Component: PetPhotographyRoute },
       { path: "personal-branding", Component: PersonalBrandingRoute },
