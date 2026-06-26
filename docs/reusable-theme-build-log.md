@@ -1323,3 +1323,20 @@ Adds routes:
 - /contact
 
 Both routes use CmsPublicPage fallback behavior, matching the existing public page pattern.
+
+---
+
+## Build 45: Dedicated Page Navigation
+
+Purpose
+
+Updates site navigation to point to dedicated About and Contact pages instead of homepage anchor sections.
+
+Files Modified
+
+### src/sites/eight-nine-photography/navigation.ts
+
+Changes:
+- About now points to /about
+- Contact now points to /contact
+- Header CTA now points to /contact

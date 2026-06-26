@@ -1,8 +1,8 @@
 export const eightNinePhotographyNavigation = {
   primary: [
     { label: "Portfolio", href: "/portfolio" },
-    { label: "About", href: "/#about" },
-    { label: "Contact", href: "/#contact" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
 
   services: [
@@ -15,6 +15,6 @@ export const eightNinePhotographyNavigation = {
 
   cta: {
     label: "Book a Consultation",
-    href: "/#contact",
+    href: "/contact",
   },
 };
