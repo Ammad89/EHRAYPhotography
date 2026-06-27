@@ -18,6 +18,7 @@ import {
 import {
   loadPublishedSnapshot,
   publishSnapshot,
+  publishPlatformSnapshot,
 } from "../../cms-core/versioning/publish-storage";
 import { saveRemoteSnapshot } from "../../cms-core/versioning/remote-publish-storage";
 import {
@@ -31,6 +32,7 @@ import {
 } from "../../app/cms/remoteStorage";
 import type { User } from "@supabase/supabase-js";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
+import { useWebsite } from "../../cms-core/platform";
 
 type EditorTab =
   | "platform"
@@ -44,6 +46,7 @@ type EditorTab =
 
 export default function DashboardV2() {
   const editor = useCmsEditor();
+  const { website, setWebsite } = useWebsite();
   const [activeTab, setActiveTab] = useState<EditorTab>("platform");
   const [versions, setVersions] = useState(() => loadLocalVersions());
   const [published, setPublished] = useState(() => loadPublishedSnapshot());
@@ -353,9 +356,15 @@ export default function DashboardV2() {
                   const nextPublished = publishSnapshot(snapshot);
                   setPublished(nextPublished);
 
+                  const platformPublished = publishPlatformSnapshot(website);
+                  setWebsite(platformPublished.website);
+
                   try {
                     await saveRemoteSnapshot("published", snapshot);
-                    alert("Published current CMS state to Supabase");
+                    await saveRemoteSnapshot("platform-published", {
+                      website: platformPublished.website,
+                    });
+                    alert("Published legacy CMS state and platform WebsiteSchema to Supabase");
                   } catch (error) {
                     console.error(error);
                     alert(

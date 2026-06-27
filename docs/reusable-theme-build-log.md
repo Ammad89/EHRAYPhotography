@@ -1673,3 +1673,41 @@ The WebsiteSchema now survives dashboard refreshes before Supabase publishing is
 
 Safety:
 Persistence is local to the browser. Public rendering remains initialized from the same WebsiteProvider state.
+
+
+---
+
+## Build 57: Platform WebsiteSchema Publishing
+
+Purpose
+
+Extends the existing publishing flow to publish the new universal WebsiteSchema alongside the legacy CMS editor snapshot.
+
+Files Modified
+
+### src/cms-core/versioning/publish-storage.ts
+
+Adds localStorage helpers for:
+- publishPlatformSnapshot()
+- loadPlatformPublishedSnapshot()
+- clearPlatformPublishedSnapshot()
+
+### src/cms-core/versioning/remote-publish-storage.ts
+
+Adds support for remote platform snapshots under:
+- platform-draft
+- platform-published
+
+### src/app/pages/DashboardV2.tsx
+
+Updates the Publish button to:
+- Publish the existing legacy CMS snapshot
+- Publish the new WebsiteSchema locally
+- Save the legacy snapshot to Supabase
+- Save the WebsiteSchema to Supabase as platform-published
+
+Architectural Decision:
+Publishing remains backward compatible while adding the platform schema as the future source of truth.
+
+Safety:
+The legacy publish flow remains intact. The platform snapshot is additive.

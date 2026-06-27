@@ -1,5 +1,6 @@
 import { getBackendSetupMessage, getSupabaseClient } from "../../app/cms/remoteStorage";
 import type { CmsPage, CmsSiteSettings, CmsTheme } from "../types";
+import type { WebsiteSchema } from "../platform";
 
 export interface RemoteCmsSnapshot {
   pages: CmsPage[];
@@ -7,9 +8,15 @@ export interface RemoteCmsSnapshot {
   siteSettings: CmsSiteSettings;
 }
 
+export interface RemotePlatformSnapshot {
+  website: WebsiteSchema;
+}
+
+export type RemoteSnapshot = RemoteCmsSnapshot | RemotePlatformSnapshot;
+
 export async function saveRemoteSnapshot(
-  id: "draft" | "published",
-  snapshot: RemoteCmsSnapshot,
+  id: "draft" | "published" | "platform-draft" | "platform-published",
+  snapshot: RemoteSnapshot,
 ) {
   const supabase = getSupabaseClient();
 
@@ -36,7 +43,7 @@ export async function saveRemoteSnapshot(
   if (error) throw error;
 }
 
-export async function loadRemoteSnapshot(id: "draft" | "published") {
+export async function loadRemoteSnapshot(id: "draft" | "published" | "platform-draft" | "platform-published") {
   const supabase = getSupabaseClient();
 
   if (!supabase) {
@@ -54,7 +61,7 @@ export async function loadRemoteSnapshot(id: "draft" | "published") {
   if (!data?.snapshot) return null;
 
   return {
-    snapshot: data.snapshot as RemoteCmsSnapshot,
+    snapshot: data.snapshot as RemoteSnapshot,
     updatedAt: data.updated_at as string,
   };
 }
