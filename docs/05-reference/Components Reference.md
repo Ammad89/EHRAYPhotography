@@ -43,3 +43,9 @@ Responsibilities:
 
 Purpose:
 Render reusable rich text sections from WebsiteSchema.
+
+
+### CtaSectionRenderer
+
+Purpose:
+Render reusable call-to-action sections from WebsiteSchema.

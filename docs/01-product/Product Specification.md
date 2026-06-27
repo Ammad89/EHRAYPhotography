@@ -119,3 +119,17 @@ Capabilities:
 - Rich paragraphs
 - Alignment
 - Configurable content width
+
+
+## Universal CTA Section Renderer
+
+Status: Started
+
+Capabilities:
+- Eyebrow
+- Heading
+- Subtitle
+- Primary CTA
+- Secondary CTA
+- Light or dark tone
+- Left or center alignment

@@ -51,3 +51,10 @@ This route does not replace public pages. It exists so schema-driven rendering c
 The second universal renderer.
 
 WebsiteSchema text sections now render through SectionRenderer.
+
+
+## CtaSectionRenderer
+
+The third universal renderer.
+
+WebsiteSchema CTA sections now render through SectionRenderer.

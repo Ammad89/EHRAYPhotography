@@ -66,3 +66,18 @@ Supported WebsiteSchema fields:
 - content
 - align
 - maxWidth
+
+
+## CTA Sections
+
+Supported WebsiteSchema fields:
+
+- eyebrow
+- title
+- subtitle
+- primaryCtaLabel
+- primaryCtaHref
+- secondaryCtaLabel
+- secondaryCtaHref
+- tone
+- align

@@ -73,3 +73,8 @@ Schema rendering can be tested safely without disrupting the existing public web
 ## Universal text renderer
 
 The text renderer is intentionally generic so it can power About pages, service introductions, legal pages and landing page copy without custom React code.
+
+
+## Universal CTA renderer
+
+The CTA renderer gives every future site a reusable conversion block for enquiries, bookings, lead magnets and contact prompts.
