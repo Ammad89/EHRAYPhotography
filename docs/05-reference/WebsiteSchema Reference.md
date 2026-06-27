@@ -28,3 +28,17 @@ A page contains:
 - sections
 
 The Platform Pages Manager currently edits the core PageDefinition fields and SEO metadata.
+
+
+## PageSection
+
+A section contains:
+
+- id
+- type
+- variant
+- visible
+- sortOrder
+- data
+
+The Platform Sections Manager edits these fields directly.

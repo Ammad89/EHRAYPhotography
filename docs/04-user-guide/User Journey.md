@@ -74,3 +74,22 @@ Available actions:
 
 Current limitation:
 The Pages Manager edits WebsiteSchema pages, but universal page rendering and section editing are still future builds.
+
+
+## 11. Manage page sections
+
+The user opens the Sections tab.
+
+The user selects a page and manages the page's sections.
+
+Available actions:
+- Add section
+- Reorder section
+- Duplicate section
+- Delete section
+- Change section type
+- Change section visibility
+- Edit section data as JSON
+
+Future improvement:
+Each section type will have its own friendly visual editor.

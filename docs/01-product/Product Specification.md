@@ -38,3 +38,23 @@ Capabilities:
 
 Current limitation:
 Sections are displayed as a count only. Section editing will be added later.
+
+
+## Platform Sections Manager
+
+Status: Started
+
+Capabilities:
+- Select a WebsiteSchema page
+- Add a section
+- Delete a section
+- Duplicate a section
+- Move a section up or down
+- Change section type
+- Change variant
+- Change sort order
+- Toggle visibility
+- Edit raw section data JSON
+
+Current limitation:
+Section-specific visual editors and universal rendering are future builds.

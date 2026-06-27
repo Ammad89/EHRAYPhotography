@@ -32,3 +32,12 @@ Build a new Pages Manager that edits WebsiteSchema pages directly instead of ext
 
 Reason:
 The platform needs a universal page model that can support many themes and industries.
+
+
+## Section manager first, visual editors later
+
+Decision:
+Build a raw section manager before section-specific visual editors.
+
+Reason:
+The platform needs reliable section creation, ordering, duplication and persistence before investing in polished editors.

@@ -32,3 +32,14 @@ It also supports:
 - Add Page
 - Duplicate
 - Delete
+
+
+## Sections Tab
+
+The Sections tab manages PageSection records inside WebsiteSchema.
+
+Current mode:
+Raw section management and JSON editing.
+
+Future mode:
+Visual editors for every section type.
