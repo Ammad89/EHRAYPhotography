@@ -12,3 +12,20 @@ Future sections:
 - FAQ
 - CTA
 - Contact
+
+
+## Hero Section
+
+The Hero section is the first universal WebsiteSchema-rendered section.
+
+Supported fields:
+- eyebrow
+- title
+- subtitle
+- primaryCtaLabel
+- primaryCtaHref
+- secondaryCtaLabel
+- secondaryCtaHref
+- image
+- imageAlt
+- align

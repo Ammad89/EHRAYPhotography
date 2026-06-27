@@ -12,3 +12,14 @@ Current important renderers:
 - PortfolioRenderer
 - AboutRenderer
 - ContactRenderer
+
+
+## Universal Section Components
+
+### HeroSectionRenderer
+
+Renders WebsiteSchema hero sections.
+
+### SectionRenderer
+
+Routes PageSection records to the matching section renderer.

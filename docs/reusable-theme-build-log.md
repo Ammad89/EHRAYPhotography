@@ -1890,3 +1890,62 @@ Raw section management is implemented before visual section editors so the under
 
 Safety:
 The Sections Manager edits WebsiteProvider state only. Universal section rendering will be added later.
+
+
+---
+
+## Build 62: Universal Hero Section Renderer
+
+Purpose
+
+Introduces the first universal WebsiteSchema section renderer.
+
+Files Created
+
+### src/theme-engine/sections/HeroSectionRenderer.tsx
+
+Purpose:
+Renders hero sections from PageSection data.
+
+Supported data fields:
+- eyebrow
+- title
+- subtitle
+- primaryCtaLabel
+- primaryCtaHref
+- secondaryCtaLabel
+- secondaryCtaHref
+- image
+- imageAlt
+- align
+
+### src/theme-engine/sections/SectionRenderer.tsx
+
+Purpose:
+Routes PageSection records to the correct universal section renderer.
+
+### src/theme-engine/sections/index.ts
+
+Purpose:
+Exports the universal section rendering utilities.
+
+Files Modified
+
+### src/theme-engine/index.ts
+
+Purpose:
+Exports section renderers from the theme engine.
+
+Documentation Updated:
+- Product Specification
+- Rendering Engine
+- Website Builder Guide
+- Components Reference
+- Founder Product Decisions
+- Build Log
+
+Architectural Decision:
+Universal rendering begins with Hero because it is the most common page section and proves the WebsiteSchema-to-UI flow.
+
+Safety:
+No public route has been switched to SectionRenderer yet. Existing website rendering remains unchanged.

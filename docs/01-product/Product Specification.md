@@ -58,3 +58,20 @@ Capabilities:
 
 Current limitation:
 Section-specific visual editors and universal rendering are future builds.
+
+
+## Universal Hero Section Renderer
+
+Status: Started
+
+Capabilities:
+- Eyebrow
+- Title
+- Subtitle
+- Primary CTA
+- Secondary CTA
+- Optional background image
+- Left or center alignment
+
+Current limitation:
+Hero section data is edited as raw JSON in the Sections tab until a visual Hero editor is added.

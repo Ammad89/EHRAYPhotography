@@ -41,3 +41,12 @@ Build a raw section manager before section-specific visual editors.
 
 Reason:
 The platform needs reliable section creation, ordering, duplication and persistence before investing in polished editors.
+
+
+## Universal section rendering
+
+Decision:
+Start universal section rendering with the Hero section.
+
+Reason:
+Hero sections appear on nearly every website and prove the pattern before expanding into text, CTA, gallery and collection-driven sections.
