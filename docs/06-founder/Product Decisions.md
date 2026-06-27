@@ -87,3 +87,12 @@ Add a reusable Image/Text renderer after Hero, Text and CTA.
 
 Reason:
 Most client websites need editorial sections for About, services, case studies and landing pages.
+
+
+## Universal collection renderer
+
+Decision:
+Create one collection renderer before building separate services, portfolio, testimonials and FAQ renderers.
+
+Reason:
+Most section types share the same collection lookup, filtering and empty-state logic. A shared renderer reduces duplication and accelerates future section development.

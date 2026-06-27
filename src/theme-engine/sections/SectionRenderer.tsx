@@ -3,6 +3,7 @@ import HeroSectionRenderer from "./HeroSectionRenderer";
 import TextSectionRenderer from "./TextSectionRenderer";
 import CtaSectionRenderer from "./CtaSectionRenderer";
 import ImageTextSectionRenderer from "./ImageTextSectionRenderer";
+import CollectionSectionRenderer from "./CollectionSectionRenderer";
 
 export default function SectionRenderer({ section }: { section: PageSection }) {
   if (!section.visible) return null;
@@ -19,6 +20,12 @@ export default function SectionRenderer({ section }: { section: PageSection }) {
 
     case "imageText":
       return <ImageTextSectionRenderer data={section.data} />;
+
+    case "servicesGrid":
+    case "portfolioGrid":
+    case "testimonials":
+    case "faq":
+      return <CollectionSectionRenderer data={section.data} />;
 
     default:
       return (

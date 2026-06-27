@@ -95,3 +95,26 @@ Supported WebsiteSchema fields:
 - imagePosition
 - ctaLabel
 - ctaHref
+
+
+## Collection Sections
+
+Collection sections can display reusable content from WebsiteSchema collections.
+
+Supported collections:
+- services
+- portfolio
+- testimonials
+- faqs
+
+Supported fields:
+- eyebrow
+- title
+- subtitle
+- collection
+- maxItems
+- featuredOnly
+- category
+- layout
+- ctaLabel
+- ctaHref

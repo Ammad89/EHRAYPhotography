@@ -65,3 +65,14 @@ WebsiteSchema CTA sections now render through SectionRenderer.
 Build 67 introduced the universal Image/Text renderer.
 
 WebsiteSchema imageText sections now render through SectionRenderer.
+
+
+## CollectionSectionRenderer
+
+Build 68 introduced the first universal collection renderer.
+
+Collection-driven section types now route through CollectionSectionRenderer:
+- servicesGrid
+- portfolioGrid
+- testimonials
+- faq

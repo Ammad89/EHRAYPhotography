@@ -55,3 +55,15 @@ Render reusable call-to-action sections from WebsiteSchema.
 
 Purpose:
 Render reusable editorial image and text sections from WebsiteSchema.
+
+
+### CollectionSectionRenderer
+
+Purpose:
+Render reusable collection-backed sections from WebsiteSchema.
+
+Supported collection sources:
+- services
+- portfolio
+- testimonials
+- faqs

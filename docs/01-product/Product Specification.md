@@ -147,3 +147,19 @@ Capabilities:
 - Image alt text
 - Left or right image position
 - Optional CTA
+
+
+## Universal Collection Section Renderer
+
+Status: Started
+
+Capabilities:
+- Render services
+- Render portfolio items
+- Render testimonials
+- Render FAQs
+- Featured-only filtering
+- Category filtering
+- Maximum item count
+- Empty state
+- Optional CTA
