@@ -23,3 +23,12 @@ Use reusable renderers instead of duplicating page components.
 
 Reason:
 This reduces repeated code and makes future client websites faster to build.
+
+
+## WebsiteSchema-native pages
+
+Decision:
+Build a new Pages Manager that edits WebsiteSchema pages directly instead of extending the legacy block editor.
+
+Reason:
+The platform needs a universal page model that can support many themes and industries.

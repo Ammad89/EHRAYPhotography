@@ -56,3 +56,21 @@ The user publishes the WebsiteSchema. The live website reads the published schem
 ## 9. Maintain
 
 The user returns to update content, publish changes, restore versions and add pages over time.
+
+
+## 10. Manage pages
+
+The user opens the Pages tab inside Dashboard V2.
+
+Available actions:
+- Add a new page
+- Rename a page
+- Change the slug
+- Change the page type
+- Change draft, published or archived status
+- Edit SEO metadata
+- Duplicate an existing page
+- Delete a page
+
+Current limitation:
+The Pages Manager edits WebsiteSchema pages, but universal page rendering and section editing are still future builds.

@@ -11,6 +11,7 @@ import VersionHistoryPanel from "../../cms-core/dashboard/VersionHistoryPanel";
 import PlatformOverviewPanel from "../../cms-core/dashboard/platform/PlatformOverviewPanel";
 import PlatformSiteSettingsPanel from "../../cms-core/dashboard/platform/PlatformSiteSettingsPanel";
 import PlatformNavigationPanel from "../../cms-core/dashboard/platform/PlatformNavigationPanel";
+import PlatformPagesPanel from "../../cms-core/dashboard/platform/PlatformPagesPanel";
 import {
   loadLocalVersions,
   saveLocalVersion,
@@ -38,6 +39,7 @@ type EditorTab =
   | "platform"
   | "site"
   | "navigation"
+  | "pages"
   | "content"
   | "theme"
   | "settings"
@@ -380,7 +382,7 @@ export default function DashboardV2() {
           </div>
 
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
-            {(["platform", "site", "navigation", "content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
+            {(["platform", "site", "navigation", "pages", "content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -406,6 +408,10 @@ export default function DashboardV2() {
 
           {activeTab === "navigation" && (
             <PlatformNavigationPanel />
+          )}
+
+          {activeTab === "pages" && (
+            <PlatformPagesPanel />
           )}
 
           {activeTab === "content" && (
