@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import type { WebsiteSchema } from "../schema";
 import { createDefaultWebsiteSchema } from "../default-website";
+import { loadPlatformPublishedSnapshot } from "../../versioning/publish-storage";
+import { loadRemoteSnapshot } from "../../versioning/remote-publish-storage";
 
 interface WebsiteContextValue {
   website: WebsiteSchema;
@@ -37,9 +39,44 @@ function saveStoredWebsite(website: WebsiteSchema) {
   }
 }
 
+function isPlatformSnapshot(value: unknown): value is { website: WebsiteSchema } {
+  if (!value || typeof value !== "object") return false;
+  return "website" in value;
+}
+
+async function loadRemotePublishedWebsite() {
+  try {
+    const remote = await loadRemoteSnapshot("platform-published");
+    if (!remote || !isPlatformSnapshot(remote.snapshot)) return null;
+    return remote.snapshot.website;
+  } catch (error) {
+    console.warn("Unable to load remote platform website schema.", error);
+    return null;
+  }
+}
+
+function loadLocalPublishedWebsite() {
+  const published = loadPlatformPublishedSnapshot();
+  return published?.website || null;
+}
+
 export function WebsiteProvider({ children }: { children: ReactNode }) {
   const defaultWebsite = useMemo(() => createDefaultWebsiteSchema(), []);
-  const [website, setWebsite] = useState<WebsiteSchema>(() => loadStoredWebsite() || defaultWebsite);
+  const [website, setWebsite] = useState<WebsiteSchema>(() => loadLocalPublishedWebsite() || loadStoredWebsite() || defaultWebsite);
+
+  useEffect(() => {
+    let active = true;
+
+    loadRemotePublishedWebsite().then(remoteWebsite => {
+      if (!active || !remoteWebsite) return;
+      setWebsite(remoteWebsite);
+      saveStoredWebsite(remoteWebsite);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     saveStoredWebsite(website);

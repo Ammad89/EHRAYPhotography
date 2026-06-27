@@ -1711,3 +1711,33 @@ Publishing remains backward compatible while adding the platform schema as the f
 
 Safety:
 The legacy publish flow remains intact. The platform snapshot is additive.
+
+
+---
+
+## Build 58: Platform Website Bootstrap
+
+Purpose
+
+Adds startup bootstrap loading for the universal WebsiteSchema.
+
+Files Modified
+
+### src/cms-core/platform/context/WebsiteContext.tsx
+
+Startup load order:
+1. Remote Supabase platform-published snapshot
+2. Local platform-published snapshot
+3. Local draft WebsiteSchema
+4. createDefaultWebsiteSchema()
+
+Changes:
+- Attempts to load platform-published from Supabase after provider mount
+- Saves remote platform schema into localStorage after successful load
+- Falls back safely when Supabase is unavailable or no snapshot exists
+
+Architectural Decision:
+WebsiteProvider becomes the central bootstrap point for published platform data.
+
+Safety:
+If no remote platform-published snapshot exists, the site continues using local or default schema.
