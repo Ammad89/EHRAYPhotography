@@ -1513,3 +1513,45 @@ Dashboard V2 can now begin transitioning from the old block editor state to the 
 
 Safety:
 Read-only panel. No publishing behavior or public website rendering changed.
+
+
+---
+
+## Build 52: Platform Site Settings Panel
+
+Purpose
+
+Adds the first editable Dashboard V2 panel backed by the new WebsiteProvider and universal WebsiteSchema.
+
+Files Created
+
+### src/cms-core/dashboard/platform/PlatformSiteSettingsPanel.tsx
+
+Purpose:
+Edits site identity, domain and contact fields inside the WebsiteSchema.
+
+Fields supported:
+- Site name
+- Business name
+- Owner name
+- Tagline
+- Primary domain
+- Canonical URL
+- Email
+- Phone
+- Phone display
+- WhatsApp
+- Address
+
+Files Modified
+
+### src/app/pages/DashboardV2.tsx
+
+Purpose:
+Adds a new Site tab beside the Platform tab.
+
+Architectural Decision:
+Dashboard V2 begins moving from the old page/block editor toward structured website-level schema editing.
+
+Safety:
+Edits are stored in WebsiteProvider state only. Public renderers do not consume these edited fields yet.

@@ -9,6 +9,7 @@ import SiteSettingsPanel from "../../cms-core/dashboard/SiteSettingsPanel";
 import MediaLibrary from "../../cms-core/dashboard/MediaLibrary";
 import VersionHistoryPanel from "../../cms-core/dashboard/VersionHistoryPanel";
 import PlatformOverviewPanel from "../../cms-core/dashboard/platform/PlatformOverviewPanel";
+import PlatformSiteSettingsPanel from "../../cms-core/dashboard/platform/PlatformSiteSettingsPanel";
 import {
   loadLocalVersions,
   saveLocalVersion,
@@ -32,6 +33,7 @@ import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
 type EditorTab =
   | "platform"
+  | "site"
   | "content"
   | "theme"
   | "settings"
@@ -367,7 +369,7 @@ export default function DashboardV2() {
           </div>
 
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
-            {(["platform", "content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
+            {(["platform", "site", "content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -385,6 +387,10 @@ export default function DashboardV2() {
 
           {activeTab === "platform" && (
             <PlatformOverviewPanel />
+          )}
+
+          {activeTab === "site" && (
+            <PlatformSiteSettingsPanel />
           )}
 
           {activeTab === "content" && (
