@@ -1361,3 +1361,25 @@ Feature development is paused briefly to document the reusable platform directio
 
 Safety:
 Documentation only. No application code changed.
+
+
+---
+
+## Build 47: CMS Platform Schema
+
+Purpose
+
+Starts Phase 4 by creating the target universal CMS schema for Eight Nine Web Studio.
+
+Files Created
+
+### docs/cms-platform-schema.md
+
+Purpose:
+Defines the target schema for site settings, theme settings, navigation, footer, pages, sections, collections, assets and publishing.
+
+Architectural Decision:
+The CMS should edit structured website data instead of React components or page-specific blocks.
+
+Safety:
+Documentation only. No application code changed.
