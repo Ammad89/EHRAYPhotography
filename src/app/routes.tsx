@@ -9,6 +9,7 @@ import WeddingPhotography from "./pages/WeddingPhotography";
 import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import SchemaPreviewPage from "./pages/SchemaPreviewPage";
 import Dashboard from "./pages/Dashboard";
 import DraftPagePreview from "./pages/DraftPagePreview";
 import DashboardV2 from "./pages/DashboardV2";
@@ -59,6 +60,7 @@ export const router = createBrowserRouter([
       { path: "portfolio", Component: PortfolioRoute },
       { path: "about", Component: AboutRoute },
       { path: "contact", Component: ContactRoute },
+      { path: "schema-preview/:pageId", Component: SchemaPreviewPage },
       { path: "family-photography", Component: FamilyPhotographyRoute },
       { path: "pet-photography", Component: PetPhotographyRoute },
       { path: "personal-branding", Component: PersonalBrandingRoute },

@@ -37,3 +37,10 @@ GenericPageRenderer converts a WebsiteSchema PageDefinition into a rendered page
 4. Rendering an empty-page placeholder when no sections exist
 
 This is the foundation for CMS-created pages.
+
+
+## Schema Preview Route
+
+Build 64 introduced a safe route for testing GenericPageRenderer.
+
+This route does not replace public pages. It exists so schema-driven rendering can be tested before migration.

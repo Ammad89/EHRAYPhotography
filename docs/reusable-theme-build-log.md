@@ -1993,3 +1993,39 @@ Generic pages should render from WebsiteSchema sections instead of custom React 
 
 Safety:
 No public route has been switched to GenericPageRenderer yet. Existing public rendering remains unchanged.
+
+
+---
+
+## Build 64: Schema Preview Route
+
+Purpose
+
+Adds a safe preview route for WebsiteSchema pages rendered through GenericPageRenderer.
+
+Files Created
+
+### src/app/pages/SchemaPreviewPage.tsx
+
+Purpose:
+Finds a WebsiteSchema page by id or slug and renders it through GenericPageRenderer.
+
+Files Modified
+
+### src/app/routes.tsx
+
+Adds:
+- /schema-preview/:pageId
+
+Documentation Updated:
+- Product Specification
+- Website Builder Guide
+- Rendering Engine
+- Founder Product Decisions
+- Build Log
+
+Architectural Decision:
+Schema-driven rendering should be previewable before replacing existing public routes.
+
+Safety:
+No existing public page route is changed.

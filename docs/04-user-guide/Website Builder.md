@@ -42,3 +42,16 @@ A page requires:
 - One or more sections
 
 If no sections exist, an empty page placeholder is shown.
+
+
+## Preview schema pages
+
+A user or developer can preview WebsiteSchema pages using:
+
+/schema-preview/page-id
+
+Example:
+
+/schema-preview/about
+
+This allows testing sections before making a schema page live.

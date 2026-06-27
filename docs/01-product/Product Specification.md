@@ -90,3 +90,20 @@ Capabilities:
 
 Current limitation:
 No public route has been switched fully to GenericPageRenderer yet.
+
+
+## Schema Preview Route
+
+Status: Started
+
+Capabilities:
+- Preview a WebsiteSchema page by page id
+- Preview a WebsiteSchema page by slug without leading slash
+- Render through GenericPageRenderer
+- Show a safe not-found state
+
+Current route:
+- /schema-preview/:pageId
+
+Purpose:
+Allows testing WebsiteSchema-rendered pages before switching public routes.

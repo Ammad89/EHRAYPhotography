@@ -59,3 +59,12 @@ Create GenericPageRenderer to render WebsiteSchema pages by looping through sect
 
 Reason:
 New website pages should become CMS data, not custom React components.
+
+
+## Preview before migration
+
+Decision:
+Add a schema preview route before replacing public routes.
+
+Reason:
+Schema rendering can be tested safely without disrupting the existing public website.
