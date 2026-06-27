@@ -1,5 +1,6 @@
 import type { PageSection } from "../../cms-core/platform";
 import HeroSectionRenderer from "./HeroSectionRenderer";
+import TextSectionRenderer from "./TextSectionRenderer";
 
 export default function SectionRenderer({ section }: { section: PageSection }) {
   if (!section.visible) return null;
@@ -7,6 +8,9 @@ export default function SectionRenderer({ section }: { section: PageSection }) {
   switch (section.type) {
     case "hero":
       return <HeroSectionRenderer data={section.data} />;
+
+    case "text":
+      return <TextSectionRenderer data={section.data} />;
 
     default:
       return (

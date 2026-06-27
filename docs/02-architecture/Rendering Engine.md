@@ -44,3 +44,10 @@ This is the foundation for CMS-created pages.
 Build 64 introduced a safe route for testing GenericPageRenderer.
 
 This route does not replace public pages. It exists so schema-driven rendering can be tested before migration.
+
+
+## TextSectionRenderer
+
+The second universal renderer.
+
+WebsiteSchema text sections now render through SectionRenderer.

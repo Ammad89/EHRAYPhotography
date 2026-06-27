@@ -107,3 +107,15 @@ Current route:
 
 Purpose:
 Allows testing WebsiteSchema-rendered pages before switching public routes.
+
+
+## Universal Text Section Renderer
+
+Status: Started
+
+Capabilities:
+- Eyebrow
+- Heading
+- Rich paragraphs
+- Alignment
+- Configurable content width

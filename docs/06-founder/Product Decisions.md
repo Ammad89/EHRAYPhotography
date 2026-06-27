@@ -68,3 +68,8 @@ Add a schema preview route before replacing public routes.
 
 Reason:
 Schema rendering can be tested safely without disrupting the existing public website.
+
+
+## Universal text renderer
+
+The text renderer is intentionally generic so it can power About pages, service introductions, legal pages and landing page copy without custom React code.

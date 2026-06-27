@@ -55,3 +55,14 @@ Example:
 /schema-preview/about
 
 This allows testing sections before making a schema page live.
+
+
+## Text Sections
+
+Supported WebsiteSchema fields:
+
+- eyebrow
+- title
+- content
+- align
+- maxWidth

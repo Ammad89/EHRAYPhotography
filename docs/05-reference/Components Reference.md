@@ -37,3 +37,9 @@ Responsibilities:
 - Section ordering
 - Section rendering
 - Empty page fallback
+
+
+### TextSectionRenderer
+
+Purpose:
+Render reusable rich text sections from WebsiteSchema.
