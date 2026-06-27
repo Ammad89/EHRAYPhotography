@@ -1383,3 +1383,36 @@ The CMS should edit structured website data instead of React components or page-
 
 Safety:
 Documentation only. No application code changed.
+
+---
+
+## Build 48: CMS Platform Type Foundation
+
+Purpose
+
+Creates the first TypeScript implementation of the universal CMS platform schema.
+
+Files Created
+
+### src/cms-core/platform/schema.ts
+
+Defines the shared website data model for:
+- Site settings
+- Theme settings
+- Navigation
+- Footer
+- Pages
+- Sections
+- Collections
+- Assets
+- Publishing metadata
+
+### src/cms-core/platform/index.ts
+
+Exports the platform schema types.
+
+Architectural Decision:
+Dashboard V2 and future renderers should share a typed website schema instead of relying on page-specific blocks.
+
+Safety:
+Type foundation only. No UI behavior or public rendering changed.
