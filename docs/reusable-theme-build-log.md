@@ -1484,3 +1484,32 @@ WebsiteProvider becomes the future single source of truth between Supabase snaps
 
 Safety:
 The provider currently uses the static default schema and does not alter public rendering behavior.
+
+
+---
+
+## Build 51: Platform Overview Dashboard Panel
+
+Purpose
+
+Adds the first Dashboard V2 panel that reads from the new WebsiteProvider and universal WebsiteSchema.
+
+Files Created
+
+### src/cms-core/dashboard/platform/PlatformOverviewPanel.tsx
+
+Purpose:
+Displays a read-only overview of the active WebsiteSchema including pages, services, portfolio items, testimonials, site settings and theme settings.
+
+Files Modified
+
+### src/app/pages/DashboardV2.tsx
+
+Purpose:
+Adds a new Platform tab and makes it the default selected tab.
+
+Architectural Decision:
+Dashboard V2 can now begin transitioning from the old block editor state to the universal platform schema without disrupting existing editor panels.
+
+Safety:
+Read-only panel. No publishing behavior or public website rendering changed.

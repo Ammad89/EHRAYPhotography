@@ -8,6 +8,7 @@ import ThemePanel from "../../cms-core/dashboard/ThemePanel";
 import SiteSettingsPanel from "../../cms-core/dashboard/SiteSettingsPanel";
 import MediaLibrary from "../../cms-core/dashboard/MediaLibrary";
 import VersionHistoryPanel from "../../cms-core/dashboard/VersionHistoryPanel";
+import PlatformOverviewPanel from "../../cms-core/dashboard/platform/PlatformOverviewPanel";
 import {
   loadLocalVersions,
   saveLocalVersion,
@@ -30,6 +31,7 @@ import type { User } from "@supabase/supabase-js";
 import { useCmsEditor } from "../../cms-core/dashboard/useCmsEditor";
 
 type EditorTab =
+  | "platform"
   | "content"
   | "theme"
   | "settings"
@@ -38,7 +40,7 @@ type EditorTab =
 
 export default function DashboardV2() {
   const editor = useCmsEditor();
-  const [activeTab, setActiveTab] = useState<EditorTab>("content");
+  const [activeTab, setActiveTab] = useState<EditorTab>("platform");
   const [versions, setVersions] = useState(() => loadLocalVersions());
   const [published, setPublished] = useState(() => loadPublishedSnapshot());
 
@@ -365,7 +367,7 @@ export default function DashboardV2() {
           </div>
 
           <div className="sticky top-0 z-10 flex gap-2 border-b border-border bg-background p-4">
-            {(["content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
+            {(["platform", "content", "theme", "settings", "media", "versions"] as EditorTab[]).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -380,6 +382,10 @@ export default function DashboardV2() {
               </button>
             ))}
           </div>
+
+          {activeTab === "platform" && (
+            <PlatformOverviewPanel />
+          )}
 
           {activeTab === "content" && (
             <FieldsPanel
