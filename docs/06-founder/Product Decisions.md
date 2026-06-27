@@ -50,3 +50,12 @@ Start universal section rendering with the Hero section.
 
 Reason:
 Hero sections appear on nearly every website and prove the pattern before expanding into text, CTA, gallery and collection-driven sections.
+
+
+## Generic page rendering
+
+Decision:
+Create GenericPageRenderer to render WebsiteSchema pages by looping through sections.
+
+Reason:
+New website pages should become CMS data, not custom React components.

@@ -75,3 +75,18 @@ Capabilities:
 
 Current limitation:
 Hero section data is edited as raw JSON in the Sections tab until a visual Hero editor is added.
+
+
+## Generic Page Renderer
+
+Status: Started
+
+Capabilities:
+- Accepts a PageDefinition
+- Reads page SEO metadata
+- Sorts page sections by sortOrder
+- Renders visible sections through SectionRenderer
+- Shows an empty-page placeholder when no sections exist
+
+Current limitation:
+No public route has been switched fully to GenericPageRenderer yet.

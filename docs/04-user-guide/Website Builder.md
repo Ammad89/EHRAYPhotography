@@ -29,3 +29,16 @@ Supported fields:
 - image
 - imageAlt
 - align
+
+
+## Generic Pages
+
+A page can now be rendered from WebsiteSchema using GenericPageRenderer.
+
+A page requires:
+- SEO data
+- A slug
+- A title
+- One or more sections
+
+If no sections exist, an empty page placeholder is shown.

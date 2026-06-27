@@ -23,3 +23,17 @@ Renders WebsiteSchema hero sections.
 ### SectionRenderer
 
 Routes PageSection records to the matching section renderer.
+
+
+## GenericPageRenderer
+
+Renders a WebsiteSchema PageDefinition.
+
+Inputs:
+- page: PageDefinition
+
+Responsibilities:
+- SEO
+- Section ordering
+- Section rendering
+- Empty page fallback

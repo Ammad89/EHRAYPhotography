@@ -24,3 +24,16 @@ Current section renderers:
 SectionRenderer now routes section.type values to the correct renderer.
 
 Unsupported section types render a safe placeholder.
+
+
+## GenericPageRenderer
+
+Build 63 introduced GenericPageRenderer.
+
+GenericPageRenderer converts a WebsiteSchema PageDefinition into a rendered page by:
+1. Reading SEO metadata
+2. Sorting visible sections
+3. Passing each section to SectionRenderer
+4. Rendering an empty-page placeholder when no sections exist
+
+This is the foundation for CMS-created pages.
