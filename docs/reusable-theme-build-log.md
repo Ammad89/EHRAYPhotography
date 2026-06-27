@@ -1555,3 +1555,41 @@ Dashboard V2 begins moving from the old page/block editor toward structured webs
 
 Safety:
 Edits are stored in WebsiteProvider state only. Public renderers do not consume these edited fields yet.
+
+
+---
+
+## Build 53: Platform Navigation Panel
+
+Purpose
+
+Adds an editable Dashboard V2 panel for the new WebsiteSchema navigation model.
+
+Files Created
+
+### src/cms-core/dashboard/platform/PlatformNavigationPanel.tsx
+
+Purpose:
+Edits primary navigation links and header CTA inside WebsiteProvider state.
+
+Supported fields:
+- Link label
+- Link href
+- Visibility
+- Sort order
+- Header CTA label
+- Header CTA href
+- Header CTA visibility
+
+Files Modified
+
+### src/app/pages/DashboardV2.tsx
+
+Purpose:
+Adds a new Navigation tab beside Platform and Site.
+
+Architectural Decision:
+Navigation becomes a structured website-level setting in the platform schema rather than hardcoded page or component data.
+
+Safety:
+Edits are stored in WebsiteProvider state only. Public navigation does not consume these edited fields yet.
