@@ -81,3 +81,17 @@ Supported WebsiteSchema fields:
 - secondaryCtaHref
 - tone
 - align
+
+
+## Image/Text Sections
+
+Supported WebsiteSchema fields:
+
+- eyebrow
+- title
+- content
+- image
+- imageAlt
+- imagePosition
+- ctaLabel
+- ctaHref

@@ -78,3 +78,12 @@ The text renderer is intentionally generic so it can power About pages, service 
 ## Universal CTA renderer
 
 The CTA renderer gives every future site a reusable conversion block for enquiries, bookings, lead magnets and contact prompts.
+
+
+## Universal image/text renderer
+
+Decision:
+Add a reusable Image/Text renderer after Hero, Text and CTA.
+
+Reason:
+Most client websites need editorial sections for About, services, case studies and landing pages.

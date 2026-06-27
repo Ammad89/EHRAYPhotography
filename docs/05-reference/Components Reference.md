@@ -49,3 +49,9 @@ Render reusable rich text sections from WebsiteSchema.
 
 Purpose:
 Render reusable call-to-action sections from WebsiteSchema.
+
+
+### ImageTextSectionRenderer
+
+Purpose:
+Render reusable editorial image and text sections from WebsiteSchema.

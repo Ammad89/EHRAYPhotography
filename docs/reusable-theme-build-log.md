@@ -2091,3 +2091,34 @@ Documentation Updated
 Safety
 
 No existing public pages have been migrated yet.
+
+
+---
+
+## Build 67: Universal Image/Text Section Renderer
+
+Purpose
+
+Adds WebsiteSchema rendering for reusable image and text sections.
+
+Files Created
+
+- ImageTextSectionRenderer.tsx
+
+Files Modified
+
+- SectionRenderer
+- sections/index.ts
+
+Documentation Updated
+
+- Product Specification
+- Rendering Engine
+- Website Builder Guide
+- Components Reference
+- Founder Decisions
+- Build Log
+
+Safety
+
+No existing public pages have been migrated yet.

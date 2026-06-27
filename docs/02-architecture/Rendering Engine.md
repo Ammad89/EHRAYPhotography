@@ -58,3 +58,10 @@ WebsiteSchema text sections now render through SectionRenderer.
 The third universal renderer.
 
 WebsiteSchema CTA sections now render through SectionRenderer.
+
+
+## ImageTextSectionRenderer
+
+Build 67 introduced the universal Image/Text renderer.
+
+WebsiteSchema imageText sections now render through SectionRenderer.

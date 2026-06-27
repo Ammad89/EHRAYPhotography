@@ -133,3 +133,17 @@ Capabilities:
 - Secondary CTA
 - Light or dark tone
 - Left or center alignment
+
+
+## Universal Image/Text Section Renderer
+
+Status: Started
+
+Capabilities:
+- Eyebrow
+- Heading
+- Paragraph content
+- Image
+- Image alt text
+- Left or right image position
+- Optional CTA

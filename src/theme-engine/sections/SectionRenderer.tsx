@@ -2,6 +2,7 @@ import type { PageSection } from "../../cms-core/platform";
 import HeroSectionRenderer from "./HeroSectionRenderer";
 import TextSectionRenderer from "./TextSectionRenderer";
 import CtaSectionRenderer from "./CtaSectionRenderer";
+import ImageTextSectionRenderer from "./ImageTextSectionRenderer";
 
 export default function SectionRenderer({ section }: { section: PageSection }) {
   if (!section.visible) return null;
@@ -15,6 +16,9 @@ export default function SectionRenderer({ section }: { section: PageSection }) {
 
     case "cta":
       return <CtaSectionRenderer data={section.data} />;
+
+    case "imageText":
+      return <ImageTextSectionRenderer data={section.data} />;
 
     default:
       return (
