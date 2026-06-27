@@ -1620,3 +1620,31 @@ Navigation becomes the first public website component to consume the universal W
 
 Safety:
 WebsiteProvider is initialized from createDefaultWebsiteSchema(), so public navigation should remain visually and functionally equivalent.
+
+
+---
+
+## Build 55: Public Footer Schema Adapter
+
+Purpose
+
+Makes the public Footer component read navigation, footer and contact fields from WebsiteProvider.
+
+Files Modified
+
+### src/app/components/Footer.tsx
+
+Changes:
+- Reads primary links from WebsiteSchema navigation.primary
+- Reads service links from WebsiteSchema navigation.services
+- Reads footer description, copyright and SEO line from WebsiteSchema footer
+- Reads address, phone, email and WhatsApp from WebsiteSchema site.contact
+- Respects isVisible flags
+- Sorts links by sortOrder
+- Keeps brand logo from active site config for now
+
+Architectural Decision:
+Footer becomes the second public website component to consume the universal WebsiteSchema.
+
+Safety:
+WebsiteProvider is initialized from createDefaultWebsiteSchema(), so public footer should remain visually and functionally equivalent.
