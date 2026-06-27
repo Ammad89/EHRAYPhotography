@@ -1445,3 +1445,42 @@ Dashboard V2 should have a typed default schema to edit before the public websit
 
 Safety:
 Adapter only. No public rendering behavior changed.
+
+
+---
+
+## Build 50: Website Provider Foundation
+
+Purpose
+
+Creates the WebsiteProvider and WebsiteContext foundation for the CMS platform.
+
+Files Created
+
+### src/cms-core/platform/context/WebsiteContext.tsx
+
+Purpose:
+Provides website schema state to the application using createDefaultWebsiteSchema() as the initial source.
+
+### src/cms-core/platform/context/index.ts
+
+Purpose:
+Exports the website context utilities.
+
+Files Modified
+
+### src/cms-core/platform/index.ts
+
+Purpose:
+Exports WebsiteProvider and useWebsite.
+
+### src/app/App.tsx
+
+Purpose:
+Wraps the application in WebsiteProvider so future dashboard and renderer work can consume the universal website schema.
+
+Architectural Decision:
+WebsiteProvider becomes the future single source of truth between Supabase snapshots, Dashboard V2 and public renderers.
+
+Safety:
+The provider currently uses the static default schema and does not alter public rendering behavior.

@@ -1,6 +1,11 @@
 import { RouterProvider } from "react-router";
+import { WebsiteProvider } from "../cms-core/platform";
 import { router } from "./routes";
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <WebsiteProvider>
+      <RouterProvider router={router} />
+    </WebsiteProvider>
+  );
 }
