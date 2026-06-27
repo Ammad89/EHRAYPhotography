@@ -1416,3 +1416,32 @@ Dashboard V2 and future renderers should share a typed website schema instead of
 
 Safety:
 Type foundation only. No UI behavior or public rendering changed.
+
+
+---
+
+## Build 49: Default Website Schema Adapter
+
+Purpose
+
+Creates a default WebsiteSchema adapter from the current active site and active theme.
+
+Files Created
+
+### src/cms-core/platform/default-website.ts
+
+Purpose:
+Provides createDefaultWebsiteSchema(), which converts current static site/theme data into the new universal CMS platform schema.
+
+Files Modified
+
+### src/cms-core/platform/index.ts
+
+Purpose:
+Exports the default website schema adapter.
+
+Architectural Decision:
+Dashboard V2 should have a typed default schema to edit before the public website starts loading published CMS snapshots.
+
+Safety:
+Adapter only. No public rendering behavior changed.
