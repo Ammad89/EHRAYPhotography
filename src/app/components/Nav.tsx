@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { getActiveSite } from "../../theme-engine";
+import { useWebsite } from "../../cms-core/platform";
 
 export default function Nav() {
   const site = getActiveSite();
-  const serviceLinks = site.navigation.services;
-  const primaryLinks = site.navigation.primary;
-  const cta = site.navigation.cta;
+  const { website } = useWebsite();
+
+  const serviceLinks = (website.navigation.services || site.navigation.services)
+    .filter(link => link.isVisible !== false)
+    .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+  const primaryLinks = (website.navigation.primary || site.navigation.primary)
+    .filter(link => link.isVisible !== false)
+    .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+  const cta = website.navigation.cta || site.navigation.cta;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -86,15 +95,17 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href={cta.href}
-            className="group hidden md:inline-flex items-center gap-[18px] h-10 pl-6 pr-3.5 bg-primary text-primary-foreground text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:opacity-80 transition-opacity duration-500"
-          >
-            <span className="group-hover:[order:1]">{cta.label}</span>
-            <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5">
-              <ArrowRight size={14} />
-            </span>
-          </a>
+          {cta?.isVisible !== false && (
+            <a
+              href={cta.href}
+              className="group hidden md:inline-flex items-center gap-[18px] h-10 pl-6 pr-3.5 bg-primary text-primary-foreground text-xs tracking-[0.12em] uppercase font-medium rounded-full hover:opacity-80 transition-opacity duration-500"
+            >
+              <span className="group-hover:[order:1]">{cta.label}</span>
+              <span className="group-hover:[order:0] flex items-center justify-center w-5 h-5">
+                <ArrowRight size={14} />
+              </span>
+            </a>
+          )}
           <button
             className="md:hidden text-foreground p-2 rounded-full bg-white/90 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-md hover:bg-white transition-colors duration-500"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -143,14 +154,16 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <a
-            href={cta.href}
-            className="mt-4 inline-flex items-center justify-between gap-[18px] h-10 pl-6 pr-3.5 bg-primary text-primary-foreground text-xs tracking-[0.12em] uppercase font-medium rounded-full"
-            onClick={() => setMenuOpen(false)}
-          >
-            <span>{cta.label}</span>
-            <span className="flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
-          </a>
+          {cta?.isVisible !== false && (
+            <a
+              href={cta.href}
+              className="mt-4 inline-flex items-center justify-between gap-[18px] h-10 pl-6 pr-3.5 bg-primary text-primary-foreground text-xs tracking-[0.12em] uppercase font-medium rounded-full"
+              onClick={() => setMenuOpen(false)}
+            >
+              <span>{cta.label}</span>
+              <span className="flex items-center justify-center w-5 h-5"><ArrowRight size={14} /></span>
+            </a>
+          )}
         </div>
       )}
     </header>

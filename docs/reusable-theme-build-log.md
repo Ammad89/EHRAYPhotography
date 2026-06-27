@@ -1593,3 +1593,30 @@ Navigation becomes a structured website-level setting in the platform schema rat
 
 Safety:
 Edits are stored in WebsiteProvider state only. Public navigation does not consume these edited fields yet.
+
+
+---
+
+## Build 54: Public Navigation Schema Adapter
+
+Purpose
+
+Makes the public Nav component read navigation links and header CTA from WebsiteProvider.
+
+Files Modified
+
+### src/app/components/Nav.tsx
+
+Changes:
+- Reads primary links from WebsiteSchema navigation.primary
+- Reads service links from WebsiteSchema navigation.services
+- Reads header CTA from WebsiteSchema navigation.cta
+- Respects isVisible flags
+- Sorts links by sortOrder
+- Keeps brand logo from active site config for now
+
+Architectural Decision:
+Navigation becomes the first public website component to consume the universal WebsiteSchema.
+
+Safety:
+WebsiteProvider is initialized from createDefaultWebsiteSchema(), so public navigation should remain visually and functionally equivalent.
