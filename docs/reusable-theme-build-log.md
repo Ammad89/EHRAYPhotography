@@ -1648,3 +1648,28 @@ Footer becomes the second public website component to consume the universal Webs
 
 Safety:
 WebsiteProvider is initialized from createDefaultWebsiteSchema(), so public footer should remain visually and functionally equivalent.
+
+
+---
+
+## Build 56: WebsiteSchema Local Persistence
+
+Purpose
+
+Adds browser localStorage persistence for the universal WebsiteSchema.
+
+Files Modified
+
+### src/cms-core/platform/context/WebsiteContext.tsx
+
+Changes:
+- Loads WebsiteSchema from localStorage on startup when available
+- Falls back to createDefaultWebsiteSchema()
+- Saves WebsiteSchema changes to localStorage automatically
+- Reset restores the default schema and updates localStorage
+
+Architectural Decision:
+The WebsiteSchema now survives dashboard refreshes before Supabase publishing is connected.
+
+Safety:
+Persistence is local to the browser. Public rendering remains initialized from the same WebsiteProvider state.
