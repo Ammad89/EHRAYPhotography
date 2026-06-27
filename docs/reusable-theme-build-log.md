@@ -1741,3 +1741,52 @@ WebsiteProvider becomes the central bootstrap point for published platform data.
 
 Safety:
 If no remote platform-published snapshot exists, the site continues using local or default schema.
+
+
+---
+
+## Build 59: Documentation Framework
+
+Purpose
+
+Creates the formal documentation framework for Eight Nine Web Studio.
+
+Files Created
+
+Documentation folders:
+- docs/01-product
+- docs/02-architecture
+- docs/02-architecture/ADR
+- docs/03-developer
+- docs/04-user-guide
+- docs/05-reference
+- docs/06-founder
+- docs/build-history
+
+Key documents:
+- Product Vision
+- Product Specification
+- Roadmap
+- Release Notes
+- Architecture Overview
+- Theme Engine
+- WebsiteSchema
+- Rendering Engine
+- Publishing
+- Versioning
+- ADR-001 WebsiteSchema as source of truth
+- Developer guides
+- User Journey Guide
+- Dashboard Guide
+- Website Builder Guide
+- Reference guides
+- Founder Notes
+- Product Decisions
+- Future Ideas
+- Competitive Research
+
+Architectural Decision:
+Documentation becomes part of the definition of done for all future builds.
+
+Safety:
+Documentation only. No application code changed.
