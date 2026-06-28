@@ -43,3 +43,8 @@ Raw section management and JSON editing.
 
 Future mode:
 Visual editors for every section type.
+
+
+## Sections Tab Starter Data
+
+The Sections tab now applies default section data when creating or changing section types.

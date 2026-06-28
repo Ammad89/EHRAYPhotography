@@ -96,3 +96,12 @@ Create one collection renderer before building separate services, portfolio, tes
 
 Reason:
 Most section types share the same collection lookup, filtering and empty-state logic. A shared renderer reduces duplication and accelerates future section development.
+
+
+## Section starter templates
+
+Decision:
+Add starter data for every common section type.
+
+Reason:
+A CMS user should not need to write raw JSON to understand how a section works.

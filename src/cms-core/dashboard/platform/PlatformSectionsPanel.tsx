@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useWebsite } from "../../platform";
 import type { PageSection, SectionType } from "../../platform";
+import { getDefaultSectionData } from "../../platform";
 
 const sectionTypes: SectionType[] = [
   "hero",
@@ -40,7 +41,7 @@ function createSection(type: SectionType, sortOrder: number): PageSection {
     variant: "default",
     visible: true,
     sortOrder,
-    data: {},
+    data: getDefaultSectionData(type),
   };
 }
 
@@ -252,7 +253,13 @@ export default function PlatformSectionsPanel() {
                   <select
                     className={selectClass()}
                     value={section.type}
-                    onChange={event => updateSection(section.id, { type: event.target.value as SectionType })}
+                    onChange={event => {
+                      const nextType = event.target.value as SectionType;
+                      updateSection(section.id, {
+                        type: nextType,
+                        data: getDefaultSectionData(nextType),
+                      });
+                    }}
                   >
                     {sectionTypes.map(type => (
                       <option key={type} value={type}>{type}</option>

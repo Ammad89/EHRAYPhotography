@@ -2168,3 +2168,45 @@ A shared CollectionSectionRenderer is introduced before separate specialized col
 Safety
 
 No existing public pages have been migrated yet.
+
+
+---
+
+## Build 69: Section Starter Templates
+
+Purpose
+
+Adds default starter data for WebsiteSchema sections.
+
+Files Created
+
+### src/cms-core/platform/section-templates.ts
+
+Purpose:
+Provides getDefaultSectionData(type), which returns starter data for common section types.
+
+Files Modified
+
+### src/cms-core/platform/index.ts
+
+Exports section template helpers.
+
+### src/cms-core/dashboard/platform/PlatformSectionsPanel.tsx
+
+Changes:
+- New sections now receive starter data instead of an empty object.
+- Changing section type resets data to the selected section type's default template.
+
+Documentation Updated:
+- Product Specification
+- Website Builder Guide
+- Dashboard Guide
+- WebsiteSchema Reference
+- Founder Product Decisions
+- Build Log
+
+Architectural Decision:
+Section data should be easy to initialize before full visual editors exist.
+
+Safety:
+No public route behavior changed.

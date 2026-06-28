@@ -118,3 +118,10 @@ Supported fields:
 - layout
 - ctaLabel
 - ctaHref
+
+
+## Section starter templates
+
+When a user adds a section, the platform now fills in starter content automatically.
+
+This makes schema sections easier to preview and reduces the need to write JSON from scratch.

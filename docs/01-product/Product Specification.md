@@ -163,3 +163,13 @@ Capabilities:
 - Maximum item count
 - Empty state
 - Optional CTA
+
+
+## Section Starter Templates
+
+Status: Started
+
+Capabilities:
+- New sections are created with useful starter data.
+- Changing section type resets the section data to a matching starter template.
+- Supported starter templates include hero, text, imageText, CTA, servicesGrid, portfolioGrid, testimonials and FAQ.

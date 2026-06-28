@@ -42,3 +42,14 @@ A section contains:
 - data
 
 The Platform Sections Manager edits these fields directly.
+
+
+## Section Templates
+
+Default section data is provided by:
+
+src/cms-core/platform/section-templates.ts
+
+The helper is:
+
+getDefaultSectionData(type)
